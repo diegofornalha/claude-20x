@@ -1,0 +1,27 @@
+# Arquivos que não devem gerar commits por mudanças de timestamp
+*.log linguist-generated=true
+*.db binary
+*.sqlite binary
+*.lock linguist-generated=true
+
+# Arquivos de configuração temporária
+.env* linguist-generated=true
+temp/* linguist-generated=true
+tmp/* linguist-generated=true
+
+# Arquivos Python
+*.py text eol=lf
+*.ipynb text eol=lf
+
+# Arquivos JavaScript/TypeScript
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+
+# Arquivos Markdown
+*.md text eol=lf
+
+# Arquivos de configuração
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf 

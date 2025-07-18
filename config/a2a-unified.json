@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "created_by": "SPARC:coder - Configuration Consolidation",
+    "created_at": "2025-07-13",
+    "description": "Configuração A2A unificada consolidando todos os arquivos a2a-config.json dispersos",
+    "consolidation_source": [
+      "./ui/agent_cards/",
+      "./ui/utils/",
+      "./ui/state/",
+      "./ui/components/", 
+      "./ui/scripts/",
+      "./ui/hosts/",
+      "./ui/pages/",
+      "./ui/a2a_mcp/",
+      "./claude-code-10x/memory/",
+      "./agents/helloworld/"
+    ],
+    "total_agents": 10
+  },
+  "global_defaults": {
+    "enabled": true,
+    "protocol_version": "1.0",
+    "discovery": {
+      "auto_register": true,
+      "registry_url": "http://localhost:8080/api/agents",
+      "heartbeat_interval": 30000
+    },
+    "communication": {
+      "transport": "http",
+      "format": "json",
+      "compression": false,
+      "timeout": 30000
+    },
+    "cooperation": {
+      "task_delegation": true,
+      "result_sharing": true,
+      "skill_advertisement": true
+    },
+    "security": {
+      "authentication": false,
+      "encryption": false,
+      "rate_limiting": true
+    },
+    "monitoring": {
+      "metrics": true,
+      "logging": true,
+      "health_checks": true
+    }
+  },
+  "agents": [
+    {
+      "agent_name": "helloworld_agent",
+      "project_name": "helloworld",
+      "location": "./agents/helloworld/",
+      "config_file": "./agents/helloworld/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "a2a_mcp_agent", 
+      "project_name": "a2a_mcp",
+      "location": "./ui/a2a_mcp/",
+      "config_file": "./ui/a2a_mcp/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "memory_agent",
+      "project_name": "memory", 
+      "location": "./claude-code-10x/memory/",
+      "config_file": "./claude-code-10x/memory/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "agent_cards_agent",
+      "project_name": "agent_cards",
+      "location": "./ui/agent_cards/",
+      "config_file": "./ui/agent_cards/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "components_agent",
+      "project_name": "components",
+      "location": "./ui/components/",
+      "config_file": "./ui/components/a2a-config.json", 
+      "overrides": {}
+    },
+    {
+      "agent_name": "hosts_agent",
+      "project_name": "hosts",
+      "location": "./ui/hosts/",
+      "config_file": "./ui/hosts/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "pages_agent",
+      "project_name": "pages",
+      "location": "./ui/pages/",
+      "config_file": "./ui/pages/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "scripts_agent",
+      "project_name": "scripts",
+      "location": "./ui/scripts/",
+      "config_file": "./ui/scripts/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "state_agent",
+      "project_name": "state",
+      "location": "./ui/state/",
+      "config_file": "./ui/state/a2a-config.json",
+      "overrides": {}
+    },
+    {
+      "agent_name": "utils_agent",
+      "project_name": "utils",
+      "location": "./ui/utils/",
+      "config_file": "./ui/utils/a2a-config.json",
+      "overrides": {}
+    }
+  ],
+  "configuration_notes": {
+    "usage": "Este arquivo centraliza todas as configurações A2A do projeto",
+    "compatibility": "Mantém compatibilidade com arquivos individuais existentes",
+    "migration_strategy": "Arquivos individuais podem ser removidos após migração do sistema para usar esta configuração centralizada",
+    "override_support": "Campo 'overrides' permite configurações específicas por agente se necessário no futuro"
+  }
+}
