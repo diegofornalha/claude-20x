@@ -1,0 +1,55 @@
+# Arquivos de desenvolvimento
+src/
+*.ts
+!*.d.ts
+tsconfig.json
+jest.config.js
+
+# Testes
+__tests__/
+*.test.*
+*.spec.*
+coverage/
+
+# Documentação de desenvolvimento
+docs/
+*.md
+!README.md
+
+# Arquivos de configuração
+.env
+.env.*
+.gitignore
+.eslintrc*
+.prettierrc*
+
+# Logs e temporários
+logs/
+*.log
+tmp/
+temp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.github/
+
+# Arquivos de exemplo
+examples/
+improvement-report.json
+.improvements-queue.json
+.task-execution-history.json
+
+# Backups
+*.backup
+*-old.*
+*.bak

@@ -1,0 +1,206 @@
+{
+  "a2a_mcp_unified_configuration": {
+    "description": "Configuração unificada de servidores MCP para sistema A2A",
+    "version": "2.0.0",
+    "last_updated": "2024-07-12T06:40:00Z",
+    
+    "mcp_servers": {
+      "memory": {
+        "command": "uvicorn",
+        "args": ["mcp_server_memory.server:app", "--host", "0.0.0.0", "--port", "3001"],
+        "env": {
+          "A2A_ENABLED": "true",
+          "A2A_BRIDGE_URL": "http://localhost:8080",
+          "MEMORY_BACKEND": "mem0"
+        },
+        "a2a_integration": {
+          "enabled": true,
+          "agent_name": "memory_agent",
+          "capabilities": ["memory_storage", "memory_retrieval", "memory_search"],
+          "auto_register": true
+        }
+      },
+      
+      "sequential_thinking": {
+        "command": "node",
+        "args": ["mcp-server-sequential-thinking/dist/index.js"],
+        "env": {
+          "A2A_ENABLED": "true",
+          "A2A_BRIDGE_URL": "http://localhost:8080"
+        },
+        "a2a_integration": {
+          "enabled": true,
+          "agent_name": "thinking_agent",
+          "capabilities": ["sequential_reasoning", "problem_solving", "decision_making"],
+          "auto_register": true
+        }
+      },
+      
+      "desktop_commander": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-desktop-commander"],
+        "env": {
+          "A2A_ENABLED": "true",
+          "A2A_BRIDGE_URL": "http://localhost:8080"
+        },
+        "a2a_integration": {
+          "enabled": true,
+          "agent_name": "desktop_agent",
+          "capabilities": ["file_operations", "system_commands", "process_management"],
+          "auto_register": true
+        }
+      },
+      
+      "terminal": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-terminal"],
+        "env": {
+          "A2A_ENABLED": "true",
+          "A2A_BRIDGE_URL": "http://localhost:8080"
+        },
+        "a2a_integration": {
+          "enabled": true,
+          "agent_name": "terminal_agent",
+          "capabilities": ["command_execution", "shell_operations"],
+          "auto_register": true
+        }
+      },
+      
+      "everything": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-everything"],
+        "env": {
+          "A2A_ENABLED": "true",
+          "A2A_BRIDGE_URL": "http://localhost:8080"
+        },
+        "a2a_integration": {
+          "enabled": true,
+          "agent_name": "utility_agent",
+          "capabilities": ["utility_functions", "examples", "testing"],
+          "auto_register": true
+        }
+      },
+      
+      "a2a_bridge_smithery": {
+        "transport": "http",
+        "url": "https://server.smithery.ai/@GongRzhe/A2A-MCP-Server/mcp",
+        "env": {
+          "API_KEY": "8f573867-52c3-46bb-993e-fb65291459b2",
+          "PROFILE": "naughty-echidna-jd9SWG",
+          "A2A_ENABLED": "true"
+        },
+        "a2a_integration": {
+          "enabled": true,
+          "agent_name": "a2a_bridge_agent",
+          "capabilities": ["agent_registration", "agent_listing", "agent_deregistration", "message_sending", "task_retrieval"],
+          "auto_register": true,
+          "priority": "high"
+        },
+        "smithery_config": {
+          "description": "A2A Bridge Server da Smithery - facilita comunicação entre assistentes IA",
+          "features": [
+            "Agent registration and management",
+            "Cross-platform message sending", 
+            "Task result retrieval",
+            "MCP client integration",
+            "Multi-transport support"
+          ],
+          "integration_targets": ["Claude", "Cursor IDE", "Other MCP clients"]
+        }
+      }
+    },
+    
+    "a2a_coordination": {
+      "enabled": true,
+      "coordinator_agent": "claude_flow_orchestrator",
+      "coordination_patterns": {
+        "task_delegation": {
+          "enabled": true,
+          "auto_route": true,
+          "fallback_agent": "claude_flow_orchestrator"
+        },
+        "capability_discovery": {
+          "enabled": true,
+          "auto_discovery": true,
+          "cache_duration": "1h"
+        },
+        "load_balancing": {
+          "enabled": true,
+          "strategy": "round_robin",
+          "max_concurrent_per_agent": 5
+        }
+      }
+    },
+    
+    "guardian_monitoring": {
+      "enabled": true,
+      "compliance_checks": {
+        "mcp_server_health": true,
+        "a2a_registration": true,
+        "capability_validation": true,
+        "performance_monitoring": true
+      },
+      "auto_remediation": {
+        "restart_failed_servers": true,
+        "re_register_agents": true,
+        "escalate_to_human": {
+          "enabled": true,
+          "threshold": "3_failures"
+        }
+      }
+    },
+    
+    "service_discovery": {
+      "enabled": true,
+      "registry_url": "http://localhost:8080/api/agents",
+      "health_check_interval": "30s",
+      "service_mesh": {
+        "enabled": true,
+        "load_balancer_url": "http://localhost:8080/api/route"
+      }
+    },
+    
+    "logging_and_telemetry": {
+      "enabled": true,
+      "log_level": "info",
+      "metrics": {
+        "enabled": true,
+        "endpoint": "http://localhost:8080/api/metrics"
+      },
+      "tracing": {
+        "enabled": true,
+        "endpoint": "http://localhost:8080/api/traces"
+      }
+    },
+    
+    "security": {
+      "authentication": {
+        "enabled": false,
+        "type": "none"
+      },
+      "authorization": {
+        "enabled": false,
+        "default_policy": "allow_all"
+      },
+      "rate_limiting": {
+        "enabled": true,
+        "max_requests_per_minute": 100
+      }
+    },
+    
+    "deployment": {
+      "mode": "docker_compose",
+      "restart_policy": "unless-stopped",
+      "resource_limits": {
+        "memory": "512m",
+        "cpu": "0.5"
+      },
+      "health_checks": {
+        "enabled": true,
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3
+      }
+    }
+  }
+}

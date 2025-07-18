@@ -1,0 +1,34 @@
+{
+  "claude_flow_a2a_integration": {
+    "enabled": true,
+    "a2a_server_url": "http://localhost:8080",
+    "agent_registration": {
+      "auto_register": true,
+      "agent_name": "claude_flow_orchestrator",
+      "capabilities": {
+        "skills": ["task_orchestration", "memory_management", "terminal_control"],
+        "supported_tasks": ["orchestrate_workflow", "manage_memory", "execute_commands"],
+        "max_concurrent_tasks": 20
+      }
+    },
+    "memory_integration": {
+      "use_a2a_memory": true,
+      "a2a_memory_endpoint": "http://localhost:8080/api/memory",
+      "sync_with_a2a": true
+    },
+    "mcp_integration": {
+      "bridge_to_a2a": true,
+      "shared_mcp_servers": [
+        "mcp-server-memory",
+        "mcp-server-sequential-thinking", 
+        "mcp-server-everything",
+        "desktop-commander"
+      ]
+    },
+    "guardian_monitoring": {
+      "report_to_guardian": true,
+      "compliance_checks": true,
+      "auto_fix_violations": true
+    }
+  }
+}

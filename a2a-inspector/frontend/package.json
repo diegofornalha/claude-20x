@@ -1,0 +1,32 @@
+{
+  "name": "a2a-inspector-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/script.ts --bundle --outfile=public/script.js --platform=browser",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^3.2.6",
+    "marked": "^15.0.12",
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/marked": "^5.0.2",
+    "@types/node": "^22.7.5",
+    "esbuild": "^0.25.0",
+    "gts": "^6.0.2",
+    "typescript": "^5.6.3"
+  }
+}

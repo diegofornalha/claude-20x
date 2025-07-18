@@ -142,10 +142,6 @@ ehthumbs.db
 Icon?
 Desktop.ini
 $RECYCLE.BIN/
-ui/a2a-host
-a2a-python
-a2a-inspector
-claude-code-10x
 node_modules
 
 # Claude Flow generated files

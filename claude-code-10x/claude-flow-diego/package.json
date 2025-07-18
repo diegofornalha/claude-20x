@@ -1,0 +1,37 @@
+{
+  "name": "claude-flow",
+  "version": "1.0.0",
+  "description": "Claude Flow - Organization and automation tools",
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "organize": "./scripts/organize-project.sh",
+    "organize:universal": "tsx src/organization/universal-organization-guardian.ts",
+    "guardian": "tsx src/agents/universal-organization-guardian.ts . continuous",
+    "guardian:single": "tsx src/agents/universal-organization-guardian.ts . single",
+    "a2a:server": "tsx a2a_servers/main_server.ts",
+    "a2a:server:dev": "tsx --watch a2a_servers/main_server.ts",
+    "docker:guardian": "docker-compose --profile guardian up -d",
+    "docker:guardian:logs": "docker logs -f organization-guardian",
+    "docker:guardian:stop": "docker-compose --profile guardian down"
+  },
+  "dependencies": {
+    "@chroma-core/default-embed": "^0.1.8",
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.10",
+    "axios": "^1.9.0",
+    "chokidar": "^4.0.3",
+    "chromadb": "^3.0.3",
+    "commander": "^14.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "uuid": "^11.1.0",
+    "ws": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

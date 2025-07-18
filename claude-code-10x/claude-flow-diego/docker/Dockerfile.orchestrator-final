@@ -1,0 +1,41 @@
+# Dockerfile final para Claude-Flow Orchestrator
+FROM node:20-slim
+
+# Instalar dependências essenciais
+RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
+    git \
+    python3 \
+    make \
+    g++ \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar Deno
+ENV DENO_VERSION=v1.46.3
+RUN curl -fsSL https://deno.land/install.sh | sh
+ENV DENO_INSTALL="/root/.deno"
+ENV PATH="${DENO_INSTALL}/bin:${PATH}"
+
+# Verificar instalação
+RUN deno --version
+
+# Criar diretório de trabalho
+WORKDIR /workspace
+
+# Instalar claude-flow globalmente
+RUN npm install -g claude-flow@latest
+
+# Expor porta
+EXPOSE 3003
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3003/health || exit 1
+
+# Criar diretórios necessários
+RUN mkdir -p /workspace/memory /workspace/coordination
+
+# Comando com inicialização forçada e criação de diretórios
+CMD sh -c "cd /workspace && mkdir -p memory coordination && claude-flow init --force && claude-flow start --port 3003"

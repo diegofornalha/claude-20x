@@ -1,0 +1,76 @@
+{
+  "timestamp": "2025-06-11T16:38:39.372Z",
+  "analyses": [
+    {
+      "file": "/Users/phiz/Desktop/claude-code-10x/mcp-run-ts-tools/src/index.ts",
+      "lines": 1140,
+      "issues": [
+        "Arquivo muito grande (1140 linhas)"
+      ],
+      "recommendations": [
+        "Refatorar em módulos menores"
+      ]
+    },
+    {
+      "file": "/Users/phiz/Desktop/claude-code-10x/mcp-run-ts-tools/src/types.ts",
+      "lines": 350,
+      "issues": [],
+      "recommendations": []
+    },
+    {
+      "file": "/Users/phiz/Desktop/claude-code-10x/mcp-run-ts-tools/src/schemas.ts",
+      "lines": 198,
+      "issues": [],
+      "recommendations": []
+    },
+    {
+      "file": "/Users/phiz/Desktop/claude-code-10x/mcp-run-ts-tools/src/utils.ts",
+      "lines": 312,
+      "issues": [],
+      "recommendations": []
+    },
+    {
+      "file": "/Users/phiz/Desktop/claude-code-10x/mcp-run-ts-tools/src/handlers.ts",
+      "lines": 317,
+      "issues": [],
+      "recommendations": []
+    }
+  ],
+  "priorities": [
+    {
+      "title": "Refatorar index.ts monolítico",
+      "type": "CRÍTICO",
+      "effort": "4h",
+      "description": "Arquivo com 1140 linhas precisa ser dividido em módulos"
+    },
+    {
+      "title": "Implementar testes",
+      "type": "ALTO",
+      "effort": "8h",
+      "description": "Adicionar Jest e criar testes unitários"
+    },
+    {
+      "title": "Sistema de logging",
+      "type": "ALTO",
+      "effort": "3h",
+      "description": "Substituir console.log por Winston ou similar"
+    },
+    {
+      "title": "Documentação completa",
+      "type": "MÉDIO",
+      "effort": "4h",
+      "description": "README principal e documentação de API"
+    },
+    {
+      "title": "Configuração centralizada",
+      "type": "MÉDIO",
+      "effort": "2h",
+      "description": "Criar arquivo de configuração único"
+    }
+  ],
+  "summary": {
+    "totalFiles": 5,
+    "totalIssues": 1,
+    "criticalFiles": 1
+  }
+}

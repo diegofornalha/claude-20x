@@ -1,0 +1,72 @@
+[
+  {
+    "id": "refactor-index-ts",
+    "type": "refactoring",
+    "priority": 5,
+    "title": "Refatorar index.ts monolítico",
+    "description": "O arquivo index.ts tem 1140 linhas com duplicação. Usar módulos já criados em src/tools/",
+    "estimatedEffort": 4,
+    "files": [
+      "src/index.ts",
+      "src/tools/*/index.ts"
+    ]
+  },
+  {
+    "id": "implement-tests",
+    "type": "testing",
+    "priority": 4,
+    "title": "Implementar suite de testes",
+    "description": "Adicionar testes unitários e de integração com Jest",
+    "estimatedEffort": 8,
+    "files": [
+      "src/**/__tests__/*.test.ts"
+    ]
+  },
+  {
+    "id": "add-logging",
+    "type": "feature",
+    "priority": 4,
+    "title": "Implementar sistema de logging estruturado",
+    "description": "Adicionar Winston ou similar para logging configurável",
+    "estimatedEffort": 3,
+    "files": [
+      "src/utils/logger.ts",
+      "src/config/logging.ts"
+    ]
+  },
+  {
+    "id": "improve-docs",
+    "type": "documentation",
+    "priority": 3,
+    "title": "Completar documentação",
+    "description": "Adicionar README principal, documentação de API e exemplos",
+    "estimatedEffort": 4,
+    "files": [
+      "README.md",
+      "docs/API.md",
+      "examples/"
+    ]
+  },
+  {
+    "id": "central-config",
+    "type": "architecture",
+    "priority": 3,
+    "title": "Centralizar configurações",
+    "description": "Criar sistema de configuração central para todas as ferramentas",
+    "estimatedEffort": 2,
+    "files": [
+      "src/config/index.ts"
+    ]
+  },
+  {
+    "id": "add-metrics",
+    "type": "performance",
+    "priority": 2,
+    "title": "Adicionar monitoramento de performance",
+    "description": "Implementar coleta de métricas e monitoramento",
+    "estimatedEffort": 3,
+    "files": [
+      "src/utils/metrics.ts"
+    ]
+  }
+]
