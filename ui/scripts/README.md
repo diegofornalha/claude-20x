@@ -30,19 +30,19 @@ node a2a-server.js
 
 #### Descobrir o Agente
 ```bash
-curl http://localhost:8080/discover
+curl http://localhost:8888/discover
 ```
 
 #### Comunicar com o Agente
 ```bash
-curl -X POST http://localhost:8080/communicate \
+curl -X POST http://localhost:8888/communicate \
   -H "Content-Type: application/json" \
   -d '{"message": "Hello from another agent"}'
 ```
 
 #### Delegar Tarefa
 ```bash
-curl -X POST http://localhost:8080/delegate \
+curl -X POST http://localhost:8888/delegate \
   -H "Content-Type: application/json" \
   -d '{"task": "process_data", "payload": {...}}'
 ```

@@ -9,8 +9,8 @@ Uso:
     python chart_server.py
     
 Links gerados:
-    http://localhost:8080/charts/analytics_chart_[id].html
-    http://localhost:8080/download/[id].html
+    http://localhost:8888/charts/analytics_chart_[id].html
+    http://localhost:8888/download/[id].html
 """
 
 import os
@@ -79,9 +79,9 @@ async def root():
                 <h3>📊 Como Usar</h3>
                 <p>Este servidor torna os charts do Analytics Agent clicáveis via HTTP:</p>
                 <ul>
-                    <li><strong>Charts:</strong> <code>http://localhost:8080/charts/[chart_id].html</code></li>
-                    <li><strong>Download:</strong> <code>http://localhost:8080/download/[chart_id].html</code></li>
-                    <li><strong>Status:</strong> <code>http://localhost:8080/status</code></li>
+                    <li><strong>Charts:</strong> <code>http://localhost:8888/charts/[chart_id].html</code></li>
+                    <li><strong>Download:</strong> <code>http://localhost:8888/download/[chart_id].html</code></li>
+                    <li><strong>Status:</strong> <code>http://localhost:8888/status</code></li>
                 </ul>
             </div>
             

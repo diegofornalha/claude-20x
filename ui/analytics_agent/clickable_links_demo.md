@@ -11,11 +11,11 @@ Link direto: file://tmp/analytics_chart_449d9e7d503a40288279352d457e314d.html
 ## ✅ **DEPOIS (Clicável!)**
 
 ### 🚀 **SEU CHART ESTÁ PRONTO!**
-👆 **[CLIQUE AQUI PARA ABRIR O CHART INTERATIVO](http://localhost:8080/charts/analytics_chart_449d9e7d503a40288279352d457e314d.html)**
+👆 **[CLIQUE AQUI PARA ABRIR O CHART INTERATIVO](http://localhost:8888/charts/analytics_chart_449d9e7d503a40288279352d457e314d.html)**
 
 🔗 **Links alternativos:**
-- [📊 Abrir Chart](http://localhost:8080/charts/analytics_chart_449d9e7d503a40288279352d457e314d.html)
-- [💾 Download HTML](http://localhost:8080/download/449d9e7d503a40288279352d457e314d)
+- [📊 Abrir Chart](http://localhost:8888/charts/analytics_chart_449d9e7d503a40288279352d457e314d.html)
+- [💾 Download HTML](http://localhost:8888/download/449d9e7d503a40288279352d457e314d)
 - [📁 Arquivo Local](file:///tmp/analytics_chart_449d9e7d503a40288279352d457e314d.html)
 
 ---
@@ -33,7 +33,7 @@ Link direto: file://tmp/analytics_chart_449d9e7d503a40288279352d457e314d.html
 - **Fallback:** Link file:// se servidor estiver offline
 
 ### **✅ Servidor Chart Dedicado**
-- Rodando em `http://localhost:8080`
+- Rodando em `http://localhost:8888`
 - Serve todos os charts gerados
 - Status disponível em `/status`
 
@@ -42,13 +42,13 @@ Link direto: file://tmp/analytics_chart_449d9e7d503a40288279352d457e314d.html
 ## 🧪 **TESTE OS LINKS CLICÁVEIS:**
 
 ### **Chart Existente (Teste Real):**
-[📊 **CLIQUE AQUI - Chart Real Funcionando!**](http://localhost:8080/charts/analytics_chart_449d9e7d503a40288279352d457e314d.html)
+[📊 **CLIQUE AQUI - Chart Real Funcionando!**](http://localhost:8888/charts/analytics_chart_449d9e7d503a40288279352d457e314d.html)
 
 ### **Status do Servidor:**
-[🔍 **Ver Status do Chart Server**](http://localhost:8080/status)
+[🔍 **Ver Status do Chart Server**](http://localhost:8888/status)
 
 ### **Lista de Charts:**
-[📋 **Ver Todos os Charts Disponíveis**](http://localhost:8080/list)
+[📋 **Ver Todos os Charts Disponíveis**](http://localhost:8888/list)
 
 ---
 

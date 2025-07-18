@@ -4,7 +4,7 @@
 ========================
 
 Acessa o Analytics Agent e exibe charts via web
-URL: http://localhost:8080/chart/{chart_id}
+URL: http://localhost:8888/chart/{chart_id}
 """
 
 from flask import Flask, render_template_string, jsonify
@@ -111,6 +111,6 @@ def get_chart_json(session_id, chart_id):
 
 if __name__ == '__main__':
     print("🚀 Starting Analytics Chart Viewer...")
-    print("📊 URL: http://localhost:8080")
-    print("🌐 Example: http://localhost:8080/chart/fd676e72-d982-467a-8f41-1c343530677d/224467868c794e3faab3b171563d0e1e")
+    print("📊 URL: http://localhost:8888")
+    print("🌐 Example: http://localhost:8888/chart/fd676e72-d982-467a-8f41-1c343530677d/224467868c794e3faab3b171563d0e1e")
     app.run(host='0.0.0.0', port=8080, debug=True)

@@ -119,7 +119,7 @@ O sistema usa um arquivo de configuração centralizado que gerencia 10 agentes:
     "protocol_version": "1.0",
     "discovery": {
       "auto_register": true,
-      "registry_url": "http://localhost:8080/api/agents",
+      "registry_url": "http://localhost:8888/api/agents",
       "heartbeat_interval": 30000
     },
     "communication": {

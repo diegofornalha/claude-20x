@@ -16,11 +16,11 @@
     "encryption": false
   },
   "endpoints": {
-    "base_url": "http://localhost:8080/agents/helloworld",
-    "discovery": "http://localhost:8080/agents/helloworld/discover",
-    "communicate": "http://localhost:8080/agents/helloworld/communicate",
-    "delegate": "http://localhost:8080/agents/helloworld/delegate",
-    "health": "http://localhost:8080/agents/helloworld/health"
+    "base_url": "http://localhost:8888/agents/helloworld",
+    "discovery": "http://localhost:8888/agents/helloworld/discover",
+    "communicate": "http://localhost:8888/agents/helloworld/communicate",
+    "delegate": "http://localhost:8888/agents/helloworld/delegate",
+    "health": "http://localhost:8888/agents/helloworld/health"
   },
   "skills": [
     {

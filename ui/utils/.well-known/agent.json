@@ -16,11 +16,11 @@
     "encryption": false
   },
   "endpoints": {
-    "base_url": "http://localhost:8080/agents/utils",
-    "discovery": "http://localhost:8080/agents/utils/discover",
-    "communicate": "http://localhost:8080/agents/utils/communicate",
-    "delegate": "http://localhost:8080/agents/utils/delegate",
-    "health": "http://localhost:8080/agents/utils/health"
+    "base_url": "http://localhost:8888/agents/utils",
+    "discovery": "http://localhost:8888/agents/utils/discover",
+    "communicate": "http://localhost:8888/agents/utils/communicate",
+    "delegate": "http://localhost:8888/agents/utils/delegate",
+    "health": "http://localhost:8888/agents/utils/health"
   },
   "skills": [
     {

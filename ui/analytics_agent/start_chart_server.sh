@@ -5,12 +5,12 @@ echo "🤖 Analytics Agent - Chart Server"
 echo "================================="
 
 # Verificar se o servidor já está rodando
-if curl -s "http://localhost:8080/status" > /dev/null 2>&1; then
-    echo "✅ Chart Server já está rodando em http://localhost:8080"
+if curl -s "http://localhost:8888/status" > /dev/null 2>&1; then
+    echo "✅ Chart Server já está rodando em http://localhost:8888"
     echo "📊 Status do servidor:"
-    curl -s "http://localhost:8080/status" | python3 -m json.tool
+    curl -s "http://localhost:8888/status" | python3 -m json.tool
     echo ""
-    echo "🔗 Acesse: http://localhost:8080"
+    echo "🔗 Acesse: http://localhost:8888"
     exit 0
 fi
 
@@ -29,12 +29,12 @@ echo "⏳ Aguardando servidor ficar ativo..."
 
 # Aguardar servidor ficar ativo (máximo 10 segundos)
 for i in {1..10}; do
-    if curl -s "http://localhost:8080/status" > /dev/null 2>&1; then
-        echo "✅ Chart Server ativo em http://localhost:8080"
-        echo "📊 Charts disponíveis: $(curl -s 'http://localhost:8080/status' | python3 -c 'import json,sys; print(json.load(sys.stdin)["total_charts"])')"
+    if curl -s "http://localhost:8888/status" > /dev/null 2>&1; then
+        echo "✅ Chart Server ativo em http://localhost:8888"
+        echo "📊 Charts disponíveis: $(curl -s 'http://localhost:8888/status' | python3 -c 'import json,sys; print(json.load(sys.stdin)["total_charts"])')"
         echo ""
         echo "🎯 Links gerados pelo Analytics Agent agora são clicáveis!"
-        echo "🔗 Exemplo: http://localhost:8080/charts/analytics_chart_[id].html"
+        echo "🔗 Exemplo: http://localhost:8888/charts/analytics_chart_[id].html"
         exit 0
     fi
     sleep 1

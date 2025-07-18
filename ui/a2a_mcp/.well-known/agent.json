@@ -16,11 +16,11 @@
     "encryption": false
   },
   "endpoints": {
-    "base_url": "http://localhost:8080/agents/a2a_mcp",
-    "discovery": "http://localhost:8080/agents/a2a_mcp/discover",
-    "communicate": "http://localhost:8080/agents/a2a_mcp/communicate",
-    "delegate": "http://localhost:8080/agents/a2a_mcp/delegate",
-    "health": "http://localhost:8080/agents/a2a_mcp/health"
+    "base_url": "http://localhost:8888/agents/a2a_mcp",
+    "discovery": "http://localhost:8888/agents/a2a_mcp/discover",
+    "communicate": "http://localhost:8888/agents/a2a_mcp/communicate",
+    "delegate": "http://localhost:8888/agents/a2a_mcp/delegate",
+    "health": "http://localhost:8888/agents/a2a_mcp/health"
   },
   "skills": [
     {

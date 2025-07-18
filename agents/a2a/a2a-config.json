@@ -8,7 +8,7 @@
     "description": "Agent-to-Agent Communication and Coordination Hub",
     "discovery": {
       "auto_register": true,
-      "registry_url": "http://localhost:8080/api/agents",
+      "registry_url": "http://localhost:8888/api/agents",
       "heartbeat_interval": 30000,
       "service_discovery": true,
       "announce_capabilities": true
