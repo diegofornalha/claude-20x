@@ -1,0 +1,111 @@
+{
+  "agents": [
+    {
+      "name": "HelloWorld Agent",
+      "id": "helloworld",
+      "enabled": true,
+      "port": 9999,
+      "host": "localhost",
+      "path": "/Users/agents/Desktop/codex/agents/helloworld",
+      "command": "uv run .",
+      "health_check": "/.well-known/agent.json",
+      "restart_on_failure": true,
+      "restart_delay": 5,
+      "max_restarts": 3,
+      "environment": {},
+      "description": "Simple Hello World agent for testing"
+    },
+    {
+      "name": "Analytics Agent",
+      "id": "analytics",
+      "enabled": true,
+      "port": 10011,
+      "host": "localhost",
+      "path": "/Users/agents/Desktop/codex/backup-reorganized/active-prototypes/analytics",
+      "command": "uv run .",
+      "health_check": "/.well-known/agent.json",
+      "restart_on_failure": true,
+      "restart_delay": 5,
+      "max_restarts": 3,
+      "environment": {},
+      "description": "Analytics and data processing agent"
+    },
+    {
+      "name": "Marvin Agent",
+      "id": "marvin",
+      "enabled": true,
+      "port": 10030,
+      "host": "localhost",
+      "path": "/Users/agents/Desktop/claude-20x/agents/marvin",
+      "command": "python marvin_daemon.py",
+      "health_check": "/health",
+      "restart_on_failure": true,
+      "restart_delay": 5,
+      "max_restarts": 3,
+      "environment": {},
+      "description": "Marvin contact extractor and AI assistant"
+    },
+    {
+      "name": "MCP Agent",
+      "id": "mcp",
+      "enabled": false,
+      "port": 10100,
+      "host": "localhost",
+      "path": "/Users/agents/Desktop/claude-20x/agents/mcp",
+      "command": "python mcp_server.py",
+      "health_check": "/health",
+      "restart_on_failure": false,
+      "restart_delay": 10,
+      "max_restarts": 3,
+      "environment": {},
+      "description": "Model Context Protocol server"
+    },
+    {
+      "name": "Guardian Agent",
+      "id": "guardian",
+      "enabled": false,
+      "port": 11000,
+      "host": "localhost",
+      "path": "/Users/agents/Desktop/claude-20x/agents/guardian",
+      "command": "python guardian.py",
+      "health_check": "/status",
+      "restart_on_failure": true,
+      "restart_delay": 5,
+      "max_restarts": 5,
+      "environment": {
+        "GUARDIAN_MODE": "production"
+      },
+      "description": "System guardian and monitoring agent"
+    },
+    {
+      "name": "A2A UI Dashboard",
+      "id": "ui",
+      "enabled": true,
+      "port": 12000,
+      "host": "0.0.0.0",
+      "path": "/Users/agents/Desktop/claude-20x/ui",
+      "command": "python main.py",
+      "health_check": "/agents",
+      "restart_on_failure": true,
+      "restart_delay": 3,
+      "max_restarts": 10,
+      "environment": {
+        "UI_HOST": "0.0.0.0",
+        "UI_PORT": "12000"
+      },
+      "description": "A2A Web UI Dashboard - Interface principal do sistema",
+      "priority": 1,
+      "depends_on": []
+    }
+  ],
+  "global_settings": {
+    "log_directory": "/Users/agents/Desktop/claude-20x/logs/agents",
+    "pid_directory": "/Users/agents/Desktop/claude-20x/run",
+    "startup_delay": 2,
+    "health_check_interval": 30,
+    "health_check_timeout": 5,
+    "notification_webhook": null,
+    "enable_metrics": true,
+    "metrics_port": 9090
+  }
+}

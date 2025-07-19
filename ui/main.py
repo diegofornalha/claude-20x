@@ -19,7 +19,8 @@ from components.page_scaffold import page_scaffold
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
-from pages.agent_list_enhanced import agent_list_enhanced_page
+from fastapi.responses import FileResponse
+from pages.ultra_simple_agents import ultra_simple_agents_page
 from pages.conversation import conversation_page
 from pages.event_list import event_list_page
 from pages.home import home_page_content
@@ -88,9 +89,9 @@ def home_page():
     security_policy=security_policy,
 )
 def another_page():
-    """Another Page"""
+    """Agents Page - Ultra Simple"""
     api_key_dialog()
-    agent_list_enhanced_page(me.state(AppState))
+    ultra_simple_agents_page()
 
 
 @me.page(
@@ -186,6 +187,16 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
+
+# Serve the .well-known/agent.json file
+@app.get("/.well-known/agent.json")
+async def get_agent_json():
+    agent_json_path = os.path.join(os.path.dirname(__file__), ".well-known", "agent.json")
+    if os.path.exists(agent_json_path):
+        return FileResponse(agent_json_path, media_type="application/json")
+    else:
+        return {"error": "agent.json not found"}, 404
 
 
 if __name__ == '__main__':

@@ -6,7 +6,12 @@
 import { EventEmitter } from 'events';
 import { MCPBridge } from '../mcp/mcp-bridge';
 import { MCPDirectAgent, MCPDirectAgentConfig } from '../agents/mcp-direct-agent';
+import { CustomApiAgent, CustomApiAgentConfig } from '../agents/custom-api-agent';
 import { BaseAgent, Task, AgentStatus } from './base-agent';
+
+// Union type for agent configurations
+type AnyAgentConfig = MCPDirectAgentConfig | CustomApiAgentConfig;
+
 
 export interface OrchestratorConfig {
   maxConcurrentAgents?: number;
@@ -53,14 +58,32 @@ export class Orchestrator extends EventEmitter {
   }
 
   /**
-   * Cria um novo agente MCP
+   * Cria um novo agente MCP ou Custom
    */
-  createAgent(config: MCPDirectAgentConfig): MCPDirectAgent {
+  createAgent(config: AnyAgentConfig): BaseAgent {
     if (this.agents.size >= (this.config.maxConcurrentAgents || 5)) {
       throw new Error(`Limite de agentes atingido (${this.config.maxConcurrentAgents})`);
     }
 
-    const agent = new MCPDirectAgent(config, this.mcpBridge);
+    let agent: BaseAgent;
+
+    // Lógica para decidir qual agente instanciar
+    if ('isCustom' in config && config.isCustom) {
+      // Lógica específica para o Gemini Coder
+      if (config.name === 'Gemini Coder') {
+        const geminiConfig: CustomApiAgentConfig = {
+          ...config,
+          runtime: 'python3',
+          scriptPath: 'agents/gemini/agent.py' // Caminho para o script do agente
+        };
+        agent = new CustomApiAgent(geminiConfig);
+      } else {
+        throw new Error(`Tipo de agente customizado desconhecido: ${config.name}`);
+      }
+    } else {
+      // Comportamento padrão para agentes MCP
+      agent = new MCPDirectAgent(config as MCPDirectAgentConfig, this.mcpBridge);
+    }
     
     // Registrar listeners do agente
     agent.on('task:started', (data) => this.emit('agent:task:started', data));
@@ -69,7 +92,7 @@ export class Orchestrator extends EventEmitter {
     
     this.agents.set(agent.id, agent);
     
-    console.log(`✅ Agente criado: ${agent.name} (${agent.id})`);
+    console.log(`✅ Agente criado: ${agent.name} (${agent.id}) do tipo ${agent.constructor.name}`);
     this.emit('agent:created', { agent: agent.id, name: agent.name });
     
     return agent;

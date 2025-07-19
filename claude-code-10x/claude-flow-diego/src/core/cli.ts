@@ -8,7 +8,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { config } from 'dotenv';
-import { Orchestrator } from './orchestrator';
+import { Orchestrator } from './index';
 import { mcpAgentTemplates } from '../mcp/mcp-templates';
 import { ClaudeSpawner } from '../utils/claude-spawn';
 import { MCPBridge } from '../mcp/mcp-bridge';

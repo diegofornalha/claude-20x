@@ -83,6 +83,24 @@ export const mcpAgentTemplates = {
       ...TOOL_GROUPS.memory
     ],
     executeStrategy: 'sequential'
+  } as MCPDirectAgentConfig,
+
+  /**
+   * Gemini Coder - Geração de código com a API Gemini
+   */
+  geminiCoder: {
+    name: 'Gemini Coder',
+    type: AgentType.IMPLEMENTER,
+    description: 'Gera e refatora código usando a API do Google Gemini',
+    tools: [
+        'gemini-code-generation-python',
+        'gemini-code-generation-javascript',
+        'gemini-code-refactoring',
+        'gemini-natural-language-query',
+        'gemini-data-analysis'
+    ],
+    executeStrategy: 'sequential',
+    isCustom: true // Flag para indicar que não usa MCP_TOOLS padrão
   } as MCPDirectAgentConfig
 };
 

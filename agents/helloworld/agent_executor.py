@@ -1,4 +1,6 @@
 import logging
+from typing import Optional
+
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events.event_queue import EventQueue
 from a2a.types import (
@@ -9,75 +11,83 @@ from a2a.types import (
 )
 from a2a.utils import (
     new_agent_text_message,
+    new_data_artifact,
     new_task,
     new_text_artifact,
 )
-from agent import GuardianAgent
+
+from agent import HelloWorldAgent
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class GuardianAgentExecutor(AgentExecutor):
+class HelloWorldAgentExecutor(AgentExecutor):
     """
-    Guardian Agent executor with sustainability monitoring and control.
+    HelloWorld agent executor with complete TaskStatusUpdateEvent implementation.
     """
 
     def __init__(self):
-        self.agent = GuardianAgent()
+        self.agent = HelloWorldAgent()
+        logger.info("✅ HelloWorldAgentExecutor initialized with TaskStatusUpdateEvent support")
 
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        """Execute a Guardian sustainability monitoring task."""
+        """Execute a HelloWorld task with complete lifecycle management."""
         query = context.get_user_input()
         task = context.current_task
         
-        # 1. Criar tarefa se não existir
+        # Create task if not exists
         if not task:
             task = new_task(context.message)
             await event_queue.enqueue_event(task)
-            logger.info(f"Created new Guardian task: {task.id}")
-
-        # 2. Marcar tarefa como em andamento
-        await event_queue.enqueue_event(
-            TaskStatusUpdateEvent(
-                status=TaskStatus(
-                    state=TaskState.working,
-                    message=new_agent_text_message(
-                        "🛡️ Guardian analisando sustentabilidade...",
-                        task.contextId,
-                        task.id,
-                    ),
-                ),
-                final=False,
-                contextId=task.contextId,
-                taskId=task.id,
-            )
-        )
-        logger.info(f"Guardian task {task.id} marked as working")
+            logger.info(f"📋 Created new task: {task.id}")
 
         try:
-            # 3. Executar análise de sustentabilidade
-            result = await self.agent.process_sustainability_request(query, task.contextId)
+            # Mark task as working
+            await event_queue.enqueue_event(
+                TaskStatusUpdateEvent(
+                    status=TaskStatus(
+                        state=TaskState.working,
+                        message=new_agent_text_message(
+                            "Processing your request...",
+                            task.contextId,
+                            task.id,
+                        ),
+                    ),
+                    final=False,
+                    contextId=task.contextId,
+                    taskId=task.id,
+                )
+            )
+            logger.info(f"🔄 Task {task.id} marked as WORKING")
+
+            # Process the request
+            result = await self.agent.process_request(query, task.contextId)
             
             is_task_complete = result.get("is_task_complete", True)
-            success = result.get("success", True)
-            result_text = result.get("result", "Guardian Status: OK")
-            
-            # 4. Criar artefato com resultado
-            if success:
-                artifact = new_text_artifact(
-                    name="sustainability_report",
-                    description="Guardian sustainability analysis report",
-                    text=result_text,
-                )
-            else:
-                artifact = new_text_artifact(
-                    name="guardian_error",
-                    description="Guardian error response",
-                    text=result_text,
-                )
+            require_user_input = result.get("require_user_input", False)
+            result_text = result.get("result", "Hello World!")
+            data = result.get("data", {})
 
-            # 5. Enviar artefato
+            # Create artifact based on result
+            if data:
+                # If we have structured data, create a data artifact
+                artifact = new_data_artifact(
+                    name="super_hello_world_result",
+                    description="SuperHelloWorld response with extra data",
+                    data=data,
+                )
+                logger.info(f"📊 Created data artifact for task {task.id}")
+            else:
+                # Otherwise create a text artifact
+                artifact = new_text_artifact(
+                    name="hello_world_result",
+                    description="HelloWorld response",
+                    text=result_text,
+                )
+                logger.info(f"📝 Created text artifact for task {task.id}")
+
+            # Send artifact
             await event_queue.enqueue_event(
                 TaskArtifactUpdateEvent(
                     append=False,
@@ -87,16 +97,26 @@ class GuardianAgentExecutor(AgentExecutor):
                     artifact=artifact,
                 )
             )
-            logger.info(f"Guardian artifact sent for task {task.id}")
+            logger.info(f"📤 Artifact sent for task {task.id}")
 
-            # 6. Marcar tarefa como completa ✅
+            # Mark task as completed
             if is_task_complete:
                 await event_queue.enqueue_event(
                     TaskStatusUpdateEvent(
+                        status=TaskStatus(state=TaskState.completed),
+                        final=True,
+                        contextId=task.contextId,
+                        taskId=task.id,
+                    )
+                )
+                logger.info(f"✅ Task {task.id} marked as COMPLETED")
+            elif require_user_input:
+                await event_queue.enqueue_event(
+                    TaskStatusUpdateEvent(
                         status=TaskStatus(
-                            state=TaskState.completed,
+                            state=TaskState.input_required,
                             message=new_agent_text_message(
-                                "🛡️ Guardian analysis completed",
+                                "Please provide additional information.",
                                 task.contextId,
                                 task.id,
                             ),
@@ -106,36 +126,17 @@ class GuardianAgentExecutor(AgentExecutor):
                         taskId=task.id,
                     )
                 )
-                logger.info(f"Guardian task {task.id} marked as COMPLETED ✅")
-            else:
-                # Marcar como necessitando input do usuário
-                await event_queue.enqueue_event(
-                    TaskStatusUpdateEvent(
-                        status=TaskStatus(
-                            state=TaskState.input_required,
-                            message=new_agent_text_message(
-                                "🛡️ Guardian waiting for input",
-                                task.contextId,
-                                task.id,
-                            ),
-                        ),
-                        final=False,
-                        contextId=task.contextId,
-                        taskId=task.id,
-                    )
-                )
-                logger.info(f"Guardian task {task.id} requires user input")
+                logger.info(f"❓ Task {task.id} marked as INPUT_REQUIRED")
 
         except Exception as e:
-            logger.exception(f"Error in Guardian task {task.id}")
-            
-            # Marcar tarefa como falhou
+            logger.error(f"❌ Error executing task {task.id}: {e}")
+            # Mark task as failed
             await event_queue.enqueue_event(
                 TaskStatusUpdateEvent(
                     status=TaskStatus(
                         state=TaskState.failed,
                         message=new_agent_text_message(
-                            f"🛡️ Guardian Error: {str(e)}",
+                            f"Error: {str(e)}",
                             task.contextId,
                             task.id,
                         ),
@@ -145,10 +146,10 @@ class GuardianAgentExecutor(AgentExecutor):
                     taskId=task.id,
                 )
             )
-            logger.error(f"Guardian task {task.id} marked as FAILED")
+            logger.info(f"❌ Task {task.id} marked as FAILED")
 
     async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:
-        """Cancel a running Guardian task."""
+        """Cancel a running task."""
         task = context.current_task
         if task:
             await event_queue.enqueue_event(
@@ -156,7 +157,7 @@ class GuardianAgentExecutor(AgentExecutor):
                     status=TaskStatus(
                         state=TaskState.cancelled,
                         message=new_agent_text_message(
-                            "🛡️ Guardian task cancelled",
+                            "Task cancelled by user.",
                             task.contextId,
                             task.id,
                         ),
@@ -166,11 +167,4 @@ class GuardianAgentExecutor(AgentExecutor):
                     taskId=task.id,
                 )
             )
-            logger.info(f"Guardian task {task.id} cancelled")
-        else:
-            logger.warning("No Guardian task to cancel")
-
-    # Skill principal do Guardian
-    async def sustainability_monitor(self, context: RequestContext, event_queue: EventQueue) -> None:
-        """Execute sustainability monitoring and analysis."""
-        await self.execute(context, event_queue)
+            logger.info(f"🚫 Task {task.id} marked as CANCELLED")

@@ -28,9 +28,10 @@ The agent receives text, attempts to extract contact details (name, email, phone
     cd samples/python/agents/marvin
     ```
 
-2.  Set an LLM provider API key:
+2.  LLM provider API key:
     ```bash
-    export OPENAI_API_KEY=your_api_key_here
+    # ✅ Already configured in .env file
+    # OPENAI_API_KEY is set automatically
     ```
 
 3.  Set up the Python environment:

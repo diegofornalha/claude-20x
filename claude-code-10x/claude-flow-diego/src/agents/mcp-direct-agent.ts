@@ -4,8 +4,8 @@
  */
 
 import { BaseAgent, AgentConfig, Task, AgentType } from '../core/base-agent';
-import { MCPBridge } from './mcp-bridge';
-import { MCP_TOOLS } from './mcp-integration';
+import { MCPBridge } from '../mcp/mcp-bridge';
+import { MCP_TOOLS } from '../mcp/mcp-integration';
 
 export interface MCPDirectAgentConfig extends AgentConfig {
   executeStrategy?: 'sequential' | 'parallel';

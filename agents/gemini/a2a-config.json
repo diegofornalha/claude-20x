@@ -1,0 +1,41 @@
+{
+  "a2a_configuration": {
+    "enabled": true,
+    "agent_name": "gemini_code_assistant",
+    "project_name": "gemini-integration",
+    "protocol_version": "1.0",
+    "discovery": {
+      "auto_register": true,
+      "registry_url": "http://localhost:8888/api/agents",
+      "heartbeat_interval": 30000
+    },
+    "communication": {
+      "transport": "http",
+      "format": "json-rpc",
+      "compression": false,
+      "timeout": 60000
+    },
+    "cooperation": {
+      "task_delegation": true,
+      "result_sharing": true,
+      "skill_advertisement": true
+    },
+    "security": {
+      "authentication": false,
+      "encryption": false,
+      "rate_limiting": true
+    },
+    "monitoring": {
+      "metrics": true,
+      "logging": true,
+      "health_checks": true
+    },
+    "capabilities": [
+        "code-generation-python",
+        "code-generation-javascript",
+        "code-refactoring",
+        "natural-language-query",
+        "data-analysis"
+    ]
+  }
+}

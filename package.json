@@ -1,0 +1,61 @@
+{
+  "name": "claude-20x",
+  "version": "1.0.0",
+  "description": "Enterprise A2A Agent Ecosystem with Claude-Flow SPARC Integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/start-system.js",
+    "optimize": "node optimization/dependency-optimizer.js",
+    "logging": "python3 logging/central-logger.py",
+    "discovery": "python3 discovery/service-discovery.py",
+    "health": "node scripts/health-check.js",
+    "monitor": "node scripts/monitor.js",
+    "check-deps": "npm audit && node scripts/check-heavy-deps.js",
+    "analyze-bundle": "webpack-bundle-analyzer dist/stats.json",
+    "setup": "chmod +x optimization/setup-chromium.sh && ./optimization/setup-chromium.sh",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "sparc": "./claude-flow sparc",
+    "audit:security": "./claude-flow sparc run security-review",
+    "audit:performance": "./claude-flow sparc run refinement-optimization-mode",
+    "audit:full": "node scripts/run-full-audit.js"
+  },
+  "keywords": [
+    "a2a",
+    "claude",
+    "ai-agents",
+    "sparc",
+    "enterprise",
+    "automation"
+  ],
+  "author": "Claude-20x Team",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "axios": "^1.6.0",
+    "ws": "^8.14.2",
+    "node-cron": "^3.0.3",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "webpack-bundle-analyzer": "^4.9.1",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claude-20x/claude-20x.git"
+  },
+  "bugs": {
+    "url": "https://github.com/claude-20x/claude-20x/issues"
+  },
+  "homepage": "https://github.com/claude-20x/claude-20x#readme"
+}
