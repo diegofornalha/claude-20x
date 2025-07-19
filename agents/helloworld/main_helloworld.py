@@ -7,30 +7,27 @@ from a2a.types import (
     AgentCard,
     AgentSkill,
 )
-from agent_executor import GuardianAgentExecutor
+from agent_executor import HelloWorldAgentExecutor
 
-# Guardian Skill Definition
+# HelloWorld Skill Definition
 skill = AgentSkill(
-    id="sustainability_monitor",
-    name="Sustainability Monitor",
-    description="Monitors system sustainability, carbon budget, entropy control, and Jevons paradox prevention. Provides real-time health checks and sustainability reports.",
-    tags=["sustainability", "carbon", "entropy", "monitoring", "guardian", "a2a"],
+    id="hello_world",
+    name="Hello World",
+    description="Simple Hello World agent for testing A2A protocol communication.",
+    tags=["hello", "world", "test", "a2a"],
     examples=[
-        "status do guardian",
-        "health check", 
-        "verificar sustentabilidade",
-        "relatório de carbon budget",
-        "nível de entropia do sistema",
-        "análise jevons paradox",
-        "listar agentes monitorados"
+        "hello",
+        "hi", 
+        "hello world",
+        "test"
     ],
 )
 
-# Guardian Agent Card
+# HelloWorld Agent Card
 public_agent_card = AgentCard(
-    name="Guardian Agent",
-    description="Sistema avançado de monitoramento de sustentabilidade para A2A",
-    url="http://localhost:10102/",
+    name="Hello World Agent",
+    description="Simple test agent for A2A protocol",
+    url="http://localhost:9999/",
     version="1.0.0",
     defaultInputModes=["text"],
     defaultOutputModes=["text"],
@@ -39,7 +36,7 @@ public_agent_card = AgentCard(
 )
 
 request_handler = DefaultRequestHandler(
-    agent_executor=GuardianAgentExecutor(),
+    agent_executor=HelloWorldAgentExecutor(),
     task_store=InMemoryTaskStore(),
 )
 
@@ -51,7 +48,7 @@ server = A2AStarletteApplication(
 app = server.build()
 
 if __name__ == "__main__":
-    print("🛡️ Iniciando Guardian Agent na porta 10102...")
-    print("🌐 URL: http://localhost:10102/")
-    print("📊 Monitoramento: Sustentabilidade A2A")
-    uvicorn.run(app, host="localhost", port=10102)
+    print("👋 Iniciando Hello World Agent na porta 9999...")
+    print("🌐 URL: http://localhost:9999/")
+    print("📊 Testing: A2A Protocol")
+    uvicorn.run(app, host="localhost", port=9999)

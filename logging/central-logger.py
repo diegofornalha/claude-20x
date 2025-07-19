@@ -39,7 +39,6 @@ class LogSource(Enum):
     """Fontes de log identificadas na auditoria"""
     UI = "ui"
     AGENT_HELLOWORLD = "agent_helloworld"
-    ANALYTICS = "analytics"
     MCP_SERVER = "mcp_server"
     CLAUDE_FLOW = "claude_flow"
     A2A_INSPECTOR = "a2a_inspector"
@@ -120,7 +119,6 @@ class CentralLogger:
         
         log_sources = {
             "ui.log": LogSource.UI,
-            "analytics_agent/chart_viewer.log": LogSource.ANALYTICS,
             "mcp_server.log": LogSource.MCP_SERVER,
             "agents/helloworld/helloworld_agent.log": LogSource.AGENT_HELLOWORLD,
             "claude-code-10x/claude-flow-diego/logs/mcp-mem0/mem0-mcp-server.log": LogSource.CLAUDE_FLOW

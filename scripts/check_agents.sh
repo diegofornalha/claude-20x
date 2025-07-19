@@ -19,13 +19,6 @@ else
     echo "🔴 HelloWorld Agent: INATIVO (porta 9999)"
 fi
 
-# Verificar Analytics Agent
-if check_port 10011; then
-    echo "🟢 Analytics Agent: ATIVO (porta 10011)"
-    curl -s "http://localhost:10011/.well-known/agent.json" | jq -r '.name' | sed 's/^/   📝 /'
-else
-    echo "🔴 Analytics Agent: INATIVO (porta 10011)"
-fi
 
 echo ""
 echo "💡 Para iniciar agentes inativos, execute: ./start_agents.sh" 

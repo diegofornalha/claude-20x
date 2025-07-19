@@ -28,7 +28,6 @@ Gerencia todos os agentes com comandos simples:
 Define todos os agentes, incluindo:
 - HelloWorld Agent (porta 9999)
 - Marvin Agent (porta 10030)  
-- Analytics Agent (porta 10011)
 - **A2A UI Dashboard (porta 12000)** ✨
 
 ### 3. **Scripts de Sistema**
