@@ -1,6 +1,5 @@
 import asyncio
 import logging
-from asyncio import ReadWriteLock
 
 from a2a.server.tasks.task_store import TaskStore
 from a2a.types import Task

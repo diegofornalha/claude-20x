@@ -4,12 +4,12 @@ from typing import AsyncGenerator
 
 try:
     from sqlalchemy import delete, select
-    from sqlalchemy.exc import OperationalError, DBAPIError
     from sqlalchemy.ext.asyncio import (
         AsyncEngine,
         AsyncSession,
         async_sessionmaker,
     )
+    from sqlalchemy.exc import OperationalError, DBAPIError
 except ImportError as e:
     raise ImportError(
         'DatabaseTaskStore requires SQLAlchemy and a database driver. '
@@ -22,17 +22,13 @@ except ImportError as e:
 
 from a2a.server.models import Base, TaskModel, create_task_model
 from a2a.server.tasks.task_store import TaskStore
-from a2a.types import Task  # Task is the Pydantic model
-
+from a2a.types import Task
 
 logger = logging.getLogger(__name__)
 
 
 class DatabaseTaskStore(TaskStore):
-    """SQLAlchemy-based implementation of TaskStore.
-
-    Stores task objects in a database supported by SQLAlchemy.
-    """
+    """SQLAlchemy-based implementation of TaskStore with proper error handling."""
 
     engine: AsyncEngine
     async_session_maker: async_sessionmaker[AsyncSession]
@@ -46,17 +42,12 @@ class DatabaseTaskStore(TaskStore):
         create_table: bool = True,
         table_name: str = 'tasks',
     ) -> None:
-        """Initializes the DatabaseTaskStore.
-
-        Args:
-            engine: An existing SQLAlchemy AsyncEngine to be used by Task Store
-            create_table: If true, create tasks table on initialization.
-            table_name: Name of the database table. Defaults to 'tasks'.
-        """
+        """Initializes the DatabaseTaskStore with enhanced error handling."""
         logger.debug(
             f'Initializing DatabaseTaskStore with existing engine, table: {table_name}'
         )
         self.engine = engine
+        # Configure session maker with proper settings
         self.async_session_maker = async_sessionmaker(
             self.engine,
             expire_on_commit=False,
@@ -72,7 +63,6 @@ class DatabaseTaskStore(TaskStore):
             if table_name == 'tasks'
             else create_task_model(table_name)
         )
-
 
     @asynccontextmanager
     async def _get_session(self) -> AsyncGenerator[AsyncSession, None]:
@@ -95,9 +85,20 @@ class DatabaseTaskStore(TaskStore):
 
         logger.debug('Initializing database schema...')
         if self.create_table:
-            async with self.engine.begin() as conn:
-                # This will create the 'tasks' table based on TaskModel's definition
-                await conn.run_sync(Base.metadata.create_all)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    async with self.engine.begin() as conn:
+                        # This will create the 'tasks' table based on TaskModel's definition
+                        await conn.run_sync(Base.metadata.create_all)
+                    break
+                except (OperationalError, DBAPIError) as e:
+                    if attempt == max_retries - 1:
+                        raise
+                    logger.warning(f"Database connection failed (attempt {attempt + 1}): {e}")
+                    import asyncio
+                    await asyncio.sleep(2 ** attempt)  # Exponential backoff
+                    
         self._initialized = True
         logger.debug('Database schema initialized.')
 
@@ -120,7 +121,6 @@ class DatabaseTaskStore(TaskStore):
 
     def _from_orm(self, task_model: TaskModel) -> Task:
         """Maps a SQLAlchemy TaskModel to a Pydantic Task instance."""
-        # Map database columns to Pydantic model fields
         task_data_from_db = {
             'id': task_model.id,
             'contextId': task_model.contextId,
@@ -128,9 +128,8 @@ class DatabaseTaskStore(TaskStore):
             'status': task_model.status,
             'artifacts': task_model.artifacts,
             'history': task_model.history,
-            'metadata': task_model.task_metadata,  # Map task_metadata column to metadata field
+            'metadata': task_model.task_metadata,
         }
-        # Pydantic's model_validate will parse the nested dicts/lists from JSON
         return Task.model_validate(task_data_from_db)
 
     async def save(self, task: Task) -> None:
@@ -150,6 +149,7 @@ class DatabaseTaskStore(TaskStore):
             stmt = select(self.task_model).where(self.task_model.id == task_id)
             result = await session.execute(stmt)
             task_model = result.scalar_one_or_none()
+            
             if task_model:
                 task = self._from_orm(task_model)
                 logger.debug(f'Task {task_id} retrieved successfully.')
@@ -165,7 +165,6 @@ class DatabaseTaskStore(TaskStore):
         async with self._get_session() as session:
             stmt = delete(self.task_model).where(self.task_model.id == task_id)
             result = await session.execute(stmt)
-            # Commit is automatic when using session.begin()
 
             if result.rowcount > 0:
                 logger.info(f'Task {task_id} deleted successfully.')
@@ -173,3 +172,23 @@ class DatabaseTaskStore(TaskStore):
                 logger.warning(
                     f'Attempted to delete nonexistent task with id: {task_id}'
                 )
+
+
+# Helper function to create engine with proper configuration
+def create_robust_engine(database_url: str) -> AsyncEngine:
+    """Create an AsyncEngine with robust configuration."""
+    from sqlalchemy.ext.asyncio import create_async_engine
+    
+    return create_async_engine(
+        database_url,
+        echo=False,  # Set to True for SQL debugging
+        pool_pre_ping=True,  # Verify connections before use
+        pool_recycle=3600,  # Recycle connections after 1 hour
+        pool_size=5,
+        max_overflow=10,
+        connect_args={
+            "server_settings": {"jit": "off"},
+            "command_timeout": 60,
+            "options": "-c statement_timeout=60000"  # 60 second timeout
+        } if "postgresql" in database_url else {}
+    )

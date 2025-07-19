@@ -1,6 +1,6 @@
 # A2a Mcp
 
-cd ui && GOOGLE_API_KEY="AIzaSyBb1eDoRJmNdrwSi9ii0lF_rL4epIncsMo" uv run main.py
+cd ui && GOOGLE_API_KEY="AIzaSyDeyRoAZwxeA7_XcXwz4aTKurPBAWsnYY0" uv run main.py
 
 ## 🤖 Agent-to-Agent (A2A) Integration
 
