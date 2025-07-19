@@ -11,6 +11,7 @@ from state.host_agent_service import (
 from state.state import AppState, StateMessage
 
 from .chat_bubble import chat_bubble
+from .emoji_chat import emoji_chat_bubble, process_emoji_in_text, get_emoji_help_text
 from .form_render import form_sent, is_form, render_form
 
 
@@ -70,6 +71,11 @@ def is_mesop_docs_command(message: str) -> bool:
     return message.strip().lower().startswith("@mesop docs")
 
 
+def is_emoji_help_command(message: str) -> bool:
+    """Verifica se a mensagem é um comando para mostrar ajuda sobre emojis"""
+    return message.strip().lower().startswith("@emoji")
+
+
 async def handle_mesop_docs_command(conversation_id: str, message_id: str):
     """Processa comando @Mesop docs"""
     app_state = me.state(AppState)
@@ -82,6 +88,36 @@ async def handle_mesop_docs_command(conversation_id: str, message_id: str):
         message_id=f"mesop-docs-{message_id}",
         role=Role.agent,
         content=[(docs_response, 'text/plain')],
+    )
+    
+    if not app_state.messages:
+        app_state.messages = []
+    app_state.messages.append(response_message)
+    
+    # Atualizar conversa
+    conversation = next(
+        filter(
+            lambda x: x.conversation_id == conversation_id,
+            app_state.conversations,
+        ),
+        None,
+    )
+    if conversation:
+        conversation.message_ids.append(response_message.message_id)
+
+
+async def handle_emoji_help_command(conversation_id: str, message_id: str):
+    """Processa comando @emoji help"""
+    app_state = me.state(AppState)
+    
+    # Criar mensagem de resposta com ajuda sobre emojis
+    emoji_help_response = get_emoji_help_text()
+    
+    # Adicionar resposta ao estado
+    response_message = StateMessage(
+        message_id=f"emoji-help-{message_id}",
+        role=Role.agent,
+        content=[(emoji_help_response, 'text/plain')],
     )
     
     if not app_state.messages:
@@ -132,6 +168,22 @@ async def send_message(message: str, message_id: str = ''):
         
         # Processar comando e adicionar resposta
         await handle_mesop_docs_command(state.conversation_id, message_id)
+        return
+    
+    # Verificar se é um comando @emoji help
+    if is_emoji_help_command(message):
+        # Adicionar mensagem do usuário
+        user_message = StateMessage(
+            message_id=message_id,
+            role=Role.user,
+            content=[(message, 'text/plain')],
+        )
+        if not app_state.messages:
+            app_state.messages = []
+        app_state.messages.append(user_message)
+        
+        # Processar comando e adicionar resposta
+        await handle_emoji_help_command(state.conversation_id, message_id)
         return
     
     # Processar mensagem normalmente
@@ -194,7 +246,7 @@ async def send_message_button(e: me.ClickEvent):  # pylint: disable=unused-argum
 
 @me.component
 def conversation():
-    """Conversation component"""
+    """Conversation component with emoji support"""
     page_state = me.state(PageState)
     app_state = me.state(AppState)
     if 'conversation_id' in me.query_params:
@@ -211,7 +263,7 @@ def conversation():
             if is_form(message):
                 render_form(message, app_state)
             elif form_sent(message, app_state):
-                chat_bubble(
+                emoji_chat_bubble(
                     StateMessage(
                         message_id=message.message_id,
                         role=message.role,
@@ -220,7 +272,8 @@ def conversation():
                     message.message_id,
                 )
             else:
-                chat_bubble(message, message.message_id)
+                # Usar o componente com suporte a emoji
+                emoji_chat_bubble(message, message.message_id)
 
         with me.box(
             style=me.Style(
@@ -237,7 +290,7 @@ def conversation():
                 on_blur=on_blur,
                 on_enter=send_message_enter,
                 style=me.Style(min_width='80vw'),
-                placeholder='Digite sua mensagem ou @Mesop docs para documentação...',
+                placeholder='Digite sua mensagem, @Mesop docs para documentação, ou @emoji help para ajuda com emojis...',
             )
             with me.content_button(
                 type='flat',
