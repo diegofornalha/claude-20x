@@ -1,0 +1,2 @@
+sempre responda em pt br 
+proibido criar arquivo solto na raiz, sempre procure a pasta correta ou crie uma nova para organizar lá caso queira criar algum arquivo na raiz não é pra fazer, e se for realmente necessario pergunte ao usario.
