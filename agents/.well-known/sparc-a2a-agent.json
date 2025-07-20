@@ -1,0 +1,238 @@
+{
+  "protocolVersion": "1.0",
+  "name": "SPARC A2A Agent",
+  "description": "Agent A2A compliant com workflow SPARC, Batchtools e Memory Bank para desenvolvimento Claude Flow",
+  "url": "http://localhost:3000",
+  "preferredTransport": "jsonrpc",
+  "additionalInterfaces": [
+    {
+      "url": "http://localhost:3000/stream",
+      "transport": "sse"
+    }
+  ],
+  "provider": {
+    "url": "https://github.com/claude-flow",
+    "organization": "Claude Flow Development Team"
+  },
+  "version": "1.0.0",
+  "documentationUrl": "https://github.com/claude-flow/docs/a2a-integration",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "extensions": [
+      {
+        "uri": "sparc://workflow",
+        "description": "SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) workflow integration",
+        "required": false,
+        "params": {
+          "supportedPhases": ["specification", "pseudocode", "architecture", "refinement", "completion"],
+          "enableBatchtools": true,
+          "tddSupport": true,
+          "parallelProcessing": true
+        }
+      },
+      {
+        "uri": "memory://bank",
+        "description": "Memory Bank integration for persistent context and knowledge storage",
+        "required": false,
+        "params": {
+          "storageTypes": ["context", "memory", "artifacts", "knowledge"],
+          "namespaceSupport": true,
+          "searchCapabilities": true,
+          "ttlSupport": true
+        }
+      },
+      {
+        "uri": "batchtools://optimization",
+        "description": "Batchtools optimization for parallel processing and performance enhancement",
+        "required": false,
+        "params": {
+          "concurrentOperations": true,
+          "performanceOptimization": true,
+          "caching": true,
+          "compressionSupport": true
+        }
+      }
+    ]
+  },
+  "securitySchemes": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "API Key authentication",
+      "name": "X-API-Key",
+      "location": "header"
+    },
+    "bearer": {
+      "type": "http",
+      "description": "Bearer token authentication",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  },
+  "security": [
+    {
+      "schemes": {
+        "apiKey": [],
+        "bearer": []
+      }
+    }
+  ],
+  "defaultInputModes": ["text", "json", "multipart"],
+  "defaultOutputModes": ["text", "json", "stream"],
+  "skills": [
+    {
+      "id": "sparc_workflow",
+      "name": "SPARC Workflow Execution",
+      "description": "Executa workflow completo SPARC (Specification → Pseudocode → Architecture → Refinement → Completion)",
+      "tags": ["sparc", "workflow", "development", "tdd", "methodology"],
+      "examples": [
+        "Executar análise SPARC completa para feature request",
+        "Gerar especificação técnica seguindo metodologia SPARC",
+        "Criar arquitetura de sistema com validação de padrões",
+        "Implementar TDD workflow com refinamento contínuo"
+      ],
+      "inputModes": ["text", "json"],
+      "outputModes": ["text", "json", "stream"]
+    },
+    {
+      "id": "task_lifecycle_management",
+      "name": "Task Lifecycle Management",
+      "description": "Gerencia ciclo completo de tarefas A2A com estados, transições e recovery automático",
+      "tags": ["tasks", "lifecycle", "state-machine", "recovery", "monitoring"],
+      "examples": [
+        "Criar e executar tarefa com workflow SPARC integrado",
+        "Monitorar progresso de tarefa com updates em tempo real",
+        "Recuperar tarefas falhadas com retry automático",
+        "Agrupar tarefas relacionadas em contextos"
+      ],
+      "inputModes": ["json"],
+      "outputModes": ["json", "stream"]
+    },
+    {
+      "id": "message_processing",
+      "name": "Message Processing A2A",
+      "description": "Processamento avançado de mensagens A2A com otimização Batchtools",
+      "tags": ["messaging", "a2a", "optimization", "routing", "validation"],
+      "examples": [
+        "Processar mensagem A2A com validação de protocolo",
+        "Otimizar mensagens com compressão e batching",
+        "Rotear mensagens baseado em conteúdo e contexto",
+        "Validar estrutura e semântica de mensagens A2A"
+      ],
+      "inputModes": ["text", "json", "multipart"],
+      "outputModes": ["text", "json", "stream"]
+    },
+    {
+      "id": "memory_operations",
+      "name": "Memory Bank Operations",
+      "description": "Operações completas de Memory Bank com namespaces, busca e persistência",
+      "tags": ["memory", "context", "knowledge", "persistence", "search", "namespaces"],
+      "examples": [
+        "Armazenar contexto de desenvolvimento em namespace específico",
+        "Recuperar histórico de decisões arquiteturais por tags",
+        "Buscar padrões de código similares com filtros avançados",
+        "Gerenciar TTL e limpeza automática de memórias expiradas"
+      ],
+      "inputModes": ["text", "json"],
+      "outputModes": ["json"]
+    },
+    {
+      "id": "streaming_communication",
+      "name": "Real-time Streaming Communication",
+      "description": "Comunicação em tempo real via Server-Sent Events com suporte a múltiplas conexões",
+      "tags": ["streaming", "sse", "realtime", "events", "broadcasting", "subscriptions"],
+      "examples": [
+        "Stream de progresso de execução SPARC em tempo real",
+        "Notificações de mudança de estado de tarefas",
+        "Broadcasting de métricas para dashboards conectados",
+        "Subscriptions para eventos específicos de contexto"
+      ],
+      "inputModes": ["json"],
+      "outputModes": ["stream"]
+    },
+    {
+      "id": "batchtools_optimization",
+      "name": "Batchtools Performance Optimization",
+      "description": "Otimização avançada com Batchtools para processamento paralelo e cache inteligente",
+      "tags": ["batchtools", "optimization", "parallel", "caching", "performance", "compression"],
+      "examples": [
+        "Otimizar batch de operações com processamento paralelo",
+        "Aplicar cache inteligente para operações repetitivas",
+        "Comprimir conteúdo para reduzir latência de rede",
+        "Balancear carga entre recursos disponíveis"
+      ],
+      "inputModes": ["json"],
+      "outputModes": ["json"]
+    },
+    {
+      "id": "agent_discovery",
+      "name": "Agent Discovery & Registration",
+      "description": "Descoberta e registro de agentes A2A com validação de capacidades",
+      "tags": ["discovery", "registration", "capabilities", "validation", "health"],
+      "examples": [
+        "Descobrir agentes A2A disponíveis na rede",
+        "Validar capacidades e compatibilidade de agentes",
+        "Registrar novo agente com health check automático",
+        "Monitorar status e disponibilidade de agentes"
+      ],
+      "inputModes": ["json"],
+      "outputModes": ["json"]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": true,
+  "endpoints": {
+    "jsonrpc": "/jsonrpc",
+    "streaming": "/stream/:requestId",
+    "agentCard": "/.well-known/agent.json",
+    "health": "/health",
+    "metrics": "/metrics",
+    "sparc": {
+      "execute": "/sparc/execute",
+      "capabilities": "/sparc/capabilities"
+    },
+    "memory": {
+      "store": "/memory/store",
+      "retrieve": "/memory/retrieve/:key",
+      "stats": "/memory/stats"
+    },
+    "tasks": {
+      "get": "/tasks/:taskId",
+      "list": "/tasks",
+      "create": "/jsonrpc (tasks/submit)",
+      "cancel": "/jsonrpc (tasks/cancel)"
+    },
+    "batchtools": {
+      "metrics": "/batchtools/metrics",
+      "optimize": "/batchtools/optimize"
+    }
+  },
+  "metadata": {
+    "compatibility": {
+      "a2aVersion": "1.0",
+      "jsonrpcVersion": "2.0",
+      "sparcVersion": "1.0",
+      "batchtoolsVersion": "1.0"
+    },
+    "features": {
+      "tddWorkflow": true,
+      "parallelProcessing": true,
+      "contextPersistence": true,
+      "realTimeUpdates": true,
+      "smartCaching": true,
+      "automaticRecovery": true,
+      "loadBalancing": true,
+      "compressionSupport": true
+    },
+    "performance": {
+      "maxConcurrentTasks": 10,
+      "averageResponseTime": "< 100ms",
+      "throughput": "1000 requests/sec",
+      "memoryEfficiency": "optimized",
+      "cacheHitRate": "> 80%"
+    },
+    "created_at": "2025-01-20T00:00:00Z",
+    "last_updated": "2025-01-20T00:00:00Z",
+    "author": "Claude Flow Development Team",
+    "license": "MIT"
+  }
+}

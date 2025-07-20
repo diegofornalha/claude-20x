@@ -1,0 +1,193 @@
+{
+  "protocolVersion": "0.2.9",
+  "name": "SPARC-Coordinator-Agent",
+  "description": "Master coordinator implementing SPARC Architecture phase with parallel workflow management and agent orchestration",
+  "url": "http://localhost:8004/sparc-coordinator",
+  "preferredTransport": "JSONRPC",
+  "additionalInterfaces": [
+    {
+      "url": "http://localhost:8004/sparc-coordinator",
+      "transport": "JSONRPC"
+    },
+    {
+      "url": "http://localhost:8004/sparc-coordinator/grpc",
+      "transport": "GRPC"
+    }
+  ],
+  "provider": {
+    "organization": "Claude-Flow SPARC System",
+    "url": "https://github.com/ruvnet/claude-code-flow",
+    "contact": "sparc-team@claude-flow.ai"
+  },
+  "iconUrl": "http://localhost:8004/icons/coordinator-agent.png",
+  "version": "1.0.0",
+  "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/agents/coordinator.md",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "extensions": [
+      {
+        "name": "sparc-methodology",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/sparc.md"
+      },
+      {
+        "name": "batchtools-optimization",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/batchtools.md"
+      },
+      {
+        "name": "workflow-orchestration",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/orchestration.md"
+      }
+    ]
+  },
+  "securitySchemes": {
+    "bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "Bearer token authentication for A2A protocol"
+    },
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "API key authentication for service access"
+    }
+  },
+  "security": [
+    {"bearer": []},
+    {"apiKey": []}
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json",
+    "application/yaml"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/markdown",
+    "application/yaml"
+  ],
+  "skills": [
+    {
+      "id": "SPARC_ARCHITECTURE",
+      "name": "sparc_architecture",
+      "description": "SPARC Architecture phase with parallel component design and system architecture planning",
+      "tags": ["sparc", "architecture", "design", "planning", "components", "systems"],
+      "examples": [
+        "Design system architecture with parallel component analysis and integration planning",
+        "Create microservices architecture with distributed processing capabilities",
+        "Plan scalable infrastructure with performance optimization and resource allocation"
+      ],
+      "inputModes": ["text/plain", "application/json", "application/yaml"],
+      "outputModes": ["application/json", "text/markdown", "application/yaml"]
+    },
+    {
+      "id": "SPARC_COMPLETION",
+      "name": "sparc_completion",
+      "description": "SPARC Completion phase with concurrent integration and final validation",
+      "tags": ["sparc", "completion", "integration", "validation", "deployment", "finalization"],
+      "examples": [
+        "Orchestrate final integration phase with parallel validation and testing",
+        "Coordinate deployment processes with automated validation and rollback capabilities",
+        "Manage project completion with comprehensive quality assurance and documentation"
+      ],
+      "inputModes": ["application/json", "application/yaml"],
+      "outputModes": ["application/json", "text/markdown"]
+    },
+    {
+      "id": "PARALLEL_ORCHESTRATION",
+      "name": "parallel_orchestration",
+      "description": "Advanced agent orchestration with parallel task distribution and workflow management",
+      "tags": ["orchestration", "parallel", "workflow", "management", "coordination", "automation"],
+      "examples": [
+        "Orchestrate complex workflows with parallel agent coordination and task distribution",
+        "Manage multi-agent systems with load balancing and resource optimization",
+        "Coordinate concurrent operations with fault tolerance and recovery mechanisms"
+      ],
+      "inputModes": ["application/json", "application/yaml"],
+      "outputModes": ["application/json", "text/markdown"]
+    },
+    {
+      "id": "RESOURCE_ALLOCATION",
+      "name": "resource_allocation",
+      "description": "Intelligent resource allocation with load balancing and performance optimization",
+      "tags": ["resources", "allocation", "performance", "optimization", "load-balancing", "efficiency"],
+      "examples": [
+        "Optimize resource allocation across distributed systems with intelligent load balancing",
+        "Manage compute resources with dynamic scaling and performance monitoring",
+        "Allocate tasks to agents based on capabilities and current workload"
+      ],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json", "text/markdown"]
+    },
+    {
+      "id": "WORKFLOW_MANAGEMENT",
+      "name": "workflow_management",
+      "description": "Comprehensive workflow management with automation, monitoring, and optimization",
+      "tags": ["workflow", "management", "automation", "monitoring", "optimization", "processes"],
+      "examples": [
+        "Design and manage complex workflows with automated execution and monitoring",
+        "Implement workflow automation with intelligent decision making and error handling",
+        "Optimize workflow performance with parallel execution and resource management"
+      ],
+      "inputModes": ["application/json", "application/yaml"],
+      "outputModes": ["application/json", "text/markdown", "application/yaml"]
+    },
+    {
+      "id": "AGENT_COORDINATION",
+      "name": "agent_coordination",
+      "description": "Multi-agent coordination with communication protocols and consensus mechanisms",
+      "tags": ["coordination", "communication", "consensus", "multi-agent", "protocols", "synchronization"],
+      "examples": [
+        "Coordinate multiple agents with sophisticated communication protocols",
+        "Implement consensus mechanisms for distributed decision making",
+        "Manage agent interactions with conflict resolution and synchronization"
+      ],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json", "text/markdown"]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": true,
+  "metadata": {
+    "sparcPhase": "architecture",
+    "batchtoolsOptimized": true,
+    "lastUpdated": "2024-01-15T10:30:00Z",
+    "performance": {
+      "parallelEfficiency": 0.96,
+      "concurrentTasks": 25,
+      "averageResponseTime": 250,
+      "throughput": 40.2,
+      "resourceUtilization": {
+        "cpu": 35,
+        "memory": 2048,
+        "network": 512
+      },
+      "lastMeasured": "2024-01-15T10:25:00Z"
+    },
+    "sparcIntegration": {
+      "supportedPhases": ["architecture", "completion", "orchestration", "coordination"],
+      "currentPhase": "architecture",
+      "phaseOptimizations": {
+        "architecture": ["parallel_design", "component_analysis", "integration_planning"],
+        "completion": ["concurrent_integration", "validation_orchestration", "deployment_coordination"],
+        "orchestration": ["workflow_management", "resource_optimization", "load_balancing"],
+        "coordination": ["agent_communication", "consensus_mechanisms", "conflict_resolution"]
+      },
+      "workflowId": "sparc-workflow-001",
+      "batchProcessingEnabled": true,
+      "parallelCapabilities": ["concurrent_orchestration", "parallel_coordination", "batch_management"]
+    },
+    "orchestrationCapabilities": {
+      "workflowTypes": ["sequential", "parallel", "hybrid", "adaptive"],
+      "agentTypes": ["researcher", "coder", "analyst", "specialist"],
+      "communicationProtocols": ["jsonrpc", "websocket", "http", "grpc"],
+      "loadBalancing": ["round-robin", "weighted", "adaptive", "performance-based"],
+      "faultTolerance": ["retry", "fallback", "circuit-breaker", "graceful-degradation"],
+      "monitoring": ["real-time", "metrics", "alerting", "dashboard"]
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "protocolVersion": "0.2.9",
+  "name": "SPARC-Analyst-Agent",
+  "description": "Data analysis and pattern recognition agent with SPARC methodology and batch processing capabilities",
+  "url": "http://localhost:8003/sparc-analyst",
+  "preferredTransport": "JSONRPC",
+  "additionalInterfaces": [
+    {
+      "url": "http://localhost:8003/sparc-analyst",
+      "transport": "JSONRPC"
+    },
+    {
+      "url": "http://localhost:8003/sparc-analyst/grpc",
+      "transport": "GRPC"
+    }
+  ],
+  "provider": {
+    "organization": "Claude-Flow SPARC System",
+    "url": "https://github.com/ruvnet/claude-code-flow",
+    "contact": "sparc-team@claude-flow.ai"
+  },
+  "iconUrl": "http://localhost:8003/icons/analyst-agent.png",
+  "version": "1.0.0",
+  "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/agents/analyst.md",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "extensions": [
+      {
+        "name": "sparc-methodology",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/sparc.md"
+      },
+      {
+        "name": "batchtools-optimization",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/batchtools.md"
+      },
+      {
+        "name": "data-analytics",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/analytics.md"
+      }
+    ]
+  },
+  "securitySchemes": {
+    "bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "Bearer token authentication for A2A protocol"
+    },
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "API key authentication for service access"
+    }
+  },
+  "security": [
+    {"bearer": []},
+    {"apiKey": []}
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json",
+    "text/csv",
+    "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/markdown",
+    "image/png",
+    "image/svg+xml",
+    "text/csv"
+  ],
+  "skills": [
+    {
+      "id": "BATCH_DATA_ANALYSIS",
+      "name": "batch_data_analysis",
+      "description": "High-performance batch data analysis with parallel processing and statistical methods",
+      "tags": ["analysis", "batch", "statistics", "parallel", "performance", "data"],
+      "examples": [
+        "Analyze large datasets with parallel processing for performance optimization",
+        "Generate comprehensive statistical reports with batch processing capabilities",
+        "Process multiple data sources simultaneously with concurrent analysis pipelines"
+      ],
+      "inputModes": ["application/json", "text/csv", "application/vnd.ms-excel"],
+      "outputModes": ["application/json", "text/markdown", "image/png", "text/csv"]
+    },
+    {
+      "id": "PATTERN_RECOGNITION",
+      "name": "pattern_recognition",
+      "description": "Advanced pattern recognition with machine learning and concurrent processing",
+      "tags": ["patterns", "ml", "recognition", "concurrent", "intelligence", "learning"],
+      "examples": [
+        "Identify hidden patterns in complex datasets using machine learning algorithms",
+        "Recognize anomalies and outliers with advanced statistical methods",
+        "Detect trends and correlations across multiple data dimensions"
+      ],
+      "inputModes": ["application/json", "text/csv"],
+      "outputModes": ["application/json", "text/markdown", "image/svg+xml"]
+    },
+    {
+      "id": "INSIGHTS_GENERATION",
+      "name": "insights_generation",
+      "description": "Intelligent insights generation with visualization and reporting capabilities",
+      "tags": ["insights", "visualization", "reporting", "intelligence", "analytics", "business"],
+      "examples": [
+        "Generate actionable business insights from data analysis results",
+        "Create interactive visualizations and dashboards for data exploration",
+        "Produce comprehensive analytical reports with recommendations"
+      ],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json", "text/markdown", "image/png", "image/svg+xml"]
+    },
+    {
+      "id": "PERFORMANCE_MONITORING",
+      "name": "performance_monitoring",
+      "description": "Real-time performance monitoring and metrics analysis with alerting",
+      "tags": ["monitoring", "performance", "metrics", "alerting", "real-time", "optimization"],
+      "examples": [
+        "Monitor system performance metrics with real-time analysis and alerting",
+        "Analyze performance trends and identify optimization opportunities",
+        "Generate performance dashboards with key performance indicators"
+      ],
+      "inputModes": ["application/json", "text/plain"],
+      "outputModes": ["application/json", "text/markdown", "image/png"]
+    },
+    {
+      "id": "PREDICTIVE_ANALYTICS",
+      "name": "predictive_analytics",
+      "description": "Advanced predictive analytics with machine learning models and forecasting",
+      "tags": ["prediction", "forecasting", "ml", "analytics", "modeling", "future"],
+      "examples": [
+        "Build predictive models for business forecasting and planning",
+        "Analyze historical data to predict future trends and patterns",
+        "Create machine learning pipelines for automated prediction systems"
+      ],
+      "inputModes": ["application/json", "text/csv"],
+      "outputModes": ["application/json", "text/markdown", "image/png"]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": true,
+  "metadata": {
+    "sparcPhase": "analysis",
+    "batchtoolsOptimized": true,
+    "lastUpdated": "2024-01-15T10:30:00Z",
+    "performance": {
+      "parallelEfficiency": 0.94,
+      "concurrentTasks": 20,
+      "averageResponseTime": 320,
+      "throughput": 32.7,
+      "resourceUtilization": {
+        "cpu": 65,
+        "memory": 4096,
+        "network": 256
+      },
+      "lastMeasured": "2024-01-15T10:25:00Z"
+    },
+    "sparcIntegration": {
+      "supportedPhases": ["analysis", "validation", "optimization", "reporting"],
+      "currentPhase": "analysis",
+      "phaseOptimizations": {
+        "analysis": ["parallel_processing", "statistical_methods", "pattern_recognition"],
+        "validation": ["data_validation", "quality_assessment", "integrity_checks"],
+        "optimization": ["performance_tuning", "resource_optimization", "algorithm_improvement"],
+        "reporting": ["visualization", "dashboard_generation", "insight_extraction"]
+      },
+      "workflowId": "sparc-workflow-001",
+      "batchProcessingEnabled": true,
+      "parallelCapabilities": ["concurrent_analysis", "parallel_processing", "batch_operations"]
+    },
+    "analyticsCapabilities": {
+      "statisticalMethods": ["descriptive", "inferential", "regression", "clustering"],
+      "machineLearning": ["supervised", "unsupervised", "reinforcement"],
+      "visualization": ["charts", "graphs", "dashboards", "interactive"],
+      "dataFormats": ["csv", "json", "excel", "parquet", "sql"],
+      "realTimeProcessing": true,
+      "batchProcessing": true
+    }
+  }
+}

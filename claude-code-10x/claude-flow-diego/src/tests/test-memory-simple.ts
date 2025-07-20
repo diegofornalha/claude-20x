@@ -13,7 +13,7 @@ async function testMemoryAgent() {
     // Criar memória
     const memory = new Memory({ 
         config: { 
-            api_key: process.env.MEM0_API_KEY || 'm0-6gLgoXjFJVWtlY9t8T7rgKYf2QWwXDvNUf37efTp' 
+            api_key: process.env.MEM0_API_KEY || 'local' 
         } 
     });
     

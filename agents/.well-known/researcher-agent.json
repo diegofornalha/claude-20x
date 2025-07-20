@@ -1,0 +1,155 @@
+{
+  "protocolVersion": "0.2.9",
+  "name": "SPARC-Researcher-Agent",
+  "description": "Advanced research agent with SPARC methodology and Batchtools parallel processing for information gathering, analysis, and synthesis",
+  "url": "http://localhost:8001/sparc-researcher",
+  "preferredTransport": "JSONRPC",
+  "additionalInterfaces": [
+    {
+      "url": "http://localhost:8001/sparc-researcher",
+      "transport": "JSONRPC"
+    },
+    {
+      "url": "http://localhost:8001/sparc-researcher/grpc",
+      "transport": "GRPC"
+    }
+  ],
+  "provider": {
+    "organization": "Claude-Flow SPARC System",
+    "url": "https://github.com/ruvnet/claude-code-flow",
+    "contact": "sparc-team@claude-flow.ai"
+  },
+  "iconUrl": "http://localhost:8001/icons/researcher-agent.png",
+  "version": "1.0.0",
+  "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/agents/researcher.md",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "extensions": [
+      {
+        "name": "sparc-methodology",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/sparc.md"
+      },
+      {
+        "name": "batchtools-optimization",
+        "version": "1.0.0",
+        "documentationUrl": "https://github.com/ruvnet/claude-code-flow/docs/batchtools.md"
+      }
+    ]
+  },
+  "securitySchemes": {
+    "bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "Bearer token authentication for A2A protocol"
+    },
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "API key authentication for service access"
+    }
+  },
+  "security": [
+    {"bearer": []},
+    {"apiKey": []}
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json",
+    "multipart/form-data",
+    "text/markdown"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json",
+    "text/markdown",
+    "text/html"
+  ],
+  "skills": [
+    {
+      "id": "SPARC_SPECIFICATION",
+      "name": "sparc_specification",
+      "description": "SPARC Specification phase with parallel requirements analysis and constraint validation",
+      "tags": ["sparc", "specification", "research", "analysis", "requirements", "validation"],
+      "examples": [
+        "Analyze requirements for user authentication system with parallel constraint validation",
+        "Generate comprehensive specification document for microservices architecture",
+        "Research industry standards and best practices for API security implementation"
+      ],
+      "inputModes": ["text/plain", "application/json", "text/markdown"],
+      "outputModes": ["application/json", "text/markdown", "text/html"]
+    },
+    {
+      "id": "PARALLEL_RESEARCH",
+      "name": "parallel_research",
+      "description": "Concurrent research operations with Batchtools optimization for multiple source analysis",
+      "tags": ["research", "parallel", "batchtools", "concurrent", "optimization", "analysis"],
+      "examples": [
+        "Research emerging technology trends across multiple domains simultaneously",
+        "Analyze competitor strategies with parallel market research",
+        "Gather technical documentation from multiple sources concurrently"
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["application/json", "text/markdown", "text/html"]
+    },
+    {
+      "id": "INFORMATION_SYNTHESIS",
+      "name": "information_synthesis",
+      "description": "Advanced information synthesis with semantic analysis and pattern recognition",
+      "tags": ["synthesis", "analysis", "patterns", "knowledge", "semantic", "intelligence"],
+      "examples": [
+        "Synthesize research findings into actionable insights and recommendations",
+        "Identify patterns and relationships across disparate information sources",
+        "Generate knowledge graphs from unstructured research data"
+      ],
+      "inputModes": ["text/plain", "application/json", "text/markdown"],
+      "outputModes": ["application/json", "text/markdown", "image/svg+xml"]
+    },
+    {
+      "id": "KNOWLEDGE_EXTRACTION",
+      "name": "knowledge_extraction",
+      "description": "Intelligent knowledge extraction from documents, APIs, and web sources",
+      "tags": ["extraction", "knowledge", "documents", "apis", "web", "intelligence"],
+      "examples": [
+        "Extract key insights from technical documentation and research papers",
+        "Mine data from APIs and web services for comprehensive analysis",
+        "Process large document collections with parallel extraction pipelines"
+      ],
+      "inputModes": ["text/plain", "application/json", "application/pdf", "text/html"],
+      "outputModes": ["application/json", "text/markdown", "application/vnd.ms-excel"]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": true,
+  "metadata": {
+    "sparcPhase": "specification",
+    "batchtoolsOptimized": true,
+    "lastUpdated": "2024-01-15T10:30:00Z",
+    "performance": {
+      "parallelEfficiency": 0.92,
+      "concurrentTasks": 15,
+      "averageResponseTime": 450,
+      "throughput": 25.5,
+      "resourceUtilization": {
+        "cpu": 45,
+        "memory": 2048,
+        "network": 128
+      },
+      "lastMeasured": "2024-01-15T10:25:00Z"
+    },
+    "sparcIntegration": {
+      "supportedPhases": ["specification", "research", "analysis"],
+      "currentPhase": "specification",
+      "phaseOptimizations": {
+        "specification": ["parallel_analysis", "constraint_validation", "requirement_synthesis"],
+        "research": ["concurrent_search", "batch_processing", "intelligent_filtering"],
+        "analysis": ["pattern_recognition", "semantic_analysis", "knowledge_graphs"]
+      },
+      "workflowId": "sparc-workflow-001",
+      "batchProcessingEnabled": true,
+      "parallelCapabilities": ["concurrent_research", "parallel_analysis", "batch_synthesis"]
+    }
+  }
+}

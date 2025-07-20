@@ -7,7 +7,7 @@ echo "🚀 Iniciando Claudia..."
 export PATH="$HOME/.bun/bin:$PATH"
 
 # Navegar para o diretório do Claudia
-cd "$(dirname "$0")/claudia"
+cd "/Users/agents/Desktop/claude-20x/claudia"
 
 # Iniciar em modo desenvolvimento
 echo "📦 Claudia será iniciado em modo desenvolvimento"

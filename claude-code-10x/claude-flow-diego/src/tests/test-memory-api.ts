@@ -6,7 +6,7 @@
 import { logAgent } from './agents/agent-log';
 import { AgentType } from './core/base-agent';
 
-const MEM0_API_KEY = process.env.MEM0_API_KEY || 'm0-6gLgoXjFJVWtlY9t8T7rgKYf2QWwXDvNUf37efTp';
+const MEM0_API_KEY = process.env.MEM0_API_KEY || 'local';
 const MEM0_API_BASE = 'https://api.mem0.ai/v1';
 
 async function testMemoryAgent() {

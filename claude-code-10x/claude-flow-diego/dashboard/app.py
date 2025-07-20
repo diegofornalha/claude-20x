@@ -17,7 +17,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Configurar Mem0
-MEM0_API_KEY = os.environ.get('MEM0_API_KEY', 'm0-6gLgoXjFJVWtlY9t8T7rgKYf2QWwXDvNUf37efTp')
+MEM0_API_KEY = os.environ.get('MEM0_API_KEY')
+if not MEM0_API_KEY:
+    print("⚠️  MEM0_API_KEY não configurada - configure a variável de ambiente")
+    MEM0_API_KEY = "local"
 
 # Tentar diferentes formas de inicialização
 try:
