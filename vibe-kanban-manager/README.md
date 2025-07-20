@@ -2,12 +2,25 @@
 
 Scripts individuais para gerenciar o Vibe Kanban facilmente.
 
-## 🚀 Como Usar
+## 🚀 Início Rápido
+
+### Comando Principal: `vk`
+```bash
+cd vibe-kanban-manager
+
+# Menu interativo
+./vk
+
+# Ou comando direto
+./vk start
+./vk status
+./vk logs
+```
 
 ### Tornar scripts executáveis (primeira vez)
 ```bash
 cd vibe-kanban-manager
-chmod +x *.sh
+chmod +x *.sh vk
 ```
 
 ### Comandos Disponíveis

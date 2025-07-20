@@ -1,0 +1,38 @@
+#!/bin/bash
+# Vibe Kanban Quick Command
+
+DIR=$(dirname "$0")
+
+if [ $# -eq 0 ]; then
+    # Se não passar argumentos, abre o menu
+    $DIR/menu.sh
+else
+    # Se passar argumento, executa o script correspondente
+    case "$1" in
+        start|stop|restart|status|logs|open)
+            $DIR/$1.sh
+            ;;
+        menu)
+            $DIR/menu.sh
+            ;;
+        help|--help|-h)
+            echo "Uso: vk [comando]"
+            echo ""
+            echo "Comandos:"
+            echo "  start    - Iniciar Vibe Kanban"
+            echo "  stop     - Parar Vibe Kanban"
+            echo "  restart  - Reiniciar"
+            echo "  status   - Ver status"
+            echo "  logs     - Ver logs"
+            echo "  open     - Abrir no navegador"
+            echo "  menu     - Menu interativo"
+            echo ""
+            echo "Sem argumentos abre o menu interativo"
+            ;;
+        *)
+            echo "Comando inválido: $1"
+            echo "Use: vk help"
+            exit 1
+            ;;
+    esac
+fi
