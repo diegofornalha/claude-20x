@@ -741,6 +741,176 @@ body {
 }
 
 /* ===============================
+   SPARC ENHANCED ANIMATIONS
+   =============================== */
+
+/* Lazy Loading Animations */
+.animate-ready {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading States */
+.btn.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Image Loading States */
+img[data-src] {
+    filter: blur(5px);
+    transition: filter 0.3s;
+    background: var(--color-bg-overlay);
+}
+
+img[data-src].loaded,
+.hero[data-src].loaded {
+    filter: blur(0);
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+    to { 
+        transform: scale(4); 
+        opacity: 0; 
+    }
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    from { 
+        transform: translateX(100%); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+/* Enhanced Hover Effects */
+.benefit-card,
+.learning-card {
+    transform-origin: center;
+    will-change: transform;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(255, 140, 0, 0.4);
+}
+
+.learning-card:hover {
+    transform: translateY(-4px) scale(1.01);
+}
+
+/* Network Status Toast */
+.network-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    color: white;
+    font-weight: var(--font-weight-bold);
+    z-index: var(--z-modal);
+    animation: slideIn 0.3s ease;
+    box-shadow: var(--shadow-lg);
+}
+
+.network-toast.success {
+    background: linear-gradient(45deg, var(--color-success), var(--color-success-dark));
+}
+
+.network-toast.warning {
+    background: linear-gradient(45deg, var(--color-warning), #ff8c00);
+    color: var(--color-text-dark);
+}
+
+/* Install Button */
+.install-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: var(--z-modal);
+    animation: slideIn 0.3s ease, pulse 2s infinite 1s;
+    box-shadow: var(--shadow-glow);
+}
+
+/* Enhanced Countdown */
+.countdown__display {
+    position: relative;
+    display: inline-block;
+}
+
+.countdown__display::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: var(--radius-md);
+    animation: shine 3s infinite;
+    z-index: var(--z-background);
+}
+
+/* Performance Optimizations */
+.hero__background,
+.urgency__content::before {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Improved Focus States */
+.btn:focus-visible,
+.faq__question:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(255, 140, 0, 0.2);
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    :root {
+        --color-primary: #ffaa00;
+        --color-secondary: #ff6666;
+        --color-bg-primary: #000000;
+        --color-text-primary: #ffffff;
+    }
+    
+    .btn {
+        border: 3px solid currentColor;
+    }
+}
+
+/* ===============================
    ACCESSIBILITY & PERFORMANCE
    =============================== */
 
@@ -751,6 +921,11 @@ body {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+    
+    .animate-ready {
+        opacity: 1;
+        transform: none;
     }
 }
 

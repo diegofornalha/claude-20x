@@ -23,12 +23,39 @@
 
     <title>Formação Agentes Integrados - A2A Protocol | Última Chamada</title>
     
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff8c00">
+    
+    <!-- Performance hints -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect para melhor performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical CSS inline para primeira renderização -->
+    <style>
+        /* Critical CSS - Above the fold */
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{--color-primary:#ff8c00;--color-primary-light:#ffb347;--color-secondary:#ff4444;--color-bg-primary:#1a1a1a;--color-bg-secondary:#2a1810;--color-text-primary:#ffffff;--color-text-secondary:#ffb347;--font-family-primary:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-size-2xl:2rem;--font-size-4xl:3.5rem;--space-sm:1rem;--space-xl:3rem;--space-3xl:6rem;--container-max-width:1200px;--radius-xl:1.25rem;--font-weight-black:900;--line-height-tight:1.2;--line-height-normal:1.6}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-family-primary);background:linear-gradient(135deg,var(--color-bg-primary) 0%,var(--color-bg-secondary) 100%);color:var(--color-text-primary);line-height:var(--line-height-normal);overflow-x:hidden;min-height:100vh}
+        .container{max-width:var(--container-max-width);margin:0 auto;padding:0 var(--space-sm)}
+        .hero{text-align:center;padding:var(--space-3xl) 0;background:radial-gradient(circle at center,rgba(255,140,0,0.1) 0%,transparent 70%);position:relative;overflow:hidden;min-height:60vh;display:flex;align-items:center}
+        .hero__title{font-size:clamp(var(--font-size-2xl),5vw,var(--font-size-4xl));font-weight:var(--font-weight-black);margin-bottom:var(--space-xl);background:linear-gradient(45deg,var(--color-primary),var(--color-primary-light));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 30px rgba(255,140,0,0.5);line-height:var(--line-height-tight)}
+        .hero__subtitle{font-size:clamp(1.125rem,3vw,1.5rem);color:var(--color-text-secondary);max-width:900px;margin:0 auto;line-height:var(--line-height-normal)}
+    </style>
+    
     <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
     <link rel="preload" href="script.js" as="script">
     
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- DNS prefetch para recursos externos -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//bit.ly">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -309,6 +336,97 @@
         </div>
     </footer>
 
+    <!-- Load non-critical CSS asynchronously -->
+    <script>
+        // Load CSS asynchronously
+        const cssLoad = document.querySelector('link[media="print"]');
+        if (cssLoad) {
+            cssLoad.media = 'all';
+        }
+        
+        // Preload critical fonts
+        const fontLink = document.createElement('link');
+        fontLink.rel = 'preload';
+        fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap';
+        fontLink.as = 'style';
+        fontLink.onload = function() { this.rel = 'stylesheet'; };
+        document.head.appendChild(fontLink);
+    </script>
+
+    <!-- Enhanced structured data for better SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Formação Agentes Integrados - A2A Protocol",
+        "description": "Curso completo para desenvolvimento de agentes IA interoperáveis usando A2A Protocol",
+        "provider": {
+            "@type": "Organization",
+            "name": "Formação Agentes Integrados",
+            "url": "https://formacao-agentes.com"
+        },
+        "instructor": {
+            "@type": "Person",
+            "name": "Especialista em IA"
+        },
+        "courseMode": "online",
+        "educationalLevel": "intermediate",
+        "teaches": ["A2A Protocol", "Agent Development", "AI Integration", "n8n", "WhatsApp Bots"],
+        "timeRequired": "P4W",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/LimitedAvailability",
+            "validThrough": "2025-07-21T23:59:59",
+            "seller": {
+                "@type": "Organization",
+                "name": "Formação Agentes Integrados"
+            }
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "startDate": "2025-07-22",
+            "endDate": "2025-08-19"
+        }
+    }
+    </script>
+    
     <script src="script.js" defer></script>
+    
+    <!-- Analytics and conversion tracking -->
+    <script>
+        // Basic conversion tracking
+        window.conversionTracking = {
+            track: function(event, data) {
+                console.log('Conversion:', event, data);
+                // Send to your analytics service
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon('/analytics', JSON.stringify({
+                        event: event,
+                        data: data,
+                        timestamp: Date.now(),
+                        url: window.location.href,
+                        userAgent: navigator.userAgent
+                    }));
+                }
+            }
+        };
+        
+        // Track page load performance
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                if (perfData) {
+                    window.conversionTracking.track('page_performance', {
+                        loadTime: perfData.loadEventEnd - perfData.loadEventStart,
+                        domContentLoaded: perfData.domContentLoadedEventEnd - perfData.navigationStart,
+                        firstPaint: performance.getEntriesByType('paint').find(p => p.name === 'first-paint')?.startTime
+                    });
+                }
+            }, 0);
+        });
+    </script>
 </body>
 </html>

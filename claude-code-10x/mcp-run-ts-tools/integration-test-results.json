@@ -1,0 +1,68 @@
+{
+  "timestamp": "2025-07-21T22:17:23.907Z",
+  "tests": [
+    {
+      "name": "server_startup",
+      "success": true,
+      "output": "🚀 MCP Server Diego Tools iniciado com 3 ferramentas essenciais\n",
+      "details": "Server startup test"
+    },
+    {
+      "name": "tools_configuration",
+      "success": true,
+      "details": [
+        {
+          "name": "MCP Server Import",
+          "pattern": {},
+          "found": true
+        },
+        {
+          "name": "Stdio Transport",
+          "pattern": {},
+          "found": true
+        },
+        {
+          "name": "Tools Definition",
+          "pattern": {},
+          "found": true
+        },
+        {
+          "name": "ListTools Handler",
+          "pattern": {},
+          "found": true
+        },
+        {
+          "name": "CallTool Handler",
+          "pattern": {},
+          "found": true
+        }
+      ],
+      "output": "5/5 checks passed"
+    },
+    {
+      "name": "claude_code_compatibility",
+      "success": true,
+      "details": [
+        {
+          "name": "MCP Timeout Setting",
+          "required": false
+        },
+        {
+          "name": "Tool Timeout Setting",
+          "required": false
+        },
+        {
+          "name": "Permissions Allow MCP Tools",
+          "required": false
+        }
+      ],
+      "output": "Claude Code configuration checked"
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "success_rate": 100
+  }
+}

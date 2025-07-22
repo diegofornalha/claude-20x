@@ -1,0 +1,101 @@
+{
+  "name": "diego-tools-mcp",
+  "version": "2.0.0",
+  "description": "MCP server with essential automation tools for Claude Code integration",
+  "main": "build/basic-server.js",
+  "protocol": "1.12.1",
+  "transport": "stdio",
+  "tools": [
+    {
+      "name": "puppeteer_navigate",
+      "description": "Navigate to a URL using Puppeteer browser automation",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to navigate to"
+          }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "browser_open_url", 
+      "description": "Open URL in the system default browser",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string", 
+            "description": "URL to open in default browser"
+          },
+          "browser": {
+            "type": "string",
+            "enum": ["default", "chrome", "safari", "firefox"],
+            "description": "Specific browser to use"
+          }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "agents_list",
+      "description": "List available Claude Flow agents in the project",
+      "inputSchema": {
+        "type": "object", 
+        "properties": {
+          "filter": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["researcher", "implementer", "analyst", "coordinator", "custom"],
+                "description": "Filter by agent type"
+              },
+              "name": {
+                "type": "string",
+                "description": "Filter by agent name"
+              },
+              "hasTools": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Filter by tools the agent has"
+              }
+            }
+          },
+          "path": {
+            "type": "string",
+            "description": "Custom path to search for agents"
+          }
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "logging": true
+  },
+  "requirements": {
+    "node": ">=18.0.0",
+    "dependencies": {
+      "@modelcontextprotocol/sdk": "^1.12.1",
+      "puppeteer": "^24.10.0"
+    }
+  },
+  "configuration": {
+    "timeout": 120000,
+    "concurrent_requests": 1,
+    "max_response_size": "10MB"
+  },
+  "security": {
+    "sandboxed": false,
+    "network_access": true,
+    "file_system_access": "limited",
+    "process_execution": "puppeteer_only"
+  }
+}

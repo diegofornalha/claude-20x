@@ -1,4 +1,4 @@
-# Claude Code Configuration - SPARC Development Environment (Batchtools Optimized)
+# Claude Code Configuration - SPARC Alpha v2.0.0 Environment (Hive Mind + 87 MCP Tools)
 
 ## 🚨 CRITICAL: CONCURRENT EXECUTION FOR ALL ACTIONS
 
@@ -54,22 +54,56 @@ Before sending ANY message, ask yourself:
 If ANY answer is "No", you MUST combine operations into a single message!
 
 ## Project Overview
-This project uses the SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology for systematic Test-Driven Development with AI assistance through Claude-Flow orchestration.
+This project uses the SPARC Alpha v2.0.0 methodology with Hive Mind System for revolutionary AI-powered development orchestration with 87 MCP tools integration.
 
-**🚀 Batchtools Optimization Enabled**: This configuration includes optimized prompts and parallel processing capabilities for improved performance and efficiency.
+**🐝 Hive Mind System Enabled**: Queen-led coordination with worker specialization, collective memory, consensus building, and auto-scaling capabilities.
 
-## SPARC Development Commands
+**⚡ 87 MCP Tools Integrated**: Complete ruv-swarm integration with neural networking and production-ready infrastructure.
 
-### Core SPARC Commands
-- `npx claude-flow sparc modes`: List all available SPARC development modes
-- `npx claude-flow sparc run <mode> "<task>"`: Execute specific SPARC mode for a task
-- `npx claude-flow sparc tdd "<feature>"`: Run complete TDD workflow using SPARC methodology
-- `npx claude-flow sparc info <mode>`: Get detailed information about a specific mode
+## 🐝 Hive Mind Commands (NEW!)
 
-### Batchtools Commands (Optimized)
-- `npx claude-flow sparc batch <modes> "<task>"`: Execute multiple SPARC modes in parallel
-- `npx claude-flow sparc pipeline "<task>"`: Execute full SPARC pipeline with parallel processing
-- `npx claude-flow sparc concurrent <mode> "<tasks-file>"`: Process multiple tasks concurrently
+### Quick Start with Hive Mind
+- `claude-flow hive-mind wizard`: Interactive setup wizard (RECOMMENDED)
+- `claude-flow hive-mind spawn "<objective>"`: Create intelligent swarm for any task
+- `claude-flow hive-mind status`: View active swarms and performance metrics
+- `claude-flow hive-mind metrics`: Advanced performance analytics
+
+### Advanced Hive Mind Operations
+- `claude-flow hive-mind init`: Initialize system with SQLite
+- `claude-flow hive-mind sessions`: List all hive mind sessions
+- `claude-flow hive-mind resume <session-id>`: Resume paused session
+- `claude-flow hive-mind consensus`: View consensus decisions
+- `claude-flow hive-mind memory`: Manage collective memory
+
+## SPARC Alpha Commands (16 Modes Available)
+
+### Core SPARC Alpha Modes
+- `claude-flow sparc modes`: List all 16 available SPARC development modes
+- `claude-flow sparc architect "<task>"`: 🏗️ System architecture design
+- `claude-flow sparc code "<task>"`: 🧠 Auto-Coder with AI assistance
+- `claude-flow sparc tdd "<task>"`: 🧪 Test-Driven Development
+- `claude-flow sparc debug "<task>"`: 🪲 Advanced debugging assistance
+- `claude-flow sparc security-review "<task>"`: 🛡️ Security analysis and review
+- `claude-flow sparc docs-writer "<task>"`: 📚 Documentation generation
+- `claude-flow sparc integration "<task>"`: 🔗 System integration
+- `claude-flow sparc devops "<task>"`: 🚀 DevOps automation
+
+### Specialized SPARC Alpha Modes
+- `claude-flow sparc refinement-optimization-mode "<task>"`: 🧹 Code optimization
+- `claude-flow sparc post-deployment-monitoring-mode "<task>"`: 📈 Deployment monitoring
+- `claude-flow sparc spec-pseudocode "<task>"`: 📋 Specification writing
+- `claude-flow sparc supabase-admin "<task>"`: 🔐 Supabase administration
+- `claude-flow sparc mcp "<task>"`: ♾️ MCP Integration
+- `claude-flow sparc sparc "<task>"`: ⚡️ SPARC Orchestrator
+- `claude-flow sparc tutorial`: 📘 SPARC Tutorial
+- `claude-flow sparc ask "<question>"`: ❓ Ask mode for queries
+
+### Core System Commands
+- `claude-flow start --ui --swarm`: Start with swarm intelligence UI
+- `claude-flow swarm "<objective>"`: Deploy multi-agent workflow
+- `claude-flow status`: System status and health
+- `claude-flow memory <action>`: Persistent memory operations
+- `claude-flow mcp <action>`: Manage 87 MCP tools
 
 ### Standard Build Commands
 - `npm run build`: Build the project
@@ -77,95 +111,135 @@ This project uses the SPARC (Specification, Pseudocode, Architecture, Refinement
 - `npm run lint`: Run linter and format checks
 - `npm run typecheck`: Run TypeScript type checking
 
-## SPARC Methodology Workflow (Batchtools Enhanced)
+## SPARC Alpha Methodology Workflow (Hive Mind Enhanced)
 
-### 1. Specification Phase (Parallel Analysis)
+### 🐝 Hive Mind Orchestrated Development
 ```bash
-# Create detailed specifications with concurrent requirements analysis
-npx claude-flow sparc run spec-pseudocode "Define user authentication requirements" --parallel
-```
-**Batchtools Optimization**: Simultaneously analyze multiple requirement sources, validate constraints in parallel, and generate comprehensive specifications.
+# Start with Hive Mind wizard for complex projects
+claude-flow hive-mind wizard
 
-### 2. Pseudocode Phase (Concurrent Logic Design)
+# Spawn intelligent swarm for full-stack development
+claude-flow hive-mind spawn "Build complete authentication system" --claude --auto-spawn
+```
+**Hive Mind Optimization**: Queen-led coordination with specialized workers, collective memory sharing, and consensus-driven decisions.
+
+### 1. Specification Phase (AI-Driven Analysis)
 ```bash
-# Develop algorithmic logic with parallel pattern analysis
-npx claude-flow sparc run spec-pseudocode "Create authentication flow pseudocode" --batch-optimize
-```
-**Batchtools Optimization**: Process multiple algorithm patterns concurrently, validate logic flows in parallel, and optimize data structures simultaneously.
+# Create detailed specifications with AI assistance
+claude-flow sparc spec-pseudocode "Define user authentication requirements"
 
-### 3. Architecture Phase (Parallel Component Design)
+# Use specialized modes for complex requirements
+claude-flow sparc ask "What are best practices for OAuth 2.0 implementation?"
+```
+**Alpha Enhancement**: Advanced AI reasoning, pattern recognition, and security-first design principles.
+
+### 2. Architecture Phase (Intelligent Design)
 ```bash
-# Design system architecture with concurrent component analysis
-npx claude-flow sparc run architect "Design authentication service architecture" --parallel
-```
-**Batchtools Optimization**: Generate multiple architectural alternatives simultaneously, validate integration points in parallel, and create comprehensive documentation concurrently.
+# Design system architecture with AI insights
+claude-flow sparc architect "Design microservices authentication architecture"
 
-### 4. Refinement Phase (Parallel TDD Implementation)
+# DevOps integration from the start
+claude-flow sparc devops "Plan authentication service deployment strategy"
+```
+**Alpha Enhancement**: Neural network-powered architecture analysis, auto-scaling design, and deployment optimization.
+
+### 3. Development Phase (AI-Assisted Coding)
 ```bash
-# Execute Test-Driven Development with parallel test generation
-npx claude-flow sparc tdd "implement user authentication system" --batch-tdd
-```
-**Batchtools Optimization**: Generate multiple test scenarios simultaneously, implement and validate code in parallel, and optimize performance concurrently.
+# AI-powered code generation
+claude-flow sparc code "implement JWT authentication service"
 
-### 5. Completion Phase (Concurrent Integration)
+# Parallel TDD with intelligent test generation
+claude-flow sparc tdd "user authentication with JWT and refresh tokens"
+```
+**Alpha Enhancement**: Context-aware code generation, intelligent test scenarios, and continuous security validation.
+
+### 4. Quality Assurance (Comprehensive Analysis)
 ```bash
-# Integration with parallel validation and documentation
-npx claude-flow sparc run integration "integrate authentication with user management" --parallel
+# Automated security review
+claude-flow sparc security-review "authentication service security analysis"
+
+# Advanced debugging assistance
+claude-flow sparc debug "investigate authentication token validation issues"
 ```
-**Batchtools Optimization**: Run integration tests in parallel, generate documentation concurrently, and validate requirements simultaneously.
+**Alpha Enhancement**: ML-powered vulnerability detection, intelligent debugging suggestions, and performance optimization.
 
-## Batchtools Integration Features
+### 5. Integration & Deployment (Orchestrated Completion)
+```bash
+# System integration with monitoring
+claude-flow sparc integration "integrate authentication with user management and monitoring"
 
-### Parallel Processing Capabilities
-- **Concurrent File Operations**: Read, analyze, and modify multiple files simultaneously
-- **Parallel Code Analysis**: Analyze dependencies, patterns, and architecture concurrently
-- **Batch Test Generation**: Create comprehensive test suites in parallel
-- **Concurrent Documentation**: Generate multiple documentation formats simultaneously
+# Post-deployment monitoring setup
+claude-flow sparc post-deployment-monitoring-mode "authentication service monitoring"
+```
+**Alpha Enhancement**: Automated integration testing, real-time performance monitoring, and self-healing deployment strategies.
 
-### Performance Optimizations
-- **Smart Batching**: Group related operations for optimal performance
-- **Pipeline Processing**: Chain dependent operations with parallel stages
-- **Resource Management**: Efficient utilization of system resources
-- **Error Resilience**: Robust error handling with parallel recovery
+## Hive Mind Alpha Integration Features
+
+### 🐝 Queen-Led Coordination
+- **Intelligent Task Distribution**: Auto-assign tasks based on agent capabilities
+- **Collective Memory**: Shared knowledge base across all agents
+- **Consensus Building**: Democratic decision making for critical choices
+- **Auto-Scaling**: Dynamic agent spawning based on workload
+
+### ⚡ 87 MCP Tools Integration
+- **Neural Networks**: Advanced AI pattern recognition and learning
+- **Swarm Intelligence**: Coordinated multi-agent problem solving
+- **Real-time Monitoring**: Live performance metrics and health monitoring
+- **Fault Tolerance**: Self-healing systems with automatic recovery
+
+### 🚀 Performance Optimizations
+- **Parallel Processing**: Concurrent execution across specialized agents
+- **Memory Persistence**: Cross-session knowledge retention
+- **Pipeline Optimization**: Intelligent workflow orchestration
+- **Resource Management**: Efficient utilization with auto-scaling
 
 ## Performance Benchmarks
 
-### Batchtools Performance Improvements
-- **File Operations**: Up to 300% faster with parallel processing
-- **Code Analysis**: 250% improvement with concurrent pattern recognition
-- **Test Generation**: 400% faster with parallel test creation
-- **Documentation**: 200% improvement with concurrent content generation
-- **Memory Operations**: 180% faster with batched read/write operations
+### SPARC Alpha v2.0.0 Performance Improvements
+- **Hive Mind Coordination**: Up to 500% faster task completion with intelligent agent distribution
+- **Neural AI Processing**: 400% improvement in code analysis and pattern recognition
+- **Swarm Development**: 350% faster with parallel agent specialization
+- **MCP Tools Integration**: 300% improvement in development workflow efficiency
+- **Collective Memory**: 250% faster knowledge retrieval and context switching
+- **Auto-Scaling**: 200% improvement in resource utilization efficiency
 
-## Code Style and Best Practices (Batchtools Enhanced)
+## Code Style and Best Practices (SPARC Alpha Enhanced)
 
-### SPARC Development Principles with Batchtools
-- **Modular Design**: Keep files under 500 lines, optimize with parallel analysis
-- **Environment Safety**: Never hardcode secrets, validate with concurrent checks
-- **Test-First**: Always write tests before implementation using parallel generation
-- **Clean Architecture**: Separate concerns with concurrent validation
-- **Parallel Documentation**: Maintain clear, up-to-date documentation with concurrent updates
+### SPARC Alpha Development Principles
+- **AI-First Design**: Leverage neural networks for architecture decisions
+- **Hive Mind Coordination**: Use collective intelligence for complex problems
+- **Security-First**: Always run security-review mode for sensitive code
+- **Test-Driven AI**: Combine TDD with AI-powered test generation
+- **Continuous Integration**: Use DevOps mode for deployment strategies
 
-### Batchtools Best Practices
-- **Parallel Operations**: Use batchtools for independent tasks
-- **Concurrent Validation**: Validate multiple aspects simultaneously
-- **Batch Processing**: Group similar operations for efficiency
-- **Pipeline Optimization**: Chain operations with parallel stages
-- **Resource Management**: Monitor and optimize resource usage
+### Hive Mind Best Practices
+- **Queen Coordination**: Start complex projects with hive-mind wizard
+- **Agent Specialization**: Use appropriate SPARC modes for specific tasks
+- **Collective Memory**: Share knowledge across development sessions
+- **Consensus Decisions**: Use hive mind for architectural choices
+- **Auto-Scaling**: Let the system manage resource allocation dynamically
 
-## Important Notes (Enhanced)
+## Important Notes (SPARC Alpha v2.0.0)
 
-- Always run tests before committing with parallel execution (`npm run test --parallel`)
-- Use SPARC memory system with concurrent operations to maintain context across sessions
-- Follow the Red-Green-Refactor cycle with parallel test generation during TDD phases
-- Document architectural decisions with concurrent validation in memory
-- Regular security reviews with parallel analysis for authentication or data handling code
-- Claude Code slash commands provide quick access to batchtools-optimized SPARC modes
-- Monitor system resources during parallel operations for optimal performance
+- **Hive Mind First**: Start complex projects with `claude-flow hive-mind wizard` for optimal coordination
+- **Security Integration**: Always use `claude-flow sparc security-review` for sensitive code
+- **AI-Powered Testing**: Leverage `claude-flow sparc tdd` with intelligent test generation
+- **Collective Memory**: Use `claude-flow hive-mind memory` to maintain context across sessions
+- **Real-time Monitoring**: Enable monitoring with `claude-flow sparc post-deployment-monitoring-mode`
+- **Neural Optimization**: Use 87 MCP tools for advanced AI-powered development
+- **Auto-Scaling**: Let Hive Mind system manage resource allocation dynamically
 
-For more information about SPARC methodology and batchtools optimization, see: 
-- SPARC Guide: https://github.com/ruvnet/claude-code-flow/docs/sparc.md
-- Batchtools Documentation: https://github.com/ruvnet/claude-code-flow/docs/batchtools.md
+### 🚀 Quick Start Recommendations
+1. **Initialize**: `claude-flow hive-mind init` (one-time setup)
+2. **Start Projects**: `claude-flow hive-mind wizard` (interactive guidance)
+3. **Complex Tasks**: `claude-flow hive-mind spawn "<objective>"` (intelligent swarm)
+4. **Development**: Use appropriate `claude-flow sparc <mode>` for specific tasks
+5. **Monitor**: `claude-flow hive-mind status` for performance tracking
+
+For more information about SPARC Alpha and Hive Mind system:
+- 🐝 Hive Mind Guide: https://github.com/ruvnet/claude-flow/tree/main/docs/hive-mind
+- 🐝 ruv-swarm: https://github.com/ruvnet/ruv-FANN/tree/main/ruv-swarm
+- 📚 Documentation: https://github.com/ruvnet/claude-flow
 
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.
