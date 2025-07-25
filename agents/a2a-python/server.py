@@ -52,7 +52,7 @@ class A2AServer:
         # Create a simplified request handler without TaskManager for now
         self.task_manager = None
         self.request_handler = self._create_simple_handler()
-        self.context_builder = SimpleRequestContextBuilder()
+        self.context_builder = None  # Simplify - no context builder needed
         
         # Initialize A2A FastAPI application
         self.a2a_app = A2AFastAPIApplication(
@@ -173,10 +173,7 @@ class A2AServer:
             """Main JSON-RPC 2.0 communication endpoint."""
             try:
                 # Process through our simple handler (bypass strict A2ARequest validation)
-                response = await self.request_handler.handle_request(
-                    request,
-                    context=self.context_builder.build_context() if self.context_builder else None
-                )
+                response = await self.request_handler.handle_request(request, context=None)
                 
                 # Handle response format
                 if hasattr(response, 'model_dump'):
