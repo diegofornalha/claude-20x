@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Currency conversion using A2A and Marvin"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["marvin>=3.0.0", "a2a-samples"]
+dependencies = ["marvin>=3.0.0", "a2a"]
 
 [tool.uv.sources]
 a2a-samples = { workspace = true }
