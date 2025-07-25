@@ -13,25 +13,35 @@
     "multimodal": false,
     "real_time": true,
     "authentication": "none",
-    "encryption": false
+    "encryption": false,
+    "streaming": true,
+    "extended_card": true
   },
   "endpoints": {
-    "base_url": "http://localhost:8888/agents/helloworld",
-    "discovery": "http://localhost:8888/agents/helloworld/discover",
-    "communicate": "http://localhost:8888/agents/helloworld/communicate",
-    "delegate": "http://localhost:8888/agents/helloworld/delegate",
-    "health": "http://localhost:8888/agents/helloworld/health"
+    "base_url": "http://localhost:9999",
+    "discovery": "/.well-known/agent.json",
+    "communicate": "/communicate",
+    "delegate": "/delegate", 
+    "health": "/health",
+    "skills": {
+      "hello_world": "/skills/hello_world",
+      "super_hello_world": "/skills/super_hello_world"
+    }
   },
   "skills": [
     {
-      "id": "GREET",
-      "name": "greeting",
-      "description": "Generate greetings and introductions"
+      "id": "HELLO_WORLD",
+      "name": "Hello World",
+      "description": "Returns a simple hello world greeting",
+      "tags": ["hello world", "greeting", "demo"],
+      "examples": ["hi", "hello world", "say hello"]
     },
     {
-      "id": "DEMO",
-      "name": "demonstration",
-      "description": "Provide demo functionality"
+      "id": "SUPER_HELLO_WORLD", 
+      "name": "Super Hello World",
+      "description": "Returns an enthusiastic super hello world greeting with emoji",
+      "tags": ["hello world", "super", "extended", "emoji"],
+      "examples": ["super hi", "give me a super hello", "enthusiastic greeting"]
     }
   ],
   "interoperability": {

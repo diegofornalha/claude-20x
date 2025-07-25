@@ -1,0 +1,145 @@
+{
+  "@context": "https://a2aprotocol.ai/context/agent.json",
+  "id": "a2a_coordinator_agent",
+  "name": "A2A Coordinator Agent",
+  "description": "Specialized A2A coordination hub for agent discovery, message routing, and multi-agent orchestration",
+  "version": "1.1.0",
+  "protocol_version": "1.0",
+  "created": "2025-01-25T00:00:00.000Z",
+  "capabilities": {
+    "discovery": true,
+    "communication": true,
+    "cooperation": true,
+    "multimodal": false,
+    "real_time": true,
+    "authentication": "api_key",
+    "encryption": false,
+    "orchestration": true,
+    "registry_management": true,
+    "health_monitoring": true
+  },
+  "endpoints": {
+    "base_url": "http://localhost:8887",
+    "discovery": "/.well-known/agent.json", 
+    "communicate": "/api/v1/communicate",
+    "delegate": "/api/v1/delegate",
+    "health": "/api/v1/health",
+    "registry": "/api/v1/registry",
+    "route": "/api/v1/route",
+    "coordinate": "/api/v1/coordinate"
+  },
+  "skills": [
+    {
+      "id": "AGENT_DISCOVERY",
+      "name": "Agent Discovery & Registry",
+      "description": "Automatic discovery of active agents in network and centralized registry maintenance",
+      "tags": ["discovery", "registry", "network", "agent-management"],
+      "examples": ["discovery", "registry", "capabilities"]
+    },
+    {
+      "id": "MESSAGE_ROUTING", 
+      "name": "Message Routing",
+      "description": "Intelligent routing of messages between agents with queue management and status tracking",
+      "tags": ["routing", "messaging", "queue", "communication"],
+      "examples": ["route hello world to helloworld", "send status check to guardian"]
+    },
+    {
+      "id": "MULTI_AGENT_COORDINATION",
+      "name": "Multi-Agent Coordination", 
+      "description": "Orchestration of complex workflows requiring multiple agents with dependency management",
+      "tags": ["coordination", "orchestration", "workflow", "multi-agent"],
+      "examples": ["coordinate health analysis", "coordinate data extraction and monitoring"]
+    },
+    {
+      "id": "HEALTH_MONITORING",
+      "name": "Health Monitoring",
+      "description": "Continuous monitoring of agent health with failure detection and automatic recovery",
+      "tags": ["monitoring", "health", "recovery", "availability"],
+      "examples": ["health", "status", "monitor agents"]
+    }
+  ],
+  "interoperability": {
+    "platforms": [
+      "A2A Protocol",
+      "claude-flow",
+      "Python",
+      "FastAPI"
+    ],
+    "protocols": [
+      "A2A",
+      "HTTP",
+      "JSON-RPC",
+      "WebSocket"
+    ],
+    "data_formats": [
+      "JSON",
+      "MessagePack",
+      "text/plain"
+    ],
+    "frameworks": [
+      "Python",
+      "FastAPI",
+      "asyncio"
+    ]
+  },
+  "security": {
+    "authentication_methods": [
+      "api_key",
+      "none"
+    ],
+    "authorization": "role_based",
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 200,
+      "burst_limit": 50
+    },
+    "cors": {
+      "enabled": true,
+      "origins": ["*"]
+    }
+  },
+  "performance": {
+    "max_concurrent_tasks": 100,
+    "average_response_time_ms": 150,
+    "availability_sla": "99.5%",
+    "supported_load": "1000 req/min"
+  },
+  "coordination_patterns": [
+    "sequential",
+    "parallel", 
+    "conditional",
+    "pipeline"
+  ],
+  "registry": {
+    "known_agents": {
+      "guardian": {
+        "url": "http://localhost:9999",
+        "capabilities": ["sustainability", "monitoring", "health_check"],
+        "status": "active"
+      },
+      "helloworld": {
+        "url": "http://localhost:9999", 
+        "capabilities": ["hello", "basic_tasks", "demo"],
+        "status": "active"
+      },
+      "marvin": {
+        "url": "http://localhost:10030",
+        "capabilities": ["extraction", "contact_info", "structured_data"],
+        "status": "active"
+      },
+      "gemini": {
+        "url": "http://localhost:8886",
+        "capabilities": ["code_generation", "refactoring", "analysis"],
+        "status": "configured"
+      }
+    }
+  },
+  "metadata": {
+    "project_type": "coordinator",
+    "compliance_level": "A2A_1.0", 
+    "last_updated": "2025-01-25T00:00:00.000Z",
+    "maintainer": "A2A Development Team",
+    "neural_optimization": true,
+    "discovery_cache_ttl": 300
+  }
+}

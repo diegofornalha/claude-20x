@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  a2a-server:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      - A2A_PORT=8888
+      - A2A_HOST=0.0.0.0
+      - A2A_LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8888/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    
+  # Optional: Add database for persistent task storage
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     - POSTGRES_DB=a2a
+  #     - POSTGRES_USER=a2a
+  #     - POSTGRES_PASSWORD=a2a_password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+# volumes:
+#   postgres_data:

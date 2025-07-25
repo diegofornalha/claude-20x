@@ -1,0 +1,195 @@
+{
+  "@context": "https://a2aprotocol.ai/context/agent.json",
+  "id": "a2a_python_sdk",
+  "name": "A2A Python SDK",
+  "description": "Python SDK for Agent-to-Agent (A2A) Protocol implementation with comprehensive framework capabilities",
+  "version": "1.0.0",
+  "protocol_version": "1.0", 
+  "created": "2025-01-25T00:00:00.000Z",
+  "capabilities": {
+    "discovery": true,
+    "communication": true,
+    "cooperation": true,
+    "multimodal": true,
+    "real_time": true,
+    "authentication": "multiple",
+    "encryption": true,
+    "framework": true,
+    "sdk": true,
+    "grpc_support": true,
+    "database_support": true
+  },
+  "endpoints": {
+    "base_url": "http://localhost:8080",
+    "discovery": "/.well-known/agent.json",
+    "rpc": "/",
+    "health": "/health",
+    "docs": "/docs",
+    "grpc": "grpc://localhost:50051"
+  },
+  "skills": [
+    {
+      "id": "AGENT_FRAMEWORK",
+      "name": "A2A Agent Framework",
+      "description": "Complete framework for building A2A-compliant agents with server/client capabilities",
+      "tags": ["framework", "SDK", "agent development", "A2A protocol"],
+      "examples": [
+        "Create an A2A server agent",
+        "Build A2A client for agent communication",
+        "Implement custom agent capabilities"
+      ]
+    },
+    {
+      "id": "PROTOCOL_IMPLEMENTATION",
+      "name": "A2A Protocol Implementation",
+      "description": "Full implementation of Agent-to-Agent communication protocol specifications",
+      "tags": ["protocol", "communication", "interoperability", "standards"],
+      "examples": [
+        "Handle A2A message routing",
+        "Implement discovery mechanisms",
+        "Manage agent capabilities"
+      ]
+    },
+    {
+      "id": "DATABASE_INTEGRATION", 
+      "name": "Database Integration",
+      "description": "Support for PostgreSQL, MySQL, and SQLite databases with async operations",
+      "tags": ["database", "persistence", "SQL", "async"],
+      "examples": [
+        "Configure PostgreSQL for agent data",
+        "Implement MySQL agent storage",
+        "Use SQLite for lightweight agents"
+      ]
+    },
+    {
+      "id": "GRPC_COMMUNICATION",
+      "name": "gRPC Communication",
+      "description": "High-performance gRPC communication for agent-to-agent interactions",
+      "tags": ["gRPC", "performance", "binary protocol", "streaming"],
+      "examples": [
+        "Setup gRPC agent server",
+        "Implement streaming agent communication",
+        "Use Protocol Buffers for agent messages"
+      ]
+    },
+    {
+      "id": "TESTING_FRAMEWORK",
+      "name": "Testing Framework",
+      "description": "Comprehensive testing utilities for A2A agent development and validation",
+      "tags": ["testing", "validation", "quality assurance", "development"],
+      "examples": [
+        "Test agent compliance",
+        "Validate A2A protocol implementation",
+        "Integration testing for agents"
+      ]
+    }
+  ],
+  "supported_databases": [
+    "PostgreSQL",
+    "MySQL", 
+    "SQLite"
+  ],
+  "communication_protocols": [
+    "HTTP",
+    "gRPC",
+    "JSON-RPC",
+    "WebSocket"
+  ],
+  "input_modes": [
+    "application/json",
+    "text/plain",
+    "application/x-protobuf",
+    "multipart/form-data"
+  ],
+  "output_modes": [
+    "application/json",
+    "text/plain",
+    "application/x-protobuf",
+    "text/html"
+  ],
+  "interoperability": {
+    "platforms": [
+      "Python 3.10+",
+      "A2A Protocol",
+      "FastAPI",
+      "Starlette",
+      "gRPC"
+    ],
+    "protocols": [
+      "A2A",
+      "HTTP", 
+      "gRPC",
+      "WebSocket",
+      "JSON-RPC"
+    ],
+    "data_formats": [
+      "JSON",
+      "Protocol Buffers",
+      "MessagePack",
+      "text/plain"
+    ],
+    "frameworks": [
+      "FastAPI",
+      "Starlette", 
+      "SQLAlchemy",
+      "Pydantic",
+      "gRPC"
+    ]
+  },
+  "security": {
+    "authentication_methods": [
+      "none",
+      "api_key",
+      "oauth2",
+      "jwt"
+    ],
+    "authorization": "configurable",
+    "encryption": {
+      "transport": "TLS",
+      "at_rest": "configurable"
+    },
+    "rate_limiting": {
+      "enabled": true,
+      "configurable": true
+    }
+  },
+  "performance": {
+    "max_concurrent_connections": 1000,
+    "average_response_time_ms": 50,
+    "throughput": "10000+ req/sec",
+    "scalability": "horizontal"
+  },
+  "dependencies": {
+    "core": [
+      "fastapi>=0.115.2",
+      "httpx>=0.28.1", 
+      "pydantic>=2.11.3",
+      "starlette",
+      "grpcio>=1.60"
+    ],
+    "optional": {
+      "postgresql": "sqlalchemy[asyncio,postgresql-asyncpg]>=2.0.0",
+      "mysql": "sqlalchemy[asyncio,aiomysql]>=2.0.0", 
+      "sqlite": "sqlalchemy[asyncio,aiosqlite]>=2.0.0"
+    }
+  },
+  "installation": {
+    "methods": ["pip", "uv"],
+    "commands": [
+      "pip install a2a-sdk",
+      "uv add a2a-sdk",
+      "pip install 'a2a-sdk[postgresql]'",
+      "uv add 'a2a-sdk[sql]'"
+    ]
+  },
+  "metadata": {
+    "project_type": "sdk",
+    "compliance_level": "A2A_1.0",
+    "last_updated": "2025-01-25T00:00:00.000Z",
+    "maintainer": "Google LLC",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/a2aproject/a2a-python",
+    "documentation": "https://a2aproject.github.io/A2A/sdk/python/",
+    "python_versions": ["3.10", "3.11", "3.12", "3.13"]
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "@context": "https://a2aprotocol.ai/context/agent.json",
+  "id": "gemini_code_assistant",
+  "name": "Gemini Code Assistant",
+  "description": "AI-powered code generation and analysis agent using Google's Gemini models for intelligent software development assistance",
+  "version": "1.0.0", 
+  "protocol_version": "1.0",
+  "created": "2025-01-25T00:00:00.000Z",
+  "capabilities": {
+    "discovery": true,
+    "communication": true,
+    "cooperation": true,
+    "multimodal": true,
+    "real_time": true,
+    "authentication": "api_key",
+    "encryption": false,
+    "code_generation": true,
+    "code_analysis": true,
+    "natural_language": true
+  },
+  "endpoints": {
+    "base_url": "http://localhost:8886",
+    "discovery": "/.well-known/agent.json",
+    "communicate": "/api/v1/communicate",
+    "delegate": "/api/v1/delegate", 
+    "health": "/api/v1/health",
+    "generate": "/api/v1/generate",
+    "analyze": "/api/v1/analyze"
+  },
+  "skills": [
+    {
+      "id": "CODE_GENERATION_PYTHON",
+      "name": "Python Code Generation", 
+      "description": "Generate high-quality Python code from natural language descriptions with best practices",
+      "tags": ["python", "code generation", "development", "programming"],
+      "examples": [
+        "Create a FastAPI endpoint for user authentication",
+        "Generate a Python class for data validation",
+        "Write a function to process CSV files"
+      ]
+    },
+    {
+      "id": "CODE_GENERATION_JAVASCRIPT",
+      "name": "JavaScript Code Generation",
+      "description": "Generate modern JavaScript/TypeScript code for web applications and Node.js",
+      "tags": ["javascript", "typescript", "web development", "node.js"],
+      "examples": [
+        "Create a React component for user profile",
+        "Generate an Express.js API endpoint",
+        "Write async JavaScript for data fetching"
+      ]
+    },
+    {
+      "id": "CODE_REFACTORING",
+      "name": "Code Refactoring",
+      "description": "Analyze and refactor existing code to improve performance, readability, and maintainability",
+      "tags": ["refactoring", "optimization", "code quality", "maintenance"],
+      "examples": [
+        "Refactor this function to be more efficient",
+        "Improve the structure of this class",
+        "Optimize this algorithm for better performance"
+      ]
+    },
+    {
+      "id": "NATURAL_LANGUAGE_QUERY",
+      "name": "Natural Language Code Query",
+      "description": "Answer questions about code, explain functionality, and provide technical guidance",
+      "tags": ["explanation", "documentation", "technical support", "analysis"],
+      "examples": [
+        "Explain what this function does",
+        "How can I improve this code?",
+        "What are the potential issues with this implementation?"
+      ]
+    },
+    {
+      "id": "DATA_ANALYSIS",
+      "name": "Data Analysis Code",
+      "description": "Generate code for data analysis, visualization, and statistical operations",
+      "tags": ["data analysis", "visualization", "statistics", "pandas"],
+      "examples": [
+        "Create a data visualization for sales trends",
+        "Generate pandas code to analyze customer data", 
+        "Write code for statistical analysis"
+      ]
+    }
+  ],
+  "supported_languages": [
+    "Python",
+    "JavaScript", 
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "SQL",
+    "JSON",
+    "YAML"
+  ],
+  "input_modes": [
+    "text/plain",
+    "application/json",
+    "multimodal"
+  ],
+  "output_modes": [
+    "text/plain",
+    "application/json",
+    "code",
+    "markdown"
+  ],
+  "interoperability": {
+    "platforms": [
+      "Google Gemini",
+      "Python",
+      "A2A Protocol",
+      "FastAPI"
+    ],
+    "protocols": [
+      "A2A",
+      "HTTP", 
+      "JSON-RPC"
+    ],
+    "data_formats": [
+      "JSON",
+      "text/plain",
+      "markdown",
+      "code"
+    ],
+    "frameworks": [
+      "Python",
+      "FastAPI",
+      "google-generativeai"
+    ]
+  },
+  "security": {
+    "authentication_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "authorization": "api_key_required",
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 30,
+      "burst_limit": 10
+    },
+    "data_privacy": {
+      "code_retention": "none",
+      "logging_level": "minimal"
+    }
+  },
+  "performance": {
+    "max_concurrent_tasks": 5,
+    "average_response_time_ms": 2000,
+    "code_quality_score": "90%",
+    "supported_load": "30 req/min"
+  },
+  "ai_model": {
+    "provider": "Google",
+    "model": "gemini-1.5-flash",
+    "capabilities": [
+      "text_generation",
+      "code_generation", 
+      "multimodal_understanding"
+    ],
+    "context_window": 1000000,
+    "output_tokens": 8192
+  },
+  "metadata": {
+    "project_type": "ai_assistant",
+    "compliance_level": "A2A_1.0",
+    "last_updated": "2025-01-25T00:00:00.000Z",
+    "maintainer": "Gemini Integration Team",
+    "requires_api_key": true,
+    "environment_variable": "GEMINI_API_KEY"
+  }
+}
