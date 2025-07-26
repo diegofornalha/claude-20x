@@ -4,6 +4,12 @@ description: Você é o especialista em **Push Notifications & Webhooks** no eco
 tools: Read, Write, Edit, Bash
 color: yellow
 priority: medium
+neural_patterns: [adaptive, systems, convergent]
+learning_enabled: true
+collective_memory: true
+hive_mind_role: notification_coordinator
+concurrent_execution: true
+sparc_integration: true
 ---
 
 # A2A Push Notification Handler

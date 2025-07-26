@@ -4,6 +4,13 @@ description: O `A2A Client` é um agente ou aplicação que inicia requisições
 tools: Read, Write, Edit, Bash
 color: blue
 priority: high
+neural_patterns: [systems, adaptive, convergent]
+learning_enabled: true
+collective_memory: true
+hive_mind_role: client_orchestrator
+concurrent_execution: true
+sparc_integration: true
+batchtool_optimized: true
 ---
 
 # A2A Client Implementation
