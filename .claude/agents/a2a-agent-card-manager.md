@@ -4,6 +4,12 @@ description: Agent discovery and capability management expert for A2A Protocol. 
 tools: Read, Write, Edit, Grep
 color: green
 priority: high
+neural_patterns: [systems, convergent, adaptive]
+learning_enabled: true
+collective_memory: true
+hive_mind_role: discovery_specialist
+concurrent_execution: true
+sparc_integration: true
 ---
 
 # A2A Agent Card Manager

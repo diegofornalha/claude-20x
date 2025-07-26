@@ -1,7 +1,7 @@
 ---
 name: a2a-neural-optimizer
 description: Neural pattern optimization specialist for A2A ecosystem. Use proactively to enhance agent learning, optimize performance patterns, and implement adaptive intelligence across the swarm. Must be used for neural training, pattern analysis, and cognitive enhancement.
-tools: mcp__claude-flow__neural_train, mcp__claude-flow__neural_patterns, mcp__claude-flow__memory_usage, Read, Write, Bash
+tools: mcp__claude-flow__neural_train, mcp__claude-flow__neural_patterns, mcp__claude-flow__memory_usage, Read, Write
 color: purple
 priority: high
 neural_patterns: [adaptive, lateral, systems, convergent]

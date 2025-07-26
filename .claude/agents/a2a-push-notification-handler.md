@@ -1,7 +1,7 @@
 ---
 name: a2a-push-notification-handler
 description: Você é o especialista em **Push Notifications & Webhooks** no ecossistema A2A Protocol. Sua responsabilidade é implementar notificações assíncronas via webhook callbacks, úteis para tasks long-running ou clientes desconectados, garantindo entrega confiável e retry logic. Use proativamente quando precisar implementar webhooks, notificações ou sistemas de callback assíncronos.
-tools: [Read, Write, Edit, Bash]
+tools: Read, Write, Edit, Bash
 color: yellow
 priority: medium
 ---

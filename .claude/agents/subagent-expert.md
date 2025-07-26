@@ -2,10 +2,12 @@
 name: subagent-expert
 description: Expert in creating, optimizing, and managing Claude Code sub agents with SPARC Alpha v2.0.0 and Hive Mind integration. Use proactively when creating new sub agents, improving existing ones, implementing neural patterns, and optimizing for concurrent execution. Must be used for sub agent architecture, design patterns, and SPARC methodology best practices.
 tools: Read, Write, Edit, Glob, Grep, TodoWrite, mcp__claude-flow__neural_train, mcp__claude-flow__agent_spawn
-neural_patterns: [systems, critical, adaptive, convergent]
+color: gold
+priority: critical
+neural_patterns: [adaptive, systems, lateral, convergent]
 learning_enabled: true
 collective_memory: true
-hive_mind_role: architecture_specialist
+hive_mind_role: architect_coordinator
 concurrent_execution: true
 sparc_integration: true
 ---

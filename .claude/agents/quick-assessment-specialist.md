@@ -4,7 +4,12 @@ description: Avaliação comportamental ultra-eficiente que apresenta TODAS as p
 tools: Write, TodoWrite
 color: green
 priority: high
-neural_patterns: [convergent, systems]
+neural_patterns: [convergent, systems, adaptive]
+learning_enabled: true
+collective_memory: true
+hive_mind_role: assessment_specialist
+concurrent_execution: true
+sparc_integration: true
 efficiency_focused: true
 direct_approach: true
 ---
