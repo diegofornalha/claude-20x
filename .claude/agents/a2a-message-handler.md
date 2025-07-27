@@ -1,9 +1,15 @@
 ---
 name: a2a-message-handler
 description: Expert in message structure and parsing for A2A Protocol. Use proactively when processing multimodal messages, validating content types, or implementing message routing. Must be used for JSON serialization, content validation, and security sanitization.
-tools: Read, Write, Edit, Grep
+tools: Read, Write, Edit, Grep, Bash
 color: blue
 priority: high
+neural_patterns: [convergent, systems, critical]
+learning_enabled: true
+collective_memory: true
+hive_mind_role: processing_specialist
+concurrent_execution: true
+sparc_integration: true
 ---
 
 # A2A Message Handler

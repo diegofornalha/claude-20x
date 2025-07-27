@@ -1,14 +1,9 @@
 ---
 name: agent-coordination-protocol
-description: Advanced coordination protocol for A2A agents using Claude Flow hooks with Hive Mind integration. Use proactively for inter-agent communication, state management, neural pattern optimization, and SPARC workflow orchestration. Must be used when coordinating multiple agents in SPARC workflows with Queen-led coordination.
-tools: Read, Write, Bash, TodoWrite, mcp__claude-flow__memory_usage, mcp__claude-flow__neural_patterns
+description: Coordination protocol for A2A agents using Claude Flow hooks. Use proactively for inter-agent communication, state management, and workflow orchestration. Must be used when coordinating multiple agents in SPARC workflows.
+tools: Read, Write, Bash, TodoWrite
 color: green
 priority: high
-neural_patterns: [systems, convergent, adaptive]
-learning_enabled: true
-collective_memory: true
-hive_mind_role: coordination_specialist
-concurrent_execution: true
 ---
 
 # Agent Coordination Protocol
