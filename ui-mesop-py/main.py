@@ -36,6 +36,8 @@ load_dotenv()
 
 def on_load(e: me.LoadEvent):  # pylint: disable=unused-argument
     """On load event"""
+    from utils.api_key_manager import ApiKeyManager
+    
     state = me.state(AppState)
     me.set_theme_mode(state.theme_mode)
     if 'conversation_id' in me.query_params:
@@ -48,7 +50,10 @@ def on_load(e: me.LoadEvent):  # pylint: disable=unused-argument
     uses_vertex_ai = (
         os.getenv('GOOGLE_GENAI_USE_VERTEXAI', '').upper() == 'TRUE'
     )
-    api_key = os.getenv('GOOGLE_API_KEY', '')
+    
+    # Try to load API key from saved config first
+    api_key_manager = ApiKeyManager()
+    api_key = api_key_manager.get_api_key()
 
     if uses_vertex_ai:
         state.uses_vertex_ai = True

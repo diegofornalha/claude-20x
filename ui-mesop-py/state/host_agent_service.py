@@ -209,10 +209,15 @@ async def UpdateAppState(state: AppState, conversation_id: str):
 async def UpdateApiKey(api_key: str):
     """Update the API key"""
     import httpx
+    from utils.api_key_manager import ApiKeyManager
 
     try:
         # Set the environment variable
         os.environ['GOOGLE_API_KEY'] = api_key
+        
+        # Save to config file
+        api_key_manager = ApiKeyManager()
+        api_key_manager.save_api_key(api_key)
 
         # Call the update API endpoint
         async with httpx.AsyncClient() as client:
