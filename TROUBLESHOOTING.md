@@ -1,5 +1,61 @@
 # Troubleshooting: Rodando o Projeto em Outra Máquina
 
+## Erro: "Cannot connect to agent as http://localhost:9999/"
+
+### Solução Rápida (Testada e Funcionando)
+
+Se você receber o erro "Cannot connect to agent as http://localhost:9999/", siga estes passos:
+
+```bash
+# 1. Verificar se há algo rodando na porta 9999
+lsof -i :9999
+
+# 2. Entrar no diretório do agente
+cd agents/helloworld
+
+# 3. Instalar dependências com UV
+uv sync
+
+# 4. Iniciar o agente em background
+nohup uv run python main_helloworld.py > helloworld.log 2>&1 & echo $!
+
+# 5. Aguardar 2 segundos e verificar os logs
+sleep 2 && tail -20 helloworld.log
+
+# 6. Testar se está funcionando
+curl -s http://localhost:9999/.well-known/agent.json | jq
+```
+
+### O que aconteceu no erro original
+
+1. O módulo `a2a` não estava instalado no ambiente Python
+2. O agente falhou ao iniciar com erro: `ModuleNotFoundError: No module named 'a2a'`
+3. A porta 9999 estava ocupada por outro processo Python que não era o agente
+
+### Verificação de sucesso
+
+Se tudo estiver funcionando, você verá:
+- Logs mostrando: "Uvicorn running on http://localhost:9999"
+- O comando curl retornará o JSON do agent card
+- A UI conseguirá se conectar ao agente
+
+### Salvar o PID para gerenciar o processo
+
+```bash
+# Salvar o PID retornado pelo comando nohup
+echo "PID_RETORNADO" > agents/helloworld/helloworld.pid
+
+# Para parar o agente depois
+kill $(cat agents/helloworld/helloworld.pid)
+```
+
+### Monitorar logs em tempo real
+
+```bash
+# Ver logs continuamente
+tail -f agents/helloworld/helloworld.log
+```
+
 ## UV não é obrigatório!
 
 UV é apenas um gerenciador de pacotes mais rápido. Você pode usar pip normal:
@@ -36,6 +92,15 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 # Ou via pip
 pip install uv
+```
+
+**Nota**: Após instalar o UV, pode ser necessário reiniciar o terminal ou executar:
+```bash
+# Mac/Linux
+source ~/.bashrc  # ou ~/.zshrc dependendo do seu shell
+
+# Verificar se o UV foi instalado
+uv --version
 ```
 
 ## Checklist de Problemas Comuns
@@ -275,6 +340,25 @@ CMD ["python", "main_helloworld.py"]
 # Construir e rodar
 docker build -t helloworld-agent .
 docker run -p 9999:9999 helloworld-agent
+```
+
+## Verificação Final - Agente Funcionando
+
+Após seguir as instruções, verifique se tudo está funcionando:
+
+```bash
+# 1. Verificar processo rodando
+ps aux | grep main_helloworld | grep -v grep
+
+# 2. Verificar porta aberta
+lsof -i :9999
+
+# 3. Testar agent card
+curl -s http://localhost:9999/.well-known/agent.json | jq .name
+# Deve retornar: "Hello World Agent"
+
+# 4. Verificar integração com a UI (se estiver usando)
+curl -s -X POST http://localhost:12000/agent/list -H "Content-Type: application/json" -d '{}' | jq '.[] | select(.name=="HelloWorld Agent")'
 ```
 
 ## Contato para Suporte
