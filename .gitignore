@@ -176,3 +176,5 @@ hive-mind-prompt-*.txt
 memory*
 context-engineering-turso*
 agents-a2a*
+.claude-flow.pid
+turso-specialist*
