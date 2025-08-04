@@ -145,6 +145,7 @@ $RECYCLE.BIN/
 node_modules
 
 
+
 # Claude Flow generated files
 .claude/settings.local.json
 .mcp.json
@@ -169,10 +170,6 @@ claude-flow
 claude-flow.bat
 claude-flow.ps1
 hive-mind-prompt-*.txt
-claudia
-.claude
-.claude-flow
-.github
-.have-mind
-.roo
-.run-swarm
+.claude/settings.json
+.claude*
+memory*
