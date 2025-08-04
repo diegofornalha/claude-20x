@@ -29,6 +29,7 @@ dependencies = [
     "numpy>=2.2.5",
     "python-dotenv>=1.1.0",
     "marvin>=3.0.0",
+    "emoji>=2.0.0",
 ]
 
 [tool.hatch.build.targets.wheel]

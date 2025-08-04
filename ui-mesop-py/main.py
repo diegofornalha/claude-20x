@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
 from fastapi.responses import FileResponse
-from pages.agents_page_improved import agents_page_improved
+from pages.agents_simple_list import agent_list_page_simple
 from pages.conversation import conversation_page
 from pages.event_list import event_list_page
 from pages.home import home_page_content
@@ -89,9 +89,9 @@ def home_page():
     security_policy=security_policy,
 )
 def agents_page():
-    """Agents Page - Improved"""
+    """Agents Page - Simple List"""
     api_key_dialog()
-    agents_page_improved()
+    agent_list_page_simple(me.state(AppState))
 
 
 @me.page(

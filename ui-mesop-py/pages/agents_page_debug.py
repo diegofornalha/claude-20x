@@ -168,7 +168,7 @@ def test_simple_debug(e):
         }
     ]
     
-    me.toast("✅ Teste simples executado!")
+    print("✅ Teste simples executado!")
 
 
 def list_agents_debug(e):
@@ -197,7 +197,7 @@ def list_agents_debug(e):
         
         state.is_loading = False
         state.debug_info = f"Encontrados {len(state.agents)} agentes"
-        me.toast(f"✅ {len(state.agents)} agentes encontrados!")
+        print(f"✅ {len(state.agents)} agentes encontrados!")
         
     except Exception as ex:
         state.error_message = f"Erro: {str(ex)}"
@@ -225,7 +225,7 @@ def refresh_agents_debug(e):
         
         state.is_loading = False
         state.debug_info = "Agentes atualizados com sucesso"
-        me.toast("✅ Agentes atualizados!")
+        print("✅ Agentes atualizados!")
         
     except Exception as ex:
         state.error_message = f"Erro: {str(ex)}"
@@ -235,5 +235,5 @@ def refresh_agents_debug(e):
 
 def test_agent_simple(e, agent_url: str, agent_name: str):
     """Teste simples de agente"""
-    me.toast(f"🔧 Testando {agent_name} em {agent_url}")
+    print(f"🔧 Testando {agent_name} em {agent_url}")
     print(f"🔧 Testando: {agent_name} ({agent_url})") 

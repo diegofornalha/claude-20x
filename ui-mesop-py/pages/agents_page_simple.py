@@ -104,7 +104,7 @@ def test_simple(e):
     state = me.state(SimpleAgentState)
     state.message = "Teste executado com sucesso!"
     state.agents_count = 2
-    me.toast("✅ Teste simples funcionando!")
+    print("✅ Teste simples funcionando!")
 
 
 def count_agents(e):
@@ -112,7 +112,7 @@ def count_agents(e):
     state = me.state(SimpleAgentState)
     state.agents_count = 2
     state.message = f"Encontrados {state.agents_count} agentes"
-    me.toast(f"📊 {state.agents_count} agentes encontrados!")
+    print(f"📊 {state.agents_count} agentes encontrados!")
 
 
 def debug_info(e):
@@ -120,4 +120,4 @@ def debug_info(e):
     state = me.state(SimpleAgentState)
     state.message = "Debug: Página funcionando corretamente"
     state.is_loading = False
-    me.toast("🐛 Debug info atualizada!") 
+    print("🐛 Debug info atualizada!") 

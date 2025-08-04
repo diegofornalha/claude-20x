@@ -31,6 +31,18 @@ class AgentState:
     last_update: Optional[str] = None
     total_discovered: int = 0
     refresh_count: int = 0
+    
+    # Campos para o dialog de adicionar agente
+    agent_dialog_open: bool = False
+    agent_address: str = ""
+    agent_name: str = ""
+    agent_description: str = ""
+    agent_framework_type: str = ""
+    input_modes: List[str] = field(default_factory=list)
+    output_modes: List[str] = field(default_factory=list)
+    stream_supported: bool = False
+    push_notifications_supported: bool = False
+    error: str = ""
 
 
 @me.stateclass

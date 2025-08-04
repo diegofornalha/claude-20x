@@ -140,13 +140,13 @@ def refresh_agents(e):
     
     try:
         asyncio.run(refresh_agents_on_server())
-        # Adicionar toast de sucesso
-        me.toast("✅ Agentes atualizados com sucesso!", type="success")
+        # Toast removido - não existe no Mesop
+        print("✅ Agentes atualizados com sucesso!")
         list_server_agents(e)  # Lista após atualizar
     except Exception as ex:
         agent_state.error_message = f"Erro: {str(ex)}"
         agent_state.is_loading = False
-        me.toast(f"❌ Erro ao atualizar: {str(ex)}", type="error")
+        # Toast removido - não existe no Mesop
         print(f"❌ Erro ao atualizar: {ex}")
 
 
@@ -154,8 +154,8 @@ def test_agent_improved(e: me.ClickEvent, agent_url: str, agent_name: str):
     """Teste melhorado de agente com feedback"""
     print(f"🔧 Testando: {agent_name} ({agent_url})")
     
-    # Mostrar toast de progresso
-    me.toast(f"🔧 Testando {agent_name}...", type="info")
+    # Toast removido - não existe no Mesop
+    print(f"🔧 Testando {agent_name}...")
     
     asyncio.run(test_agent_async(agent_url, agent_name))
 
@@ -170,14 +170,14 @@ async def test_agent_async(agent_url: str, agent_name: str):
                 data = response.json()
                 print(f"✅ {agent_name} está respondendo!")
                 print(f"📋 Versão: {data.get('version', 'N/A')}")
-                me.toast(f"✅ {agent_name} está online!", type="success")
+                # Toast removido - não existe no Mesop
             else:
                 print(f"⚠️ {agent_name} retornou status: {response.status_code}")
-                me.toast(f"⚠️ {agent_name} retornou status: {response.status_code}", type="warning")
+                # Toast removido - não existe no Mesop
                 
     except Exception as e:
         print(f"❌ Erro ao testar {agent_name}: {e}")
-        me.toast(f"❌ Erro ao testar {agent_name}: {str(e)}", type="error")
+        # Toast removido - não existe no Mesop
 
 
 async def get_agents_from_server() -> List[dict[str, Any]]:
