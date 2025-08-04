@@ -31,6 +31,28 @@
       "description": "Marvin contact extractor and AI assistant"
     },
     {
+      "name": "Turso Specialist",
+      "id": "turso-specialist",
+      "enabled": true,
+      "port": 4243,
+      "host": "localhost",
+      "path": "/Users/agents/Desktop/claude-20x/.conductor/juba/turso-specialist",
+      "command": "./start_turso_specialist.sh",
+      "health_check": "/status",
+      "restart_on_failure": true,
+      "restart_delay": 5,
+      "max_restarts": 3,
+      "environment": {},
+      "description": "Especialista em Turso Database para operações edge-native",
+      "capabilities": [
+        "database_query",
+        "data_analysis",
+        "realtime_sync",
+        "schema_management",
+        "sql_optimization"
+      ]
+    },
+    {
       "name": "A2A UI Dashboard",
       "id": "ui",
       "enabled": true,
