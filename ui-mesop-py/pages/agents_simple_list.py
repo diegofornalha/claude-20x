@@ -66,6 +66,13 @@ def agent_list_page_simple(app_state: AppState):
                         )
                     )
                     
+                    # Debug: mostrar estrutura do primeiro agente
+                    if agents:
+                        print(f"DEBUG: Tipo do agente: {type(agents[0])}")
+                        print(f"DEBUG: Agente completo: {agents[0]}")
+                        if hasattr(agents[0], '__dict__'):
+                            print(f"DEBUG: Atributos do agente: {agents[0].__dict__}")
+                    
                     # Mostrar cada agente
                     for agent in agents:
                         with me.box(
@@ -77,23 +84,29 @@ def agent_list_page_simple(app_state: AppState):
                                 background="#f9f9f9"
                             )
                         ):
-                            # Tentar acessar os atributos de forma segura
-                            if hasattr(agent, 'name'):
-                                me.text(agent.name, style=me.Style(font_weight='bold', font_size=16))
-                            elif isinstance(agent, dict) and 'name' in agent:
-                                me.text(agent['name'], style=me.Style(font_weight='bold', font_size=16))
+                            # AgentInfo contém um AgentCard, precisamos acessar agent.agent_card.name
+                            agent_name = None
+                            if hasattr(agent, 'agent_card') and hasattr(agent.agent_card, 'name'):
+                                agent_name = agent.agent_card.name
+                            elif isinstance(agent, dict) and 'agent_card' in agent and isinstance(agent['agent_card'], dict) and 'name' in agent['agent_card']:
+                                agent_name = agent['agent_card']['name']
+                            
+                            if agent_name:
+                                me.text(agent_name, style=me.Style(font_weight='bold', font_size=16))
                             else:
                                 me.text('Agente sem nome', style=me.Style(font_weight='bold', font_size=16))
                             
-                            if hasattr(agent, 'url'):
-                                me.text(f'URL: {agent.url}', style=me.Style(font_size=14, color='#666'))
-                            elif isinstance(agent, dict) and 'url' in agent:
-                                me.text(f'URL: {agent["url"]}', style=me.Style(font_size=14, color='#666'))
+                            # Exibir URL
+                            if hasattr(agent, 'agent_card') and hasattr(agent.agent_card, 'url'):
+                                me.text(f'URL: {agent.agent_card.url}', style=me.Style(font_size=14, color='#666'))
+                            elif isinstance(agent, dict) and 'agent_card' in agent and isinstance(agent['agent_card'], dict) and 'url' in agent['agent_card']:
+                                me.text(f'URL: {agent["agent_card"]["url"]}', style=me.Style(font_size=14, color='#666'))
                             
-                            if hasattr(agent, 'description'):
-                                me.text(agent.description, style=me.Style(font_size=14, color='#888'))
-                            elif isinstance(agent, dict) and 'description' in agent:
-                                me.text(agent['description'], style=me.Style(font_size=14, color='#888'))
+                            # Exibir descrição
+                            if hasattr(agent, 'agent_card') and hasattr(agent.agent_card, 'description'):
+                                me.text(agent.agent_card.description, style=me.Style(font_size=14, color='#888'))
+                            elif isinstance(agent, dict) and 'agent_card' in agent and isinstance(agent['agent_card'], dict) and 'description' in agent['agent_card']:
+                                me.text(agent['agent_card']['description'], style=me.Style(font_size=14, color='#888'))
                                 
             except Exception as e:
                 me.text(
