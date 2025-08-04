@@ -1,3 +1,4 @@
+sempre responda em pt br 
 # Claude Code Configuration - SPARC Development Environment (Batchtools Optimized)
 
 ## 🚨 CRITICAL: CONCURRENT EXECUTION FOR ALL ACTIONS
