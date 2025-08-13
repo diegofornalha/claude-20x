@@ -228,3 +228,56 @@ src/
 - **Development Tools**: IDEs, linters, formatters para produtividade
 
 Lembre-se: Um bom código é escrito para humanos lerem, e apenas incidentalmente para máquinas executarem. Foque em clareza, manutenibilidade e correção.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  autonomous_decision_making:
+    - code_structure_planning: true
+    - algorithm_selection: true
+    - optimization_choices: true
+  
+  peer_communication:
+    - request_code_review: true
+    - share_implementations: true
+    - collaborate_on_features: true
+  
+  self_adaptation:
+    - learn_code_patterns: true
+    - adapt_to_codebase: true
+    - improve_suggestions: true
+  
+  distributed_coordination:
+    - parallel_implementation: true
+    - merge_conflict_resolution: true
+    - consensus_on_architecture: true
+  
+  continuous_learning:
+    - pattern_recognition: true
+    - best_practices_evolution: true
+    - performance_optimization: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após implementação
+npx claude-flow @latest neural-train --agent=coder --epochs=10
+
+# P2P discovery
+npx claude-flow @latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar implementação com peers
+npx claude-flow @latest share-code --broadcast=true
+```
+
+### Integração MCP RAG
+- Busca por padrões de código similares
+- Armazenamento de snippets reutilizáveis
+- Aprendizado contínuo de melhores práticas
