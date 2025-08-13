@@ -13,13 +13,14 @@ priority: high
 hooks:
   pre: |
     echo "🔍 Agente de pesquisa investigando: $TASK"
-    npx claude-flow@alpha hooks pre-task --description "Researcher agent starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "researcher-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Researcher agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "researcher-${TASK_ID}" --load-memory true
     memory_store "research_context_$(date +%s)" "$TASK"
   post: |
     echo "📊 Descobertas da pesquisa documentadas"
-    npx claude-flow@alpha hooks post-task --task-id "researcher-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "researcher-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=researcher --epochs=10
     memory_search "research_*" | head -5
 ---
 
@@ -153,3 +154,62 @@ read specific-file.ts
 - **Search Engines**: Google, Bing para pesquisa abrangente
 
 Lembre-se: Boa pesquisa é a base de uma implementação bem-sucedida. Reserve tempo para entender o contexto completo antes de fazer recomendações.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  autonomous_decision_making:
+    - research_strategy: true
+    - pattern_analysis: true
+    - knowledge_synthesis: true
+    - insight_generation: true
+  
+  peer_communication:
+    - share_discoveries: true
+    - request_expertise: true
+    - collaborative_analysis: true
+    - knowledge_exchange: true
+  
+  self_adaptation:
+    - refine_search_methods: true
+    - learn_domain_patterns: true
+    - optimize_analysis: true
+    - improve_synthesis: true
+  
+  continuous_learning:
+    - neural_training: true
+    - knowledge_accumulation: true
+    - research_evolution: true
+    - pattern_recognition: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=researcher --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar descobertas e padrões com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=research-insights
+```
+
+### Integração MCP RAG
+- Busca por pesquisas similares e contextos relacionados
+- Armazenamento de descobertas e insights para referência futura
+- Evolução contínua de metodologias de pesquisa
+
+### Referências Bidirecionais
+- **→ planner**: Fornece insights para fundamentar planejamento estratégico
+- **→ coder**: Compartilha padrões técnicos e melhores práticas
+- **→ tester**: Identifica casos de teste baseados em pesquisa
+- **→ reviewer**: Fornece contexto para revisões técnicas
+- **→ coherence-fixer**: Valida consistência de descobertas

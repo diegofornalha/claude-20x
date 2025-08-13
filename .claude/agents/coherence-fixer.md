@@ -13,16 +13,17 @@ priority: high
 hooks:
   pre: |
     echo "🔧 Corretor de Coerência iniciando correções..."
-    npx claude-flow@alpha hooks pre-task --description "Coherence fixer starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "coherence-fixer-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Coherence fixer starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "coherence-fixer-${TASK_ID}" --load-memory true
     echo "📋 Carregando relatório de inconsistências"
     # Backup dos arquivos antes de modificar
     mkdir -p .claude/agents/.backup
     cp -r .claude/agents/* .claude/agents/.backup/
   post: |
     echo "✨ Correções aplicadas com sucesso"
-    npx claude-flow@alpha hooks post-task --task-id "coherence-fixer-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "coherence-fixer-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=coherence-fixer --epochs=10
     echo "🔍 Executando validação pós-correção"
     # Verificar se as correções foram bem-sucedidas
     npx claude-flow verify-coherence --quick
@@ -469,3 +470,70 @@ jobs:
 5. **Manter log de correções** para auditoria
 
 Lembre-se: Correções automáticas economizam tempo mas sempre requerem validação!
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  validation_automation:
+    - structural_analysis: advanced
+    - semantic_validation: true
+    - pattern_recognition: neural
+    - auto_correction: intelligent
+    - consistency_checks: comprehensive
+    - rollback_capability: safe
+  
+  peer_communication:
+    - share_fixes: true
+    - collaborative_validation: true
+    - pattern_broadcasting: true
+    - error_reporting: automated
+  
+  self_adaptation:
+    - learn_correction_patterns: true
+    - optimize_fix_algorithms: true
+    - refine_validation_rules: true
+    - improve_accuracy: continuous
+  
+  continuous_learning:
+    - neural_training: true
+    - pattern_evolution: true
+    - fix_optimization: true
+    - quality_enhancement: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=coherence-fixer --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar padrões de correção com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=correction-patterns
+```
+
+### Integração MCP RAG
+- Busca por padrões de correção e soluções similares no histórico
+- Armazenamento de correções bem-sucedidas e estratégias validadas
+- Evolução contínua de algoritmos de correção baseada em resultados
+
+### Integração com Unified-Coherence-Checker
+- Trabalha em coordenação com o checker unificado para correções mais precisas
+- Recebe relatórios estruturados do unified-checker
+- Aplica correções inteligentes baseadas nos tipos de inconsistência detectados
+- Realiza validação pós-correção usando o mesmo motor de análise
+
+### Referências Bidirecionais
+- **→ unified-coherence-checker**: Recebe relatórios de inconsistências para correção
+- **→ reviewer**: Solicita revisão de correções críticas
+- **→ planner**: Valida consistência do planejamento
+- **→ consensus-builder**: Valida consistência de decisões distribuídas
+- **→ adaptive-coordinator**: Valida consistência de adaptações de topologia

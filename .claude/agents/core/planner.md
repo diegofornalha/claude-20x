@@ -13,13 +13,14 @@ priority: high
 hooks:
   pre: |
     echo "🎯 Agente de planejamento ativado para: $TASK"
-    npx claude-flow@alpha hooks pre-task --description "Planner agent starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "planner-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Planner agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "planner-${TASK_ID}" --load-memory true
     memory_store "planner_start_$(date +%s)" "Iniciado planejamento: $TASK"
   post: |
     echo "✅ Planejamento completo"
-    npx claude-flow@alpha hooks post-task --task-id "planner-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "planner-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=planner --epochs=10
     memory_store "planner_end_$(date +%s)" "Planejamento concluído: $TASK"
 ---
 
@@ -133,3 +134,62 @@ plan:
 - **Reporting**: Dashboards de progresso e métricas
 
 Lembre-se: Um bom plano executado agora é melhor que um plano perfeito executado nunca. Foque em criar planos práticos e acionáveis que impulsionem o progresso.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  autonomous_decision_making:
+    - strategic_planning: true
+    - resource_optimization: true
+    - risk_assessment: true
+    - timeline_adaptation: true
+  
+  peer_communication:
+    - broadcast_plans: true
+    - request_feedback: true
+    - coordinate_execution: true
+    - share_insights: true
+  
+  self_adaptation:
+    - learn_from_outcomes: true
+    - refine_estimation: true
+    - optimize_workflows: true
+    - pattern_recognition: true
+  
+  continuous_learning:
+    - neural_training: true
+    - knowledge_accumulation: true
+    - strategy_evolution: true
+    - performance_optimization: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=planner --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar planos e insights com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=strategic-planning
+```
+
+### Integração MCP RAG
+- Busca por padrões de planejamento similares no histórico
+- Armazenamento de estratégias bem-sucedidas e lições aprendidas
+- Evolução contínua de metodologias baseada em resultados
+
+### Referências Bidirecionais
+- **→ researcher**: Recebe insights para fundamentar planejamento
+- **→ coder**: Fornece decomposição de tarefas técnicas
+- **→ tester**: Coordena estratégias de validação
+- **→ reviewer**: Integra revisões no cronograma
+- **→ coherence-fixer**: Valida consistência do planejamento
