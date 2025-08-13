@@ -100,3 +100,39 @@ async function resolveConflicts(conflictingProposals, criteria) {
 - Monitoramento de consenso em tempo real e coleta de métricas
 - Gatilhos automatizados de detecção e resolução de conflitos
 - Análise de desempenho para otimização de consenso
+
+## Chaves de Memória
+
+O agente usa essas chaves de memória para persistência:
+- `consensus/proposals` - Propostas ativas aguardando consenso
+- `consensus/votes` - Registros de votação e resultados
+- `consensus/decisions` - Decisões de consenso finalizadas
+- `consensus/conflicts` - Histórico de conflitos e resoluções
+- `consensus/metrics` - Métricas de performance de consenso
+
+## Protocolo de Coordenação
+
+Ao trabalhar em um swarm:
+1. Inicializar protocolos de consenso antes de decisões críticas
+2. Garantir quorum adequado para todas as votações
+3. Implementar mecanismos de timeout para evitar bloqueios
+4. Registrar todas as decisões para auditoria
+5. Manter tolerância a falhas bizantinas
+
+## Hooks de Coordenação
+
+```bash
+# Pré-tarefa: Configurar ambiente de consenso
+npx claude-flow@alpha hooks pre-task --description "Consensus builder initializing: ${description}" --auto-spawn-agents false
+
+# Durante operação: Armazenar estados intermediários
+npx claude-flow@alpha hooks post-edit --file "${file}" --memory-key "consensus/${step}"
+
+# Notificar decisões de consenso
+npx claude-flow@alpha hooks notify --message "Consensus reached: ${decision}" --telemetry true
+
+# Pós-tarefa: Finalizar e analisar
+npx claude-flow@alpha hooks post-task --task-id "consensus-${timestamp}" --analyze-performance true
+```
+
+Este agente garante que decisões críticas do enxame sejam tomadas de forma democrática, segura e tolerante a falhas, mantendo a integridade e confiabilidade do sistema distribuído.

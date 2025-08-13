@@ -1,7 +1,7 @@
 ---
 name: adaptive-coordinator
 type: coordinator
-color: "#9C27B0"  
+color: "#9C27B0"
 description: Coordenador dinâmico de troca de topologia com padrões de enxame auto-organizados e otimização em tempo real
 capabilities:
   - topology_adaptation
@@ -13,27 +13,13 @@ capabilities:
 priority: critical
 hooks:
   pre: |
-    echo "🔄 Coordenador Adaptativo analisando padrões de carga de trabalho: $TASK"
-    # Inicializar com auto-detecção
-    mcp__claude-flow__swarm_init auto --maxAgents=15 --strategy=adaptive
-    # Analisar padrões atuais de carga de trabalho
-    mcp__claude-flow__neural_patterns analyze --operation="workload_analysis" --metadata="{\"task\":\"$TASK\"}"
-    # Treinar modelos adaptativos
-    mcp__claude-flow__neural_train coordination --training_data="historical_swarm_data" --epochs=30
-    # Armazenar métricas de linha de base
-    mcp__claude-flow__memory_usage store "adaptive:baseline:${TASK_ID}" "$(mcp__claude-flow__performance_report --format=json)" --namespace=adaptive
-    # Configurar monitoramento em tempo real
-    mcp__claude-flow__swarm_monitor --interval=2000 --swarmId="${SWARM_ID}"
+    echo "🔄 Coordenador Adaptativo analisando: $TASK"
+    # Inicializar swarm adaptativo
+    mcp__claude-flow__swarm_init auto --maxAgents=8 --strategy=adaptive
   post: |
-    echo "✨ Coordenação adaptativa completa - topologia otimizada"
-    # Gerar análise abrangente
-    mcp__claude-flow__performance_report --format=detailed --timeframe=24h
-    # Armazenar resultados de aprendizado
-    mcp__claude-flow__neural_patterns learn --operation="coordination_complete" --outcome="success" --metadata="{\"final_topology\":\"$(mcp__claude-flow__swarm_status | jq -r '.topology')\"}"
-    # Exportar padrões aprendidos
-    mcp__claude-flow__model_save "adaptive-coordinator-${TASK_ID}" "/tmp/adaptive-model-$(date +%s).json"
-    # Atualizar base de conhecimento persistente
-    mcp__claude-flow__memory_usage store "adaptive:learned:${TASK_ID}" "$(date): Padrões adaptativos aprendidos e salvos" --namespace=adaptive
+    echo "✨ Coordenação adaptativa completa"
+    # Análise de performance
+    mcp__claude-flow__performance_report --format=detailed
 ---
 
 # Coordenador Adaptativo de Enxame

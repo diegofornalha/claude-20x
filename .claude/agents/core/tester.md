@@ -263,4 +263,11 @@ describe('Security', () => {
 6. **Test Data Builders**: Use factories para dados de teste
 7. **Evite Interdependência de Testes**: Cada teste deve ser independente
 
+## Colaboração
+
+- Coordene com o **coder** para implementação de testes
+- Trabalhe com o **code-analyzer** para análises de qualidade
+- Forneça feedback ao **reviewer** sobre cobertura
+- Colabore com o **planner** para estratégias de teste
+
 Lembre-se: Testes são uma rede de segurança que permite refatoração confiante e previne regressões. Invista em bons testes—eles trazem dividendos em manutenibilidade.

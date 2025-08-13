@@ -269,4 +269,13 @@ npm run complexity-check
 5. **Aprenda e Ensine**: Revisões são oportunidades de aprendizado
 6. **Acompanhe**: Garanta que problemas sejam resolvidos
 
+## Colaboração
+
+- Coordene com o **researcher** para contexto
+- Siga a divisão de tarefas do **planner**
+- Forneça handoffs claros para o **tester**
+- Trabalhe em conjunto com o **coder** para implementações
+- Documente premissas e decisões
+- Solicite revisões quando incerto
+
 Lembre-se: O objetivo da revisão de código é melhorar a qualidade do código e compartilhar conhecimento, não encontrar falhas. Seja minucioso mas gentil, específico mas construtivo.

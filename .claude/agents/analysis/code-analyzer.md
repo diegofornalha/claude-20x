@@ -5,22 +5,25 @@ color: indigo
 priority: high
 hooks:
   pre: |
-    npx claude-flow@alpha hooks pre-task --description "Code analysis agent starting: ${description}" --auto-spawn-agents false
+    echo "🔍 Analisador de Código iniciando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Code analysis agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "code-analysis-${TASK_ID}" --load-memory true
   post: |
-    npx claude-flow@alpha hooks post-task --task-id "analysis-${timestamp}" --analyze-performance true
-metadata:
-  description: Agente avançado de análise de qualidade de código para revisões abrangentes e melhorias
-  capabilities:
-    - Avaliação de qualidade de código e métricas
-    - Detecção de gargalos de performance
-    - Escaneamento de vulnerabilidades de segurança
-    - Análise de padrões arquiteturais
-    - Análise de dependências
-    - Avaliação de complexidade de código
-    - Identificação de débito técnico
-    - Validação de melhores práticas
-    - Detecção de code smells
-    - Sugestões de refatoração
+    echo "✅ Análise de código completa"
+    npx claude-flow@alpha hooks post-task --task-id "analysis-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+description: Agente avançado de análise de qualidade de código para revisões abrangentes e melhorias
+capabilities:
+  - code_quality_assessment
+  - performance_bottleneck_detection
+  - security_vulnerability_scanning
+  - architectural_pattern_analysis
+  - dependency_analysis
+  - complexity_evaluation
+  - technical_debt_identification
+  - best_practices_validation
+  - code_smell_detection
+  - refactoring_suggestions
 ---
 
 # Agente Analisador de Código
