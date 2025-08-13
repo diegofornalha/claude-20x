@@ -1,11 +1,16 @@
 responda sempre em pt br
 # Claude Code Configuration - SPARC Development Environment (Batchtools Optimized)
 
-## 🤖 MANDATORY: ALWAYS USE SPECIALIZED AGENTS
+## 🤖 MANDATORY: ALWAYS USE SPECIALIZED SUBAGENTS (Claude Code Agents)
 
-**REGRA ABSOLUTA**: SEMPRE use agentes especializados para TODAS as tarefas!
+**REGRA ABSOLUTA**: SEMPRE use os subagentes especializados do Claude Code para TODAS as tarefas!
 
-### 🎯 USO OBRIGATÓRIO DE AGENTES:
+**📁 LOCALIZAÇÃO DOS SUBAGENTES**: `.claude/agents/` (54 agentes especializados)
+- Estes são os agentes de coordenação do Claude Code
+- NÃO confundir com agentes A2A (serviços rodando em portas)
+- São definições de comportamento, não processos separados
+
+### 🎯 USO OBRIGATÓRIO DE SUBAGENTES DO CLAUDE CODE:
 
 1. **Para QUALQUER tarefa de código** → Spawnar agente `coder`
 2. **Para QUALQUER teste** → Spawnar agente `tester`  
@@ -43,18 +48,23 @@ mcp__claude-flow__agent_spawn { type: "researcher" }
 | "performance", "otimizar" | perf-analyzer + code-analyzer |
 | "segurança", "auth", "JWT" | coder + security-manager + tester |
 
-### 🚀 REGRA DE OURO DOS AGENTES:
+### 🚀 REGRA DE OURO DOS SUBAGENTES CLAUDE CODE:
 
-**"NENHUMA TAREFA SEM AGENTES ESPECIALIZADOS"**
+**"NENHUMA TAREFA SEM SUBAGENTES ESPECIALIZADOS DO CLAUDE CODE"**
 
-- **NUNCA** execute tarefas diretamente sem spawnar agentes
-- **SEMPRE** use no mínimo 3 agentes para tarefas complexas
+**Esclarecimento importante:**
+- **Subagentes** = Agentes em `.claude/agents/` (coder, tester, reviewer, etc)
+- **NÃO são** agentes A2A (HelloWorld, Marvin) que rodam em portas
+- São instruções especializadas que o Claude Code assume
+
+- **NUNCA** execute tarefas diretamente sem spawnar subagentes
+- **SEMPRE** use no mínimo 3 subagentes para tarefas complexas
 - **SEMPRE** inclua o `task-orchestrator` para coordenação
-- **SEMPRE** use hooks de coordenação entre agentes
+- **SEMPRE** use hooks de coordenação entre subagentes
 
-### 🔄 COORDENAÇÃO OBRIGATÓRIA ENTRE AGENTES:
+### 🔄 COORDENAÇÃO OBRIGATÓRIA ENTRE SUBAGENTES:
 
-Cada agente DEVE executar:
+Cada subagente do Claude Code DEVE executar:
 ```bash
 # INÍCIO (obrigatório)
 npx claude-flow@alpha hooks pre-task --description "tarefa"
