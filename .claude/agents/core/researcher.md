@@ -13,9 +13,13 @@ priority: high
 hooks:
   pre: |
     echo "🔍 Agente de pesquisa investigando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Researcher agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "researcher-${TASK_ID}" --load-memory true
     memory_store "research_context_$(date +%s)" "$TASK"
   post: |
     echo "📊 Descobertas da pesquisa documentadas"
+    npx claude-flow@alpha hooks post-task --task-id "researcher-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     memory_search "research_*" | head -5
 ---
 

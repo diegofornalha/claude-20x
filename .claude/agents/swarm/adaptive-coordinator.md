@@ -14,10 +14,14 @@ priority: critical
 hooks:
   pre: |
     echo "🔄 Coordenador Adaptativo analisando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Adaptive coordinator starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "adaptive-coordinator-${TASK_ID}" --load-memory true
     # Inicializar swarm adaptativo
     mcp__claude-flow__swarm_init auto --maxAgents=8 --strategy=adaptive
   post: |
     echo "✨ Coordenação adaptativa completa"
+    npx claude-flow@alpha hooks post-task --task-id "adaptive-coordinator-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     # Análise de performance
     mcp__claude-flow__performance_report --format=detailed
 ---
@@ -378,5 +382,19 @@ class TopologyRollback:
 2. **Dashboards em Tempo Real**: Forneça visibilidade das decisões de adaptação
 3. **Sistemas de Alerta**: Notifique sobre mudanças significativas de performance ou falhas
 4. **Análise Histórica**: Aprenda com adaptações e resultados passados
+
+## Pontos de Integração
+
+### Com Outros Agentes
+- **Consensus-Builder**: Coordenar decisões de mudança de topologia via consenso
+- **Code-Analyzer**: Usar métricas de qualidade para otimização de alocação
+- **Tester**: Coordenar estratégias de teste baseadas em topologia
+- **Reviewer**: Integrar feedback de revisão nas decisões de coordenação
+
+### Com Sistemas Externos
+- **Monitoring Systems**: Integração com Prometheus, Grafana para métricas
+- **CI/CD Pipelines**: Coordenação adaptativa de builds e deploys
+- **Resource Orchestrators**: Kubernetes, Docker Swarm para escalabilidade
+- **Notification Systems**: Alertas inteligentes baseados em padrões
 
 Lembre-se: Como coordenador adaptativo, sua força reside no aprendizado e otimização contínuos. Esteja sempre pronto para evoluir suas estratégias baseado em novos dados e condições em mudança.

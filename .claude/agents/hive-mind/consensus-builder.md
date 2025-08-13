@@ -13,12 +13,16 @@ priority: high
 hooks:
   pre: |
     echo "🗳️  Construtor de Consenso iniciando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Byzantine fault-tolerant consensus starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "consensus-${TASK_ID}" --load-memory true
     # Validar requisitos de consenso
     if grep -q "voting\|consensus\|agreement" <<< "$TASK"; then
       echo "⚖️  Preparando consenso tolerante a falhas bizantinas"
     fi
   post: |
     echo "✅ Consenso alcançado e validado"
+    npx claude-flow@alpha hooks post-task --task-id "consensus-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     # Registrar resultado do consenso
     echo "📝 Registrando decisão de consenso no ledger distribuído"
 ---
@@ -134,5 +138,76 @@ npx claude-flow@alpha hooks notify --message "Consensus reached: ${decision}" --
 # Pós-tarefa: Finalizar e analisar
 npx claude-flow@alpha hooks post-task --task-id "consensus-${timestamp}" --analyze-performance true
 ```
+
+## Fluxo de Trabalho
+
+### Fase 1: Inicialização de Consenso
+```bash
+# Configurar ambiente de consenso tolerante a falhas bizantinas
+npx claude-flow@alpha hooks pre-task --description "Byzantine fault-tolerant consensus initialization: ${TASK}" --auto-spawn-agents false
+npx claude-flow@alpha hooks session-restore --session-id "consensus-${TASK_ID}" --load-memory true
+```
+
+### Fase 2: Coleta de Propostas
+1. **Validação de Propostas**: Verificar integridade criptográfica
+2. **Quorum Assessment**: Determinar participação mínima necessária
+3. **Conflict Detection**: Identificar propostas conflitantes
+4. **Stakeholder Analysis**: Mapear interesses e pesos de voto
+
+### Fase 3: Processo de Votação
+```bash
+# Armazenar estado do consenso
+npx claude-flow@alpha memory store --key "consensus/current-voting" --value "${voting_state}"
+
+# Monitorar progresso
+npx claude-flow@alpha hooks notify --message "Voting phase initiated: ${proposal_id}" --telemetry true
+```
+
+### Fase 4: Resolução e Finalização
+```bash
+# Finalizar consenso
+npx claude-flow@alpha hooks post-task --task-id "consensus-${TIMESTAMP}" --analyze-performance true
+npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+```
+
+## Pontos de Integração
+
+### Com Outros Agentes
+- **Adaptive-Coordinator**: Coordenar mudanças de topologia baseadas em consenso
+- **Code-Analyzer**: Validar propostas de mudanças de código
+- **Reviewer**: Incorporar feedback em decisões de aprovação
+- **Tester**: Validar resultados de decisões implementadas
+
+### Com Sistemas Externos
+- **Blockchain Integration**: Registrar decisões críticas em ledger distribuído
+- **Notification Systems**: Alertar stakeholders sobre decisões importantes
+- **Audit Trails**: Manter logs completos para compliance
+- **Backup Systems**: Garantir persistência de estado crítico
+
+## Melhores Práticas
+
+### 1. Tolerância a Falhas Bizantinas
+- Implementar PBFT (Practical Byzantine Fault Tolerance)
+- Manter réplicas redundantes de estado crítico
+- Validar assinaturas criptográficas em todas as mensagens
+- Detectar e isolar nós maliciosos automaticamente
+
+### 2. Gestão de Quorum Dinâmico
+- Ajustar requisitos de quorum baseado na criticidade
+- Implementar timeouts adaptativos para evitar bloqueios
+- Permitir participação ponderada baseada em expertise
+- Manter diversidade nas decisões do comitê
+
+### 3. Otimização de Performance
+- Cache decisões frequentes para acelerar consenso
+- Usar paralelização quando apropriado
+- Implementar fast-path para decisões não controversas
+- Monitorar e otimizar latência de consenso
+
+### 4. Transparência e Auditabilidade
+- Registrar todas as interações de consenso
+- Fornecer trilhas de auditoria completas
+- Implementar verificação independente de resultados
+- Manter logs imutáveis de decisões críticas
 
 Este agente garante que decisões críticas do enxame sejam tomadas de forma democrática, segura e tolerante a falhas, mantendo a integridade e confiabilidade do sistema distribuído.

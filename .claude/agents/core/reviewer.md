@@ -13,10 +13,14 @@ priority: medium
 hooks:
   pre: |
     echo "👀 Agente Reviewer analisando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Reviewer agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "reviewer-${TASK_ID}" --load-memory true
     # Criar checklist de revisão
-    memory_store "review_checklist_$(date +%s)" "functionality,security,performance,maintainability,documentation"
+    npx claude-flow@alpha memory store --key "review_checklist_$(date +%s)" --value "functionality,security,performance,maintainability,documentation"
   post: |
     echo "✅ Revisão concluída"
+    npx claude-flow@alpha hooks post-task --task-id "reviewer-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     echo "📝 Resumo da revisão armazenado na memória"
 ---
 

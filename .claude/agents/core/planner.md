@@ -13,9 +13,13 @@ priority: high
 hooks:
   pre: |
     echo "🎯 Agente de planejamento ativado para: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Planner agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "planner-${TASK_ID}" --load-memory true
     memory_store "planner_start_$(date +%s)" "Iniciado planejamento: $TASK"
   post: |
     echo "✅ Planejamento completo"
+    npx claude-flow@alpha hooks post-task --task-id "planner-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     memory_store "planner_end_$(date +%s)" "Planejamento concluído: $TASK"
 ---
 

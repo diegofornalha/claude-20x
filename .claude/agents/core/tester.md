@@ -13,12 +13,16 @@ priority: high
 hooks:
   pre: |
     echo "🧪 Agente Tester validando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Tester agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "tester-${TASK_ID}" --load-memory true
     # Verificar ambiente de teste
     if [ -f "jest.config.js" ] || [ -f "vitest.config.ts" ]; then
       echo "✓ Framework de teste detectado"
     fi
   post: |
     echo "📋 Resumo dos resultados dos testes:"
+    npx claude-flow@alpha hooks post-task --task-id "tester-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     npm test -- --reporter=json 2>/dev/null | jq '.numPassedTests, .numFailedTests' 2>/dev/null || echo "Testes concluídos"
 ---
 

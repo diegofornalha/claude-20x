@@ -13,12 +13,16 @@ priority: high
 hooks:
   pre: |
     echo "💻 Agente Coder implementando: $TASK"
+    npx claude-flow@alpha hooks pre-task --description "Coder agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@alpha hooks session-restore --session-id "coder-${TASK_ID}" --load-memory true
     # Verificar se existem testes
     if grep -q "test\|spec" <<< "$TASK"; then
       echo "⚠️  Lembre-se: Escreva os testes primeiro (TDD)"
     fi
   post: |
     echo "✨ Implementação concluída"
+    npx claude-flow@alpha hooks post-task --task-id "coder-${TASK_ID}" --analyze-performance true
+    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
     # Executar validação básica
     if [ -f "package.json" ]; then
       npm run lint --if-present
