@@ -1,6 +1,72 @@
 responda sempre em pt br
 # Claude Code Configuration - SPARC Development Environment (Batchtools Optimized)
 
+## 🤖 MANDATORY: ALWAYS USE SPECIALIZED AGENTS
+
+**REGRA ABSOLUTA**: SEMPRE use agentes especializados para TODAS as tarefas!
+
+### 🎯 USO OBRIGATÓRIO DE AGENTES:
+
+1. **Para QUALQUER tarefa de código** → Spawnar agente `coder`
+2. **Para QUALQUER teste** → Spawnar agente `tester`  
+3. **Para QUALQUER revisão** → Spawnar agente `reviewer`
+4. **Para QUALQUER pesquisa** → Spawnar agente `researcher`
+5. **Para QUALQUER planejamento** → Spawnar agente `planner`
+6. **Para QUALQUER documentação** → Spawnar agente `api-docs`
+7. **Para QUALQUER análise** → Spawnar agente `code-analyzer`
+
+### ⚡ INICIALIZAÇÃO AUTOMÁTICA DE SWARM:
+
+**SEMPRE** iniciar conversas com:
+```javascript
+// OBRIGATÓRIO no início de CADA tarefa
+mcp__claude-flow__swarm_init { topology: "hierarchical", maxAgents: 8 }
+mcp__claude-flow__agent_spawn { type: "task-orchestrator" }
+mcp__claude-flow__agent_spawn { type: "coder" }
+mcp__claude-flow__agent_spawn { type: "tester" }
+mcp__claude-flow__agent_spawn { type: "reviewer" }
+mcp__claude-flow__agent_spawn { type: "researcher" }
+```
+
+### 📋 MAPEAMENTO AUTOMÁTICO DE TAREFAS → AGENTES:
+
+| Palavras na Tarefa | Agentes a Spawnar |
+|-------------------|------------------|
+| "implementar", "criar", "desenvolver" | coder + tester + reviewer |
+| "testar", "validar", "QA" | tester + code-analyzer |
+| "revisar", "analisar", "melhorar" | reviewer + code-analyzer |
+| "documentar", "explicar", "README" | api-docs + researcher |
+| "debug", "erro", "bug" | code-analyzer + coder + tester |
+| "API", "endpoint", "REST" | backend-dev + api-docs + tester |
+| "banco", "database", "SQL" | coder + code-analyzer |
+| "deploy", "CI/CD", "pipeline" | cicd-engineer + tester |
+| "performance", "otimizar" | perf-analyzer + code-analyzer |
+| "segurança", "auth", "JWT" | coder + security-manager + tester |
+
+### 🚀 REGRA DE OURO DOS AGENTES:
+
+**"NENHUMA TAREFA SEM AGENTES ESPECIALIZADOS"**
+
+- **NUNCA** execute tarefas diretamente sem spawnar agentes
+- **SEMPRE** use no mínimo 3 agentes para tarefas complexas
+- **SEMPRE** inclua o `task-orchestrator` para coordenação
+- **SEMPRE** use hooks de coordenação entre agentes
+
+### 🔄 COORDENAÇÃO OBRIGATÓRIA ENTRE AGENTES:
+
+Cada agente DEVE executar:
+```bash
+# INÍCIO (obrigatório)
+npx claude-flow@alpha hooks pre-task --description "tarefa"
+
+# DURANTE (após cada operação)
+npx claude-flow@alpha hooks post-edit --file "arquivo"
+npx claude-flow@alpha hooks notify --message "decisão"
+
+# FIM (obrigatório)
+npx claude-flow@alpha hooks post-task --analyze-performance true
+```
+
 ## 🚨 CRITICAL: CONCURRENT EXECUTION FOR ALL ACTIONS
 
 **ABSOLUTE RULE**: ALL operations MUST be concurrent/parallel in a single message:

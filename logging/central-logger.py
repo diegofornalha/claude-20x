@@ -205,8 +205,8 @@ class CentralLogger:
                 # Salvar no arquivo central
                 self._save_to_central_log(log_entry)
                 
-                # Enviar para websockets em tempo real
-                self._broadcast_to_websockets(log_entry)
+                # Enviar para websockets em tempo real (comentado por enquanto - precisa ser assíncrono)
+                # self._broadcast_to_websockets(log_entry)
                 
                 # Verificar alertas
                 self._check_alerts(log_entry)
@@ -423,9 +423,9 @@ if __name__ == "__main__":
         version="1.0.0"
     )
     
-    print("📊 Sistema iniciado em: http://localhost:8001")
-    print("🔍 Logs em tempo real: ws://localhost:8001/ws/logs")
-    print("📖 API docs: http://localhost:8001/docs")
+    print("📊 Sistema iniciado em: http://localhost:8002")
+    print("🔍 Logs em tempo real: ws://localhost:8002/ws/logs")
+    print("📖 API docs: http://localhost:8002/docs")
     
     # Executar servidor
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8002)
