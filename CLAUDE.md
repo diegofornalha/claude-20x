@@ -75,11 +75,6 @@ responda sempre em pt br
   TodoWrite { todos: [10+ todos] }
 ```
 
-## COMANDOS
-
-**SPARC:** `npx claude-flow sparc [modes|run|tdd|batch]`
-**Build:** `npm run [build|test|lint|typecheck]`
-
 ## 📊 MÉTRICAS DE COERÊNCIA: 100%
 
 ```
@@ -103,13 +98,6 @@ responda sempre em pt br
 - ✅ **NOTIFY**: Comunicação em tempo real entre agentes
 - ✅ **SESSION**: Persiste estado em SQLite (4.4MB)
 
-```bash
-# Hooks executam AUTOMATICAMENTE! Mas você pode chamar manual:
-npx claude-flow@alpha hooks pre-task --description "[task]"
-npx claude-flow@alpha hooks post-edit --file "[file]"
-npx claude-flow@alpha hooks post-task --analyze-performance true
-npx claude-flow@alpha hooks notify --message "[status]"
-```
 
 **📊 Dados salvos em:** `.swarm/memory.db`
 
@@ -138,5 +126,3 @@ npx claude-flow@alpha hooks notify --message "[status]"
 5. **Memória SQLite** - Persistência em `.swarm/memory.db`
 6. **Claude executa** - MCP coordena, Hooks rastreiam
 
----
-Docs: github.com/ruvnet/claude-flow
