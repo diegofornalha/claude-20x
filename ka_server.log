@@ -1,0 +1,485 @@
+[0;34m🚀 Knowledge Assistant - A2A Protocol Server[0m
+[0;34m📦 Stack: uv + Starlette + Uvicorn + a2a-sdk[0m
+[0;32m📦 Instalando dependências...[0m
+Resolved 69 packages in 2ms
+Audited 54 packages in 0.08ms
+[0;34m🔍 Verificando RAG Server na porta 5000...[0m
+[1;33m⚠️  RAG Server não disponível - usando modo mock[0m
+[1;33m⚠️  Porta 9001 já está em uso[0m
+Finalizando processo anterior...
+[0;32m🚀 Iniciando servidor A2A na porta 9001...[0m
+[0;32m📡 Agent Card: http://localhost:9001/.well-known/agent-card.json[0m
+[0;32m🔗 Tasks API: http://localhost:9001/tasks[0m
+[0;32m❤️  Health: http://localhost:9001/health[0m
+[0;32m📊 Workers: 4[0m
+INFO:agent_executor:✅ KnowledgeAssistantExecutor initialized with direct MCP/RAG support
+INFO:     Started server process [67604]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9001 (Press CTRL+C to quit)
+WARNING:a2a.server.apps.jsonrpc.jsonrpc_app:Deprecated agent card endpoint '/.well-known/agent.json' accessed. Please use '/.well-known/agent-card.json' instead. This endpoint will be removed in a future version.
+🚀 Iniciando Knowledge Assistant (A2A) em 0.0.0.0:9001...
+📦 Usando padrão A2A com SDK oficial
+💾 Integração com RAG Server via MCP
+🐍 Python: 3.12.11 (main, Jul  ...
+⚡ uvloop ativado para melhor performance asyncio
+✅ Servidor configurado com padrão A2A
+🔄 Suporte a streaming habilitado
+📡 Agent Card: /.well-known/agent.json
+🔗 Tasks: /tasks
+❤️ Health: /health
+👥 Workers: 4
+🔄 Event Loop: uvloop
+🎯 Iniciando servidor Uvicorn...
+INFO:     127.0.0.1:64037 - "GET /.well-known/agent.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64275 - "GET /.well-known/agent-card.json HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='fb99bd91-2b0b-4a17-aba0-f178e0994a7c' extensions=None kind='message' message_id='a451a6ca-cc22-4947-996d-d54b349ce461' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='buscar informações sobre A2A Protocol'))] reference_task_ids=None role=<Role.user: 'user'> task_id='b042e123-1bc5-4cd9-8ef5-afb589645ad6'
+INFO:agent_executor:🔍 DEBUG - Extracted query: buscar informações sobre A2A Protocol
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: b042e123-1bc5-4cd9-8ef5-afb589645ad6
+INFO:agent_executor:🔄 Task b042e123-1bc5-4cd9-8ef5-afb589645ad6 marked as WORKING
+INFO:agent_executor:🔍 Searching for: buscar informações sobre A2A Protocol
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task b042e123-1bc5-4cd9-8ef5-afb589645ad6 completed successfully
+INFO:     127.0.0.1:64277 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='13bf0768-37d0-4f54-8529-3ff0a89a5059' extensions=None kind='message' message_id='985cf67e-9bbc-4697-8c63-17a3cf62ad90' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='adicionar conhecimento: Título: Demo A2A, Conteúdo: Teste de integração'))] reference_task_ids=None role=<Role.user: 'user'> task_id='22412b22-a2c7-4ce7-aadc-e177238afea6'
+INFO:agent_executor:🔍 DEBUG - Extracted query: adicionar conhecimento: Título: Demo A2A, Conteúdo: Teste de integração
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 22412b22-a2c7-4ce7-aadc-e177238afea6
+INFO:agent_executor:🔄 Task 22412b22-a2c7-4ce7-aadc-e177238afea6 marked as WORKING
+INFO:agent_executor:✅ Task 22412b22-a2c7-4ce7-aadc-e177238afea6 completed successfully
+INFO:     127.0.0.1:64290 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='e4e24c7e-fa61-46fa-91ac-02b127ea52ce' extensions=None kind='message' message_id='c7a99937-8f57-4b16-93dd-de52009dd074' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='analisar tópico: agentes autônomos'))] reference_task_ids=None role=<Role.user: 'user'> task_id='8e5f3f89-4f8e-4d67-97eb-74e78d6dbc3e'
+INFO:agent_executor:🔍 DEBUG - Extracted query: analisar tópico: agentes autônomos
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 8e5f3f89-4f8e-4d67-97eb-74e78d6dbc3e
+INFO:agent_executor:🔄 Task 8e5f3f89-4f8e-4d67-97eb-74e78d6dbc3e marked as WORKING
+INFO:agent_executor:🔬 Analyzing topic: tópico: agentes autônomos
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 8e5f3f89-4f8e-4d67-97eb-74e78d6dbc3e completed successfully
+INFO:     127.0.0.1:64321 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='7202286e-6e16-4e08-b155-df5d003951b4' extensions=None kind='message' message_id='d857a421-296e-4ce5-b524-6a3a473189b1' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='obter estatísticas'))] reference_task_ids=None role=<Role.user: 'user'> task_id='117e0f81-2ac8-489a-b01a-f9a2306217a5'
+INFO:agent_executor:🔍 DEBUG - Extracted query: obter estatísticas
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 117e0f81-2ac8-489a-b01a-f9a2306217a5
+INFO:agent_executor:🔄 Task 117e0f81-2ac8-489a-b01a-f9a2306217a5 marked as WORKING
+INFO:agent_executor:📊 Getting statistics
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando estatísticas mock
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 117e0f81-2ac8-489a-b01a-f9a2306217a5 completed successfully
+INFO:     127.0.0.1:64333 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='24338c6e-5a04-4dea-ab98-2b407dafe1a2' extensions=None kind='message' message_id='df4cab6d-3d16-4cd3-92a7-34043fe81dd9' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='Olá Knowledge Assistant! Sou o Claude Code. Vamos testar nossa comunicação A2A. Você está funcionando bem?'))] reference_task_ids=None role=<Role.user: 'user'> task_id='a5a7995f-6bb0-4eb4-9be6-b3453a00522a'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Olá Knowledge Assistant! Sou o Claude Code. Vamos testar nossa comunicação A2A. Você está funcionando bem?
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: a5a7995f-6bb0-4eb4-9be6-b3453a00522a
+INFO:agent_executor:🔄 Task a5a7995f-6bb0-4eb4-9be6-b3453a00522a marked as WORKING
+INFO:agent_executor:🔍 Searching for: Olá Knowledge Assistant! Sou o Claude Code. Vamos testar nossa comunicação A2A. Você está funcionando bem?
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task a5a7995f-6bb0-4eb4-9be6-b3453a00522a completed successfully
+INFO:     127.0.0.1:64351 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='d894fd1c-3d31-461e-9d7c-f1288bbd2d7d' extensions=None kind='message' message_id='0b0da0ea-244f-408a-b573-9f1203a12b58' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='Que tipos de busca você pode fazer no RAG Server? Quais são suas capacidades principais?'))] reference_task_ids=None role=<Role.user: 'user'> task_id='f083da91-5bc1-43ed-a021-4d55f22c2fc9'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Que tipos de busca você pode fazer no RAG Server? Quais são suas capacidades principais?
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: f083da91-5bc1-43ed-a021-4d55f22c2fc9
+INFO:agent_executor:🔄 Task f083da91-5bc1-43ed-a021-4d55f22c2fc9 marked as WORKING
+INFO:agent_executor:🔍 Searching for: Que tipos de busca você pode fazer no RAG Server? Quais são suas capacidades principais?
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task f083da91-5bc1-43ed-a021-4d55f22c2fc9 completed successfully
+INFO:     127.0.0.1:64351 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='75f8e434-c454-418a-a068-cde829be2159' extensions=None kind='message' message_id='a3da5fab-6225-44af-937f-324546722887' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text="Você pode buscar informações sobre 'arquitetura A2A' no RAG Server?"))] reference_task_ids=None role=<Role.user: 'user'> task_id='103a94a7-dc46-49b0-960a-f0b9f351ffda'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Você pode buscar informações sobre 'arquitetura A2A' no RAG Server?
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 103a94a7-dc46-49b0-960a-f0b9f351ffda
+INFO:agent_executor:🔄 Task 103a94a7-dc46-49b0-960a-f0b9f351ffda marked as WORKING
+INFO:agent_executor:🔍 Searching for: Você pode buscar informações sobre 'arquitetura A2A' no RAG Server?
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 103a94a7-dc46-49b0-960a-f0b9f351ffda completed successfully
+INFO:     127.0.0.1:64351 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='d306c61b-4c75-4e7a-b444-09dcf20d001a' extensions=None kind='message' message_id='ad5131bc-eba7-47ff-8e29-6d2a79a2a3ef' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='Quantos documentos sobre A2A existem no RAG Server atualmente?'))] reference_task_ids=None role=<Role.user: 'user'> task_id='f3f6951e-b41b-43bb-82d6-6aebc56041c1'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Quantos documentos sobre A2A existem no RAG Server atualmente?
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: f3f6951e-b41b-43bb-82d6-6aebc56041c1
+INFO:agent_executor:🔄 Task f3f6951e-b41b-43bb-82d6-6aebc56041c1 marked as WORKING
+INFO:agent_executor:🔍 Searching for: Quantos documentos sobre A2A existem no RAG Server atualmente?
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task f3f6951e-b41b-43bb-82d6-6aebc56041c1 completed successfully
+INFO:     127.0.0.1:64351 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='af7cb034-70c5-4ea0-986e-2df9b9d298b8' extensions=None kind='message' message_id='775d8c91-d215-473c-9497-657ba5945ce0' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='Obrigado pela conversa! Até a próxima!'))] reference_task_ids=None role=<Role.user: 'user'> task_id='5b482fc5-974c-4996-a5d0-0cf39a1798e3'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Obrigado pela conversa! Até a próxima!
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 5b482fc5-974c-4996-a5d0-0cf39a1798e3
+INFO:agent_executor:🔄 Task 5b482fc5-974c-4996-a5d0-0cf39a1798e3 marked as WORKING
+INFO:agent_executor:🔍 Searching for: Obrigado pela conversa! Até a próxima!
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 5b482fc5-974c-4996-a5d0-0cf39a1798e3 completed successfully
+INFO:     127.0.0.1:64351 - "POST / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64488 - "GET /health HTTP/1.1" 404 Not Found
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='ea01e262-f2ad-477e-b1fd-c11f7052468e' extensions=None kind='message' message_id='b035c771-a9b0-4a79-b537-9620a59514cb' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='buscar informações sobre arquitetura A2A'))] reference_task_ids=None role=<Role.user: 'user'> task_id='60129562-185b-46c1-8d39-80105477da62'
+INFO:agent_executor:🔍 DEBUG - Extracted query: buscar informações sobre arquitetura A2A
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 60129562-185b-46c1-8d39-80105477da62
+INFO:agent_executor:🔄 Task 60129562-185b-46c1-8d39-80105477da62 marked as WORKING
+INFO:agent_executor:🔍 Searching for: buscar informações sobre arquitetura A2A
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 60129562-185b-46c1-8d39-80105477da62 completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='b099850d-6d0d-457c-90ae-1a29bb90ee2d' extensions=None kind='message' message_id='c275b21d-69a6-4539-b99c-6ee640a8cbf8' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='adicionar conhecimento: Título: Teste A2A, Conteúdo: Este é um teste de adição'))] reference_task_ids=None role=<Role.user: 'user'> task_id='2d19bc20-6e6e-4588-a899-e36211efb967'
+INFO:agent_executor:🔍 DEBUG - Extracted query: adicionar conhecimento: Título: Teste A2A, Conteúdo: Este é um teste de adição
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 2d19bc20-6e6e-4588-a899-e36211efb967
+INFO:agent_executor:🔄 Task 2d19bc20-6e6e-4588-a899-e36211efb967 marked as WORKING
+INFO:agent_executor:✅ Task 2d19bc20-6e6e-4588-a899-e36211efb967 completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='70c4de51-863a-4402-83aa-c278c9db6f49' extensions=None kind='message' message_id='361dd993-9a0c-4054-b382-bb8fd5b62fe8' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='analisar tópico: protocolo A2A'))] reference_task_ids=None role=<Role.user: 'user'> task_id='b939a1da-5796-4863-bea8-8ae85bfd7f86'
+INFO:agent_executor:🔍 DEBUG - Extracted query: analisar tópico: protocolo A2A
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: b939a1da-5796-4863-bea8-8ae85bfd7f86
+INFO:agent_executor:🔄 Task b939a1da-5796-4863-bea8-8ae85bfd7f86 marked as WORKING
+INFO:agent_executor:🔬 Analyzing topic: tópico: protocolo A2A
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task b939a1da-5796-4863-bea8-8ae85bfd7f86 completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='1a1bdc5e-bfca-4dd9-af53-2b277c52ec1f' extensions=None kind='message' message_id='ddc65663-2630-456a-b35a-d719f9b14e85' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='obter estatísticas da base de conhecimento'))] reference_task_ids=None role=<Role.user: 'user'> task_id='664bcec6-2f02-4160-9542-9914fd8a5c4d'
+INFO:agent_executor:🔍 DEBUG - Extracted query: obter estatísticas da base de conhecimento
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 664bcec6-2f02-4160-9542-9914fd8a5c4d
+INFO:agent_executor:🔄 Task 664bcec6-2f02-4160-9542-9914fd8a5c4d marked as WORKING
+INFO:agent_executor:📊 Getting statistics
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando estatísticas mock
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 664bcec6-2f02-4160-9542-9914fd8a5c4d completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='b14f4e8a-d848-4619-85eb-311faa9b8116' extensions=None kind='message' message_id='332f31e7-2952-4876-af26-ae2e765dae4c' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='stream: me conte sobre A2A em modo streaming'))] reference_task_ids=None role=<Role.user: 'user'> task_id='0c2e88cf-d134-43e9-b529-c846e4a9c244'
+INFO:agent_executor:🔍 DEBUG - Extracted query: stream: me conte sobre A2A em modo streaming
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 0c2e88cf-d134-43e9-b529-c846e4a9c244
+INFO:agent_executor:🔄 Task 0c2e88cf-d134-43e9-b529-c846e4a9c244 marked as WORKING
+INFO:agent_executor:🔍 Searching for: stream: me conte sobre A2A em modo streaming
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 0c2e88cf-d134-43e9-b529-c846e4a9c244 completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='fc65c15c-8599-40d9-8a36-6d3123299f56' extensions=None kind='message' message_id='972181ac-de7d-4f9c-9dd7-49669c5a611b' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='executar várias tarefas simultaneamente'))] reference_task_ids=None role=<Role.user: 'user'> task_id='106d08da-2198-4278-b206-7383f966c313'
+INFO:agent_executor:🔍 DEBUG - Extracted query: executar várias tarefas simultaneamente
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 106d08da-2198-4278-b206-7383f966c313
+INFO:agent_executor:🔄 Task 106d08da-2198-4278-b206-7383f966c313 marked as WORKING
+INFO:agent_executor:🔍 Searching for: executar várias tarefas simultaneamente
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 106d08da-2198-4278-b206-7383f966c313 completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='2e85de6b-2497-40da-8a84-a26e62ac92aa' extensions=None kind='message' message_id='b601c71f-3089-469f-8de2-e8265e7428a6' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='Olá, como você está?'))] reference_task_ids=None role=<Role.user: 'user'> task_id='b06c361e-19e3-47a9-9c82-573821ab113e'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Olá, como você está?
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: b06c361e-19e3-47a9-9c82-573821ab113e
+INFO:agent_executor:🔄 Task b06c361e-19e3-47a9-9c82-573821ab113e marked as WORKING
+INFO:agent_executor:🔍 Searching for: Olá, como você está?
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task b06c361e-19e3-47a9-9c82-573821ab113e completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='1d2fa686-faaa-4f3d-9ebb-e9237fffdfe1' extensions=None kind='message' message_id='ea854918-fdf7-4e6a-8b62-2b29a191c7ac' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text=''))] reference_task_ids=None role=<Role.user: 'user'> task_id='9a2c6eee-7bae-4cc1-9929-299cd48fecd2'
+WARNING:agent_executor:No user input found, using default query
+INFO:agent_executor:🔍 DEBUG - Extracted query: A2A Protocol
+INFO:agent_executor:🔍 DEBUG - Current task: None
+WARNING:agent_executor:Could not create task: TextPart content cannot be empty
+INFO:agent_executor:📋 Created mock task: mock-task-1
+INFO:agent_executor:🔄 Task mock-task-1 marked as WORKING
+INFO:agent_executor:🔍 Searching for: A2A Protocol
+INFO:a2a.server.tasks.task_manager:Task not found or task_id not set. Creating new task for event (task_id: mock-task-1, context_id: 1d2fa686-faaa-4f3d-9ebb-e9237fffdfe1).
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task mock-task-1 completed successfully
+INFO:     127.0.0.1:64743 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='8c4161c3-b772-4f3c-9511-465ab5ca23bf' extensions=None kind='message' message_id='test-final-001' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='buscar A2A Protocol'))] reference_task_ids=None role=<Role.user: 'user'> task_id='12b30e11-b1f8-4644-a94e-9179d4ecd4d8'
+INFO:agent_executor:🔍 DEBUG - Extracted query: buscar A2A Protocol
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 12b30e11-b1f8-4644-a94e-9179d4ecd4d8
+INFO:agent_executor:🔄 Task 12b30e11-b1f8-4644-a94e-9179d4ecd4d8 marked as WORKING
+INFO:agent_executor:🔍 Searching for: buscar A2A Protocol
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 12b30e11-b1f8-4644-a94e-9179d4ecd4d8 completed successfully
+INFO:     127.0.0.1:64831 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='71d7f1d0-6caf-4090-a7c3-25e9b624a091' extensions=None kind='message' message_id='bf99ce9f-5e9a-4450-a0f2-6ad5476366ce' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='buscar informações sobre arquitetura A2A'))] reference_task_ids=None role=<Role.user: 'user'> task_id='99497678-158e-47e2-9dc4-2808425d0549'
+INFO:agent_executor:🔍 DEBUG - Extracted query: buscar informações sobre arquitetura A2A
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 99497678-158e-47e2-9dc4-2808425d0549
+INFO:agent_executor:🔄 Task 99497678-158e-47e2-9dc4-2808425d0549 marked as WORKING
+INFO:agent_executor:🔍 Searching for: buscar informações sobre arquitetura A2A
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 99497678-158e-47e2-9dc4-2808425d0549 completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='81935cf6-95f5-4f97-b3fe-534fae66a1e6' extensions=None kind='message' message_id='9323c0da-75d5-4e1d-8b75-daabdcc783fb' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='adicionar conhecimento: Título: Teste A2A, Conteúdo: Este é um teste de adição'))] reference_task_ids=None role=<Role.user: 'user'> task_id='89fef6a3-7b20-413a-92bb-ab1f89f9ffca'
+INFO:agent_executor:🔍 DEBUG - Extracted query: adicionar conhecimento: Título: Teste A2A, Conteúdo: Este é um teste de adição
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 89fef6a3-7b20-413a-92bb-ab1f89f9ffca
+INFO:agent_executor:🔄 Task 89fef6a3-7b20-413a-92bb-ab1f89f9ffca marked as WORKING
+INFO:agent_executor:✅ Task 89fef6a3-7b20-413a-92bb-ab1f89f9ffca completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='ea9dc025-90a5-4011-a2a4-05a622b36328' extensions=None kind='message' message_id='8d4407ea-c9df-4c59-8470-daee51b8b82d' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='analisar tópico: protocolo A2A'))] reference_task_ids=None role=<Role.user: 'user'> task_id='b69d6aba-46e5-4f86-9866-45bd11aa3d6d'
+INFO:agent_executor:🔍 DEBUG - Extracted query: analisar tópico: protocolo A2A
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: b69d6aba-46e5-4f86-9866-45bd11aa3d6d
+INFO:agent_executor:🔄 Task b69d6aba-46e5-4f86-9866-45bd11aa3d6d marked as WORKING
+INFO:agent_executor:🔬 Analyzing topic: tópico: protocolo A2A
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task b69d6aba-46e5-4f86-9866-45bd11aa3d6d completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='332ba28b-8df3-4bac-84a9-74a5c5a705f1' extensions=None kind='message' message_id='58505430-1035-47af-baa4-ebc291d45597' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='obter estatísticas da base de conhecimento'))] reference_task_ids=None role=<Role.user: 'user'> task_id='1d409499-6c0c-4f39-b06c-fac8268d5ed3'
+INFO:agent_executor:🔍 DEBUG - Extracted query: obter estatísticas da base de conhecimento
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 1d409499-6c0c-4f39-b06c-fac8268d5ed3
+INFO:agent_executor:🔄 Task 1d409499-6c0c-4f39-b06c-fac8268d5ed3 marked as WORKING
+INFO:agent_executor:📊 Getting statistics
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando estatísticas mock
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 1d409499-6c0c-4f39-b06c-fac8268d5ed3 completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='107f05c1-e929-4bc2-8261-8307e8e75110' extensions=None kind='message' message_id='1f451ecd-2019-4be1-b153-cf3752deaac3' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='stream: me conte sobre A2A em modo streaming'))] reference_task_ids=None role=<Role.user: 'user'> task_id='c31b61cf-d0af-4392-9c9a-c6542bab7e33'
+INFO:agent_executor:🔍 DEBUG - Extracted query: stream: me conte sobre A2A em modo streaming
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: c31b61cf-d0af-4392-9c9a-c6542bab7e33
+INFO:agent_executor:🔄 Task c31b61cf-d0af-4392-9c9a-c6542bab7e33 marked as WORKING
+INFO:agent_executor:🔍 Searching for: stream: me conte sobre A2A em modo streaming
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task c31b61cf-d0af-4392-9c9a-c6542bab7e33 completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='c6c4c1fd-dd78-4081-a9e9-cd94c4356c78' extensions=None kind='message' message_id='a8bf887d-37b4-4ac3-a396-e5c066af5637' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='executar várias tarefas simultaneamente'))] reference_task_ids=None role=<Role.user: 'user'> task_id='e1471a49-0880-403a-9bb8-f2340509655f'
+INFO:agent_executor:🔍 DEBUG - Extracted query: executar várias tarefas simultaneamente
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: e1471a49-0880-403a-9bb8-f2340509655f
+INFO:agent_executor:🔄 Task e1471a49-0880-403a-9bb8-f2340509655f marked as WORKING
+INFO:agent_executor:🔍 Searching for: executar várias tarefas simultaneamente
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task e1471a49-0880-403a-9bb8-f2340509655f completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='a62f20e2-5d95-4da7-82ef-09804e628147' extensions=None kind='message' message_id='2f6ccbaa-25fc-4c8b-b8b0-2988ee57f531' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='Olá, como você está?'))] reference_task_ids=None role=<Role.user: 'user'> task_id='5119e0c8-6912-43e6-bb43-7348be7c912c'
+INFO:agent_executor:🔍 DEBUG - Extracted query: Olá, como você está?
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 5119e0c8-6912-43e6-bb43-7348be7c912c
+INFO:agent_executor:🔄 Task 5119e0c8-6912-43e6-bb43-7348be7c912c marked as WORKING
+INFO:agent_executor:🔍 Searching for: Olá, como você está?
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 5000), [Errno 61] Connect call failed ('::1', 5000, 0, 0)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task 5119e0c8-6912-43e6-bb43-7348be7c912c completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='20ddb4eb-08f9-4ca4-a64b-d7ba3053b61c' extensions=None kind='message' message_id='cfd472c3-1a9d-4ac1-9973-db35539882c1' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text=''))] reference_task_ids=None role=<Role.user: 'user'> task_id='4f1367ec-34f0-4db9-b52d-2a191af9679f'
+WARNING:agent_executor:No user input found, using default query
+INFO:agent_executor:🔍 DEBUG - Extracted query: A2A Protocol
+INFO:agent_executor:🔍 DEBUG - Current task: None
+WARNING:agent_executor:Could not create task: TextPart content cannot be empty
+INFO:agent_executor:📋 Created mock task: mock-task-1
+INFO:agent_executor:🔄 Task mock-task-1 marked as WORKING
+INFO:agent_executor:🔍 Searching for: A2A Protocol
+WARNING:mcp_integration:⚠️ RAG Server não disponível: Cannot connect to host localhost:5000 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 5000, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5000)]
+INFO:mcp_integration:📦 Usando dados mock (RAG Server indisponível)
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+WARNING:a2a.server.events.event_queue:Queue is closed. Event will not be enqueued.
+INFO:agent_executor:✅ Task mock-task-1 completed successfully
+INFO:     127.0.0.1:64843 - "POST / HTTP/1.1" 200 OK
+WARNING:a2a.server.apps.jsonrpc.jsonrpc_app:Deprecated agent card endpoint '/.well-known/agent.json' accessed. Please use '/.well-known/agent-card.json' instead. This endpoint will be removed in a future version.
+INFO:     127.0.0.1:65011 - "GET /.well-known/agent.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49501 - "GET /.well-known/agent-card.json HTTP/1.1" 200 OK
+WARNING:a2a.server.apps.jsonrpc.jsonrpc_app:Deprecated agent card endpoint '/.well-known/agent.json' accessed. Please use '/.well-known/agent-card.json' instead. This endpoint will be removed in a future version.
+INFO:     127.0.0.1:49589 - "GET /.well-known/agent.json HTTP/1.1" 200 OK
+WARNING:a2a.server.apps.jsonrpc.jsonrpc_app:Deprecated agent card endpoint '/.well-known/agent.json' accessed. Please use '/.well-known/agent-card.json' instead. This endpoint will be removed in a future version.
+INFO:     127.0.0.1:49606 - "GET /.well-known/agent.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49660 - "POST / HTTP/1.1" 200 OK
+INFO:agent_executor:🔍 DEBUG - Context type: <class 'a2a.server.agent_execution.context.RequestContext'>
+INFO:agent_executor:🔍 DEBUG - Message type: <class 'a2a.types.Message'>
+INFO:agent_executor:🔍 DEBUG - Message content: context_id='b26bc22b-99e4-4b70-8403-44868b4a4717' extensions=None kind='message' message_id='c20062dd-15ba-4f74-92b8-663587a47bda' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='oi'))] reference_task_ids=None role=<Role.user: 'user'> task_id='1edfed0f-d85d-499a-9407-3bbed607bc83'
+INFO:agent_executor:🔍 DEBUG - Extracted query: oi
+INFO:agent_executor:🔍 DEBUG - Current task: None
+INFO:agent_executor:📋 Created new task: 1edfed0f-d85d-499a-9407-3bbed607bc83
+INFO:agent_executor:🔄 Task 1edfed0f-d85d-499a-9407-3bbed607bc83 marked as WORKING
+INFO:agent_executor:🔍 Searching for: oi
+ERROR:asyncio:Exception in callback <bound method EventConsumer.agent_task_callback of <a2a.server.events.event_consumer.EventConsumer object at 0x107f53860>>
+handle: <Handle EventConsumer.agent_task_callback>
+Traceback (most recent call last):
+  File "uvloop/cbhandles.pyx", line 63, in uvloop.loop.Handle._run
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/a2a/utils/telemetry.py", line 234, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/a2a/server/events/event_consumer.py", line 163, in agent_task_callback
+    if agent_task.exception() is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/a2a/utils/telemetry.py", line 194, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/a2a/server/request_handlers/default_request_handler.py", line 172, in _run_event_stream
+    await self.agent_executor.execute(request, queue)
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/agent_executor.py", line 168, in execute
+    result = await self._search_knowledge(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/agent_executor.py", line 244, in _search_knowledge
+    results = await self.mcp_client.search_knowledge(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/mcp_integration.py", line 49, in search_knowledge
+    await self.initialize()
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/mcp_integration.py", line 34, in initialize
+    async with self.session.get(f"{self.rag_server_url}/health", timeout=2) as resp:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 87, in start_connection
+    sock, _, _ = await _staggered.staggered_race(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohappyeyeballs/_staggered.py", line 165, in staggered_race
+    done = await _wait_one(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/agents/Desktop/claude-20x/.conductor/hangzhou/PROJETOS/knowledge-assistant/.venv/lib/python3.12/site-packages/aiohappyeyeballs/_staggered.py", line 46, in _wait_one
+    return await wait_next
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 107f14d10
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67604]
