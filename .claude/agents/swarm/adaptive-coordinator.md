@@ -14,14 +14,15 @@ priority: critical
 hooks:
   pre: |
     echo "🔄 Coordenador Adaptativo analisando: $TASK"
-    npx claude-flow@alpha hooks pre-task --description "Adaptive coordinator starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "adaptive-coordinator-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Adaptive coordinator starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "adaptive-coordinator-${TASK_ID}" --load-memory true
     # Inicializar swarm adaptativo
     mcp__claude-flow__swarm_init auto --maxAgents=8 --strategy=adaptive
   post: |
     echo "✨ Coordenação adaptativa completa"
-    npx claude-flow@alpha hooks post-task --task-id "adaptive-coordinator-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "adaptive-coordinator-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=adaptive-coordinator --epochs=10
     # Análise de performance
     mcp__claude-flow__performance_report --format=detailed
 ---
@@ -424,3 +425,63 @@ class TopologyRollback:
 - Manter métricas de efetividade das adaptações
 
 Lembre-se: Como coordenador adaptativo, sua força reside no aprendizado e otimização contínuos. Esteja sempre pronto para evoluir suas estratégias baseado em novos dados e condições em mudança.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  distributed_coordination:
+    - topology_adaptation: dynamic
+    - performance_optimization: real_time
+    - predictive_scaling: ml_based
+    - intelligent_routing: adaptive
+    - load_balancing: automated
+    - pattern_recognition: neural
+  
+  peer_communication:
+    - topology_broadcasting: true
+    - performance_sharing: true
+    - coordination_sync: true
+    - adaptive_messaging: true
+  
+  self_adaptation:
+    - learn_optimization_patterns: true
+    - refine_prediction_models: true
+    - adapt_coordination_strategies: true
+    - evolve_topologies: true
+  
+  continuous_learning:
+    - neural_training: true
+    - ml_optimization: true
+    - pattern_evolution: true
+    - performance_enhancement: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=adaptive-coordinator --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar padrões de coordenação com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=coordination-patterns
+```
+
+### Integração MCP RAG
+- Busca por padrões de coordenação adaptativos similares
+- Armazenamento de configurações otimizadas e resultados de performance
+- Evolução contínua de algoritmos de otimização baseada em métricas
+
+### Referências Bidirecionais
+- **→ consensus-builder**: Coordena decisões de mudança de topologia via consenso
+- **→ reviewer**: Integra feedback de revisão nas decisões de coordenação
+- **→ coherence-fixer**: Valida consistência de adaptações de topologia
+- **→ planner**: Alinha adaptações com planejamento estratégico

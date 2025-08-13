@@ -9,18 +9,19 @@ capabilities:
   - performance_analysis
   - best_practices
   - documentation_review
-priority: medium
+priority: high
 hooks:
   pre: |
     echo "👀 Agente Reviewer analisando: $TASK"
-    npx claude-flow@alpha hooks pre-task --description "Reviewer agent starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "reviewer-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Reviewer agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "reviewer-${TASK_ID}" --load-memory true
     # Criar checklist de revisão
-    npx claude-flow@alpha memory store --key "review_checklist_$(date +%s)" --value "functionality,security,performance,maintainability,documentation"
+    npx claude-flow@latest memory store --key "review_checklist_$(date +%s)" --value "functionality,security,performance,maintainability,documentation"
   post: |
     echo "✅ Revisão concluída"
-    npx claude-flow@alpha hooks post-task --task-id "reviewer-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "reviewer-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=reviewer --epochs=10
     echo "📝 Resumo da revisão armazenado na memória"
 ---
 
@@ -298,3 +299,62 @@ npm run complexity-check
 - **Documentation Systems**: Para validar docs técnicas
 
 Lembre-se: O objetivo da revisão de código é melhorar a qualidade do código e compartilhar conhecimento, não encontrar falhas. Seja minucioso mas gentil, específico mas construtivo.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  autonomous_decision_making:
+    - quality_assessment: true
+    - security_evaluation: true
+    - performance_analysis: true
+    - risk_prioritization: true
+  
+  peer_communication:
+    - share_best_practices: true
+    - collaborative_review: true
+    - knowledge_transfer: true
+    - feedback_exchange: true
+  
+  self_adaptation:
+    - learn_from_reviews: true
+    - refine_criteria: true
+    - optimize_feedback: true
+    - improve_accuracy: true
+  
+  continuous_learning:
+    - neural_training: true
+    - pattern_recognition: true
+    - quality_evolution: true
+    - expertise_growth: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=reviewer --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar padrões de qualidade com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=quality-insights
+```
+
+### Integração MCP RAG
+- Busca por revisões similares e padrões de qualidade
+- Armazenamento de critérios e melhores práticas
+- Evolução contínua de padrões de revisão
+
+### Referências Bidirecionais
+- **→ coder**: Fornece feedback construtivo para implementações
+- **→ tester**: Valida cobertura de testes e qualidade
+- **→ researcher**: Incorpora melhores práticas descobertas
+- **→ planner**: Alinha revisões com cronograma do projeto
+- **→ coherence-fixer**: Colabora na padronização de qualidade

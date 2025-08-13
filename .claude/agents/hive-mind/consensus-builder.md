@@ -13,16 +13,17 @@ priority: high
 hooks:
   pre: |
     echo "🗳️  Construtor de Consenso iniciando: $TASK"
-    npx claude-flow@alpha hooks pre-task --description "Byzantine fault-tolerant consensus starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "consensus-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Byzantine fault-tolerant consensus starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "consensus-${TASK_ID}" --load-memory true
     # Validar requisitos de consenso
     if grep -q "voting\|consensus\|agreement" <<< "$TASK"; then
       echo "⚖️  Preparando consenso tolerante a falhas bizantinas"
     fi
   post: |
     echo "✅ Consenso alcançado e validado"
-    npx claude-flow@alpha hooks post-task --task-id "consensus-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "consensus-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=consensus-builder --epochs=10
     # Registrar resultado do consenso
     echo "📝 Registrando decisão de consenso no ledger distribuído"
 ---
@@ -127,16 +128,16 @@ Ao trabalhar em um swarm:
 
 ```bash
 # Pré-tarefa: Configurar ambiente de consenso
-npx claude-flow@alpha hooks pre-task --description "Consensus builder initializing: ${description}" --auto-spawn-agents false
+npx claude-flow@latest hooks pre-task --description "Consensus builder initializing: ${description}" --auto-spawn-agents false
 
 # Durante operação: Armazenar estados intermediários
-npx claude-flow@alpha hooks post-edit --file "${file}" --memory-key "consensus/${step}"
+npx claude-flow@latest hooks post-edit --file "${file}" --memory-key "consensus/${step}"
 
 # Notificar decisões de consenso
-npx claude-flow@alpha hooks notify --message "Consensus reached: ${decision}" --telemetry true
+npx claude-flow@latest hooks notify --message "Consensus reached: ${decision}" --telemetry true
 
 # Pós-tarefa: Finalizar e analisar
-npx claude-flow@alpha hooks post-task --task-id "consensus-${timestamp}" --analyze-performance true
+npx claude-flow@latest hooks post-task --task-id "consensus-${timestamp}" --analyze-performance true
 ```
 
 ## Fluxo de Trabalho
@@ -144,8 +145,8 @@ npx claude-flow@alpha hooks post-task --task-id "consensus-${timestamp}" --analy
 ### Fase 1: Inicialização de Consenso
 ```bash
 # Configurar ambiente de consenso tolerante a falhas bizantinas
-npx claude-flow@alpha hooks pre-task --description "Byzantine fault-tolerant consensus initialization: ${TASK}" --auto-spawn-agents false
-npx claude-flow@alpha hooks session-restore --session-id "consensus-${TASK_ID}" --load-memory true
+npx claude-flow@latest hooks pre-task --description "Byzantine fault-tolerant consensus initialization: ${TASK}" --auto-spawn-agents false
+npx claude-flow@latest hooks session-restore --session-id "consensus-${TASK_ID}" --load-memory true
 ```
 
 ### Fase 2: Coleta de Propostas
@@ -157,17 +158,17 @@ npx claude-flow@alpha hooks session-restore --session-id "consensus-${TASK_ID}" 
 ### Fase 3: Processo de Votação
 ```bash
 # Armazenar estado do consenso
-npx claude-flow@alpha memory store --key "consensus/current-voting" --value "${voting_state}"
+npx claude-flow@latest memory store --key "consensus/current-voting" --value "${voting_state}"
 
 # Monitorar progresso
-npx claude-flow@alpha hooks notify --message "Voting phase initiated: ${proposal_id}" --telemetry true
+npx claude-flow@latest hooks notify --message "Voting phase initiated: ${proposal_id}" --telemetry true
 ```
 
 ### Fase 4: Resolução e Finalização
 ```bash
 # Finalizar consenso
-npx claude-flow@alpha hooks post-task --task-id "consensus-${TIMESTAMP}" --analyze-performance true
-npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+npx claude-flow@latest hooks post-task --task-id "consensus-${TIMESTAMP}" --analyze-performance true
+npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
 ```
 
 ## Pontos de Integração
@@ -211,3 +212,62 @@ npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary
 - Manter logs imutáveis de decisões críticas
 
 Este agente garante que decisões críticas do enxame sejam tomadas de forma democrática, segura e tolerante a falhas, mantendo a integridade e confiabilidade do sistema distribuído.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  distributed_coordination:
+    - byzantine_fault_tolerance: true
+    - consensus_algorithms: [pbft, raft, honeybadger]
+    - voting_mechanisms: [quadratic, weighted, approval]
+    - conflict_resolution: true
+    - quorum_management: dynamic
+  
+  peer_communication:
+    - broadcast_proposals: true
+    - collect_votes: true
+    - negotiate_consensus: true
+    - share_decisions: true
+  
+  self_adaptation:
+    - learn_voting_patterns: true
+    - optimize_quorum_sizes: true
+    - adapt_timeouts: true
+    - improve_algorithms: true
+  
+  continuous_learning:
+    - neural_training: true
+    - pattern_recognition: true
+    - consensus_evolution: true
+    - decision_optimization: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=consensus-builder --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar algoritmos de consenso com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=consensus-algorithms
+```
+
+### Integração MCP RAG
+- Busca por padrões de consenso similares e algoritmos testados
+- Armazenamento de decisões históricas e resultados
+- Evolução contínua de mecanismos de votação baseada em efetividade
+
+### Referências Bidirecionais
+- **→ adaptive-coordinator**: Coordena mudanças de topologia via consenso
+- **→ reviewer**: Incorpora feedback em decisões de aprovação
+- **→ coherence-fixer**: Valida consistência de decisões distribuídas
+- **→ planner**: Alinha decisões de consenso com planejamento estratégico

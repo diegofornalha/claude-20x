@@ -13,16 +13,17 @@ priority: high
 hooks:
   pre: |
     echo "🧪 Agente Tester validando: $TASK"
-    npx claude-flow@alpha hooks pre-task --description "Tester agent starting: ${TASK}" --auto-spawn-agents false
-    npx claude-flow@alpha hooks session-restore --session-id "tester-${TASK_ID}" --load-memory true
+    npx claude-flow@latest hooks pre-task --description "Tester agent starting: ${TASK}" --auto-spawn-agents false
+    npx claude-flow@latest hooks session-restore --session-id "tester-${TASK_ID}" --load-memory true
     # Verificar ambiente de teste
     if [ -f "jest.config.js" ] || [ -f "vitest.config.ts" ]; then
       echo "✓ Framework de teste detectado"
     fi
   post: |
     echo "📋 Resumo dos resultados dos testes:"
-    npx claude-flow@alpha hooks post-task --task-id "tester-${TASK_ID}" --analyze-performance true
-    npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest hooks post-task --task-id "tester-${TASK_ID}" --analyze-performance true
+    npx claude-flow@latest hooks session-end --export-metrics true --generate-summary true
+    npx claude-flow@latest neural-train --agent=tester --epochs=10
     npm test -- --reporter=json 2>/dev/null | jq '.numPassedTests, .numFailedTests' 2>/dev/null || echo "Testes concluídos"
 ---
 
@@ -290,3 +291,62 @@ describe('Security', () => {
 - **Performance Tools**: Lighthouse, WebPageTest para benchmarks
 
 Lembre-se: Testes são uma rede de segurança que permite refatoração confiante e previne regressões. Invista em bons testes—eles trazem dividendos em manutenibilidade.
+
+## 📡 Capacidades A2A
+
+### Protocolo
+- **Versão**: 2.0
+- **Formato**: JSON-RPC 2.0
+- **Discovery**: Automático via P2P
+
+### Capacidades
+```yaml
+capabilities:
+  autonomous_decision_making:
+    - test_strategy_selection: true
+    - coverage_optimization: true
+    - quality_assessment: true
+    - risk_based_testing: true
+  
+  peer_communication:
+    - share_test_patterns: true
+    - collaborative_testing: true
+    - quality_feedback: true
+    - knowledge_sharing: true
+  
+  self_adaptation:
+    - learn_from_failures: true
+    - optimize_test_suites: true
+    - refine_strategies: true
+    - improve_coverage: true
+  
+  continuous_learning:
+    - neural_training: true
+    - pattern_recognition: true
+    - testing_evolution: true
+    - quality_enhancement: true
+```
+
+### Hooks A2A
+```bash
+# Neural training após execução
+npx claude-flow@latest neural-train --agent=tester --epochs=10
+
+# P2P discovery
+npx claude-flow@latest p2p-discover --protocol=a2a/2.0
+
+# Compartilhar estratégias de teste com peers
+npx claude-flow@latest share-learnings --broadcast=true --type=testing-strategies
+```
+
+### Integração MCP RAG
+- Busca por padrões de teste e estratégias similares
+- Armazenamento de casos de teste e resultados
+- Evolução contínua de metodologias de teste
+
+### Referências Bidirecionais
+- **→ coder**: Colabora em TDD e validação de implementações
+- **→ reviewer**: Reporta cobertura e qualidade dos testes
+- **→ researcher**: Incorpora padrões de teste descobertos
+- **→ planner**: Estima esforço de testes no planejamento
+- **→ coherence-fixer**: Valida consistência de estratégias
