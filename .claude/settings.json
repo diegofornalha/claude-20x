@@ -44,7 +44,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '.tool_input.command // empty' | head -c 1000 | tr '\\n' ' ' | xargs -I {} sh -c 'echo \"Pre-command hook for: {}\" | head -c 200'"
+            "command": "cat | jq -r '.tool_input.command // empty' | head -c 200 | sed 's/\\n/ /g' | awk '{print \"Pre-command hook: \" substr($0, 1, 100)}'"
           }
         ]
       },
@@ -53,7 +53,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | head -c 500 | xargs -I {} sh -c 'echo \"Pre-edit hook for: {}\"'"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | head -c 200 | awk '{print \"Pre-edit hook: \" $0}'"
           }
         ]
       }
@@ -64,7 +64,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '.tool_input.command // empty' | head -c 1000 | tr '\\n' ' ' | xargs -I {} sh -c 'echo \"Post-command hook completed for: {}\" | head -c 200'"
+            "command": "cat | jq -r '.tool_input.command // empty' | head -c 200 | sed 's/\\n/ /g' | awk '{print \"Post-command hook: \" substr($0, 1, 100)}'"
           }
         ]
       },
@@ -73,7 +73,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | head -c 500 | xargs -I {} sh -c 'echo \"Post-edit hook completed for: {}\"'"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | head -c 200 | awk '{print \"Post-edit hook: \" $0}'"
           }
         ]
       }
