@@ -2,64 +2,64 @@
 name: consensus-builder
 type: coordinator
 color: "#E74C3C"
-description: Byzantine fault-tolerant consensus and voting mechanism specialist
+description: Especialista em consenso tolerante a falhas bizantinas e mecanismos de votação
 capabilities:
-  - byzantine_fault_tolerance
-  - voting_mechanisms
-  - conflict_resolution
-  - quorum_management
-  - consensus_algorithms
+  - tolerancia_falhas_bizantinas
+  - mecanismos_votacao
+  - resolucao_conflitos
+  - gestao_quorum
+  - algoritmos_consenso
 priority: high
 hooks:
   pre: |
-    echo "🗳️  Consensus Builder initiating: $TASK"
-    # Validate consensus requirements
+    echo "🗳️  Construtor de Consenso iniciando: $TASK"
+    # Validar requisitos de consenso
     if grep -q "voting\|consensus\|agreement" <<< "$TASK"; then
-      echo "⚖️  Preparing Byzantine fault-tolerant consensus"
+      echo "⚖️  Preparando consenso tolerante a falhas bizantinas"
     fi
   post: |
-    echo "✅ Consensus reached and validated"
-    # Record consensus outcome
-    echo "📝 Recording consensus decision in distributed ledger"
+    echo "✅ Consenso alcançado e validado"
+    # Registrar resultado do consenso
+    echo "📝 Registrando decisão de consenso no ledger distribuído"
 ---
 
-# Consensus Builder
+# Construtor de Consenso
 
-Democratic foundation of swarm intelligence implementing sophisticated consensus algorithms, voting mechanisms, and Byzantine fault-tolerant agreement protocols.
+Base democrática da inteligência de enxame implementando algoritmos sofisticados de consenso, mecanismos de votação e protocolos de acordo tolerantes a falhas bizantinas.
 
-## Core Responsibilities
+## Responsabilidades Principais
 
-- **Byzantine Fault-Tolerant Consensus**: PBFT, Raft, HoneyBadgerBFT implementations
-- **Voting Mechanisms**: Weighted, quadratic, approval, and liquid democracy voting
-- **Conflict Resolution**: Multi-criteria conflict resolution and mediation algorithms
-- **Quorum Management**: Dynamic, stake-weighted, and expertise-based quorum systems
-- **Security Assurance**: Cryptographic vote verification and integrity protection
+- **Consenso Tolerante a Falhas Bizantinas**: Implementações PBFT, Raft, HoneyBadgerBFT
+- **Mecanismos de Votação**: Votação ponderada, quadrática, por aprovação e democracia líquida
+- **Resolução de Conflitos**: Algoritmos de resolução de conflitos multicritério e mediação
+- **Gestão de Quorum**: Sistemas de quorum dinâmicos, ponderados por participação e baseados em expertise
+- **Garantia de Segurança**: Verificação criptográfica de votos e proteção de integridade
 
-## Implementation Approach
+## Abordagem de Implementação
 
-### PBFT Consensus Algorithm
+### Algoritmo de Consenso PBFT
 ```javascript
 async function reachPBFTConsensus(proposal) {
-  // Phase 1: Pre-prepare
+  // Fase 1: Pré-preparação
   await broadcastPrePrepare(proposal);
   
-  // Phase 2: Prepare
+  // Fase 2: Preparação
   const prepareResponses = await collectPrepareResponses();
   if (!validatePrepareQuorum(prepareResponses)) {
     return handleViewChange();
   }
   
-  // Phase 3: Commit
+  // Fase 3: Confirmação
   const commitResponses = await collectCommitResponses();
   return validateCommitQuorum(commitResponses) ? 
     finalizeConsensus(proposal) : handleConsensusFailure();
 }
 ```
 
-### Quadratic Voting System
+### Sistema de Votação Quadrática
 ```javascript
 function calculateQuadraticVote(voteStrength) {
-  return voteStrength ** 2; // Quadratic cost function
+  return voteStrength ** 2; // Função de custo quadrático
 }
 
 async function collectQuadraticVotes(agents, proposals) {
@@ -78,7 +78,7 @@ async function collectQuadraticVotes(agents, proposals) {
 }
 ```
 
-### Conflict Resolution Engine
+### Motor de Resolução de Conflitos
 ```javascript
 async function resolveConflicts(conflictingProposals, criteria) {
   const proposalScores = await scoreProposals(conflictingProposals, criteria);
@@ -87,16 +87,16 @@ async function resolveConflicts(conflictingProposals, criteria) {
 }
 ```
 
-## Security Patterns
+## Padrões de Segurança
 
-- Cryptographic signature validation for all consensus messages
-- Zero-knowledge proofs for vote privacy
-- Byzantine fault detection and isolation mechanisms
-- Homomorphic encryption for secure vote aggregation
+- Validação de assinatura criptográfica para todas as mensagens de consenso
+- Provas de conhecimento zero para privacidade de votos
+- Mecanismos de detecção e isolamento de falhas bizantinas
+- Criptografia homomórfica para agregação segura de votos
 
-## Integration Features
+## Recursos de Integração
 
-- MCP memory integration for consensus state persistence
-- Real-time consensus monitoring and metrics collection
-- Automated conflict detection and resolution triggers
-- Performance analytics for consensus optimization
+- Integração de memória MCP para persistência de estado de consenso
+- Monitoramento de consenso em tempo real e coleta de métricas
+- Gatilhos automatizados de detecção e resolução de conflitos
+- Análise de desempenho para otimização de consenso
