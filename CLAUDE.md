@@ -1,104 +1,77 @@
 responda sempre em pt br
-# Claude Code Configuration - SPARC Development
+# Claude Code - SPARC Development
 
-## 🤖 REGRA ABSOLUTA: SEMPRE USE SUBAGENTES ESPECIALIZADOS
+## 🤖 REGRA #1: SEMPRE USE SUBAGENTES
 
-**LOCALIZAÇÃO**: `.claude/agents/` (54 agentes do Claude Code)
-- São instruções especializadas, NÃO processos externos
-- SEMPRE spawnar para QUALQUER tarefa
+**`.claude/agents/`** - 54 agentes especializados do Claude Code
 
-### 🎯 MAPEAMENTO AUTOMÁTICO TAREFA → AGENTES
+### 🎯 MAPEAMENTO AUTOMÁTICO
 
-| Tarefa | Agentes Obrigatórios |
-|--------|---------------------|
-| implementar/criar | coder + tester + reviewer |
-| testar/validar | tester + code-analyzer |
-| revisar/analisar | reviewer + code-analyzer |
+| Tarefa | Agentes |
+|--------|---------|
+| implementar | coder + tester + reviewer |
+| testar | tester + code-analyzer |
 | documentar | api-docs + researcher |
-| debug/erro | code-analyzer + coder + tester |
-| API/REST | backend-dev + api-docs + tester |
-| deploy/CI/CD | cicd-engineer + tester |
+| debug | code-analyzer + coder + tester |
+| API | backend-dev + api-docs + tester |
+| CI/CD | cicd-engineer + tester |
 | performance | perf-analyzer + code-analyzer |
 
-## 🚨 EXECUÇÃO CONCORRENTE OBRIGATÓRIA
+## 🚨 EXECUÇÃO CONCORRENTE
 
-**TUDO em UMA mensagem:**
-- TodoWrite: 5-10+ todos em UMA chamada
-- Task: TODOS agentes em paralelo
-- File ops: TODAS operações batched
+**TUDO em 1 mensagem:**
+- TodoWrite: 5-10+ todos
+- Task: TODOS agentes paralelos
+- Files: batch Read/Write/Edit
 - Bash: TODOS comandos juntos
 
-### ⚡ INICIALIZAÇÃO PADRÃO
+### ⚡ INIT PADRÃO
 
 ```javascript
-// SEMPRE no início
 [Single Message]:
   mcp__claude-flow__swarm_init { topology: "hierarchical", maxAgents: 8 }
   mcp__claude-flow__agent_spawn { type: "task-orchestrator" }
   mcp__claude-flow__agent_spawn { type: "coder" }
   mcp__claude-flow__agent_spawn { type: "tester" }
-  mcp__claude-flow__agent_spawn { type: "reviewer" }
   TodoWrite { todos: [10+ todos] }
 ```
 
-## SPARC Commands
+## COMANDOS
 
-- `npx claude-flow sparc modes`: Listar modos
-- `npx claude-flow sparc run <mode> "<task>"`: Executar modo
-- `npx claude-flow sparc tdd "<feature>"`: TDD completo
-- `npx claude-flow sparc batch`: Múltiplos modos paralelos
+**SPARC:** `npx claude-flow sparc [modes|run|tdd|batch]`
+**Build:** `npm run [build|test|lint|typecheck]`
 
-## 📋 COORDENAÇÃO OBRIGATÓRIA
+## HOOKS OBRIGATÓRIOS
 
-**INÍCIO:**
 ```bash
-npx claude-flow@alpha hooks pre-task --description "[tarefa]"
-```
-
-**DURANTE:**
-```bash
-npx claude-flow@alpha hooks post-edit --file "[arquivo]"
-npx claude-flow@alpha hooks notify --message "[decisão]"
-```
-
-**FIM:**
-```bash
+npx claude-flow@alpha hooks pre-task --description "[task]"
+npx claude-flow@alpha hooks post-edit --file "[file]"
 npx claude-flow@alpha hooks post-task --analyze-performance true
 ```
 
-## Agentes Principais (54 total)
+## AGENTES (54)
 
-### Core
-- coder, tester, reviewer, planner, researcher
+**Core:** coder, tester, reviewer, planner, researcher
+**Coord:** task-orchestrator, hierarchical-coordinator
+**Dev:** backend-dev, mobile-dev, cicd-engineer, api-docs
+**SPARC:** sparc-coord, sparc-coder, specification
+**GitHub:** pr-manager, code-review-swarm
 
-### Coordination
-- task-orchestrator, hierarchical-coordinator, mesh-coordinator
+## MCP TOOLS
 
-### Specialized
-- backend-dev, mobile-dev, ml-developer, cicd-engineer
-- api-docs, system-architect, code-analyzer
+- `swarm_init` - Setup
+- `agent_spawn` - Criar agentes
+- `task_orchestrate` - Coordenar
+- `memory_usage` - Persistência
+- `swarm_monitor` - Status
 
-### SPARC
-- sparc-coord, sparc-coder, specification, architecture
-
-### GitHub
-- pr-manager, code-review-swarm
-
-## MCP Tools Essenciais
-
-- `mcp__claude-flow__swarm_init`: Inicializar swarm
-- `mcp__claude-flow__agent_spawn`: Criar agentes
-- `mcp__claude-flow__task_orchestrate`: Coordenar tarefas
-- `mcp__claude-flow__memory_usage`: Memória persistente
-- `mcp__claude-flow__swarm_monitor`: Monitoramento
-
-## Princípios
+## REGRAS
 
 1. **Batch tudo** - Nunca sequencial
-2. **Paralelo sempre** - Maximizar concorrência
-3. **Agentes sempre** - Nunca trabalho direto
-4. **Memória vital** - Coordenação entre agentes
-5. **Claude Code executa** - MCP coordena
+2. **Paralelo sempre** - Max concorrência
+3. **Agentes sempre** - Nunca direto
+4. **Memória vital** - Coordenação
+5. **Claude executa** - MCP coordena
 
 ---
-Docs: https://github.com/ruvnet/claude-flow
+Docs: github.com/ruvnet/claude-flow
