@@ -2,4 +2,3 @@ PROJETOS/*
 node_modules/*
 .swarm/*
 .claude-flow/metrics/*
-.claude/agents/*
