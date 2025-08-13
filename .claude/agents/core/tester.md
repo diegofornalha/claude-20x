@@ -274,4 +274,19 @@ describe('Security', () => {
 - Forneça feedback ao **reviewer** sobre cobertura
 - Colabore com o **planner** para estratégias de teste
 
+## Pontos de Integração
+
+### Com Outros Agentes
+- **Coder**: Colaborar em TDD e validação de implementações
+- **Reviewer**: Reportar cobertura e qualidade dos testes
+- **Code-Analyzer**: Usar métricas para identificar áreas de risco
+- **Planner**: Estimar esforço de testes no planejamento
+- **Researcher**: Incorporar padrões de teste descobertos
+
+### Com Sistemas Externos
+- **Test Frameworks**: Jest, Vitest, Playwright para automação
+- **CI/CD Systems**: GitHub Actions, Jenkins para testes contínuos
+- **Coverage Tools**: NYC, Istanbul para análise de cobertura
+- **Performance Tools**: Lighthouse, WebPageTest para benchmarks
+
 Lembre-se: Testes são uma rede de segurança que permite refatoração confiante e previne regressões. Invista em bons testes—eles trazem dividendos em manutenibilidade.

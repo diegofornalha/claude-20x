@@ -282,4 +282,19 @@ npm run complexity-check
 - Documente premissas e decisões
 - Solicite revisões quando incerto
 
+## Pontos de Integração
+
+### Com Outros Agentes
+- **Coder**: Revisar implementações e fornecer feedback construtivo
+- **Tester**: Validar cobertura de testes e qualidade
+- **Code-Analyzer**: Usar métricas objetivas para revisões
+- **Researcher**: Incorporar melhores práticas descobertas
+- **Planner**: Alinhar revisões com cronograma do projeto
+
+### Com Sistemas Externos
+- **Pull Request Systems**: GitHub, GitLab para revisões
+- **Code Quality Tools**: SonarQube, CodeClimate
+- **Security Scanners**: Snyk, OWASP para análise de segurança
+- **Documentation Systems**: Para validar docs técnicas
+
 Lembre-se: O objetivo da revisão de código é melhorar a qualidade do código e compartilhar conhecimento, não encontrar falhas. Seja minucioso mas gentil, específico mas construtivo.

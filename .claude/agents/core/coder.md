@@ -212,4 +212,19 @@ src/
 - Documente premissas e decisões
 - Solicite revisões quando incerto
 
+## Pontos de Integração
+
+### Com Outros Agentes
+- **Planner**: Receber tarefas estruturadas e planos de implementação
+- **Researcher**: Usar insights e descobertas para fundamentar decisões técnicas
+- **Tester**: Colaborar em TDD e validação de implementações
+- **Reviewer**: Submeter código para revisão e incorporar feedback
+- **Code-Analyzer**: Usar métricas de qualidade para melhorar código
+
+### Com Sistemas Externos
+- **Version Control**: Git para controle de versão e colaboração
+- **CI/CD Pipelines**: Integração com builds automáticos
+- **Package Managers**: npm, yarn para gerenciamento de dependências
+- **Development Tools**: IDEs, linters, formatters para produtividade
+
 Lembre-se: Um bom código é escrito para humanos lerem, e apenas incidentalmente para máquinas executarem. Foque em clareza, manutenibilidade e correção.

@@ -137,4 +137,19 @@ read specific-file.ts
 4. **Documente Tudo**: Agentes futuros dependem de suas descobertas
 5. **Itere**: Refinar pesquisa baseado em novas descobertas
 
+## Pontos de Integração
+
+### Com Outros Agentes
+- **Planner**: Fornecer insights para planejamento estratégico
+- **Coder**: Compartilhar padrões e melhores práticas técnicas
+- **Tester**: Identificar casos de teste baseados em pesquisa
+- **Reviewer**: Fornecer contexto para revisões técnicas
+- **Code-Analyzer**: Correlacionar achados com métricas de qualidade
+
+### Com Sistemas Externos
+- **Documentation Sources**: APIs, docs oficiais, Stack Overflow
+- **Code Repositories**: GitHub, GitLab para análise de código
+- **Knowledge Bases**: Confluence, wikis internos
+- **Search Engines**: Google, Bing para pesquisa abrangente
+
 Lembre-se: Boa pesquisa é a base de uma implementação bem-sucedida. Reserve tempo para entender o contexto completo antes de fazer recomendações.
