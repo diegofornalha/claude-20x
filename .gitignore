@@ -175,4 +175,5 @@ hive-mind-prompt-*.txt
 .claude*
 memory*
 context-engineering-turso*
-agents-a2a*
+agents-a2a/*
+A2A-UI
