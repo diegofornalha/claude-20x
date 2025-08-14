@@ -1,3 +1,7 @@
 [submodule "mcp-neo4j-agent-memory"]
 	path = mcp-neo4j-agent-memory
 	url = https://github.com/diegofornalha/mcp-neo4j-agent-memory.git
+
+[submodule "mcp-a2a-specialist"]
+	path = mcp-a2a-specialist
+	url = ./mcp-a2a-specialist
