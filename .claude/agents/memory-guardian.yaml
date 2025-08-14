@@ -1,0 +1,194 @@
+name: memory-guardian
+description: "Guardião de Memórias - Agente Hive-Mind com Hooks"
+type: hivemind_guardian
+category: HiveMind
+version: "1.0.0"
+author: "Claude Code"
+created: "2025-08-14"
+
+# Configuração do Agente
+agent:
+  id: "agent_guardian_001"
+  priority: high
+  status: active
+  auto_start: true
+  
+  capabilities:
+    - memory_management
+    - pattern_detection
+    - auto_cleanup
+    - insight_generation
+    - hook_integration
+    - hivemind_coordination
+
+# Integração Hive-Mind
+hivemind:
+  role: "memory_specialist"
+  swarm_id: "swarm_active_001"
+  queen_sync: true
+  consensus_required: false
+  
+  communication:
+    broadcast: true
+    channels:
+      - memory_updates
+      - cleanup_events
+      - insight_reports
+  
+  coordination:
+    with:
+      - hive-queen
+      - consensus-builder
+      - adaptive-coordinator
+    
+    protocols:
+      - share_insights
+      - request_approval
+      - broadcast_changes
+
+# Hooks Configuration
+hooks:
+  # Hook pós-edição
+  post-edit:
+    enabled: true
+    script: |
+      #!/bin/bash
+      # Registra edição no Neo4j
+      npx claude-flow mcp__neo4j-memory__create_memory \
+        '{"label": "edit_event", "properties": {"file": "$1", "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"}}'
+      
+      # Notifica Hive-Mind
+      echo "[Memory Guardian] File edited: $1" >> .hive-mind/activity.log
+  
+  # Hook pós-comando
+  post-bash:
+    enabled: true
+    script: |
+      #!/bin/bash
+      # Analisa comando executado
+      if [[ "$1" == *"delete"* ]] || [[ "$1" == *"rm"* ]]; then
+        npx claude-flow mcp__neo4j-memory__create_memory \
+          '{"label": "cleanup_event", "properties": {"command": "$1", "type": "deletion"}}'
+      fi
+  
+  # Hook periódico (a cada 1 hora)
+  periodic:
+    enabled: true
+    interval: 3600
+    script: |
+      #!/bin/bash
+      # Análise periódica de memórias
+      python3 .claude/agents/memory_guardian_analyzer.py
+
+# Neo4j Integration
+neo4j:
+  enabled: true
+  auto_connect: true
+  
+  queries:
+    find_orphans: |
+      MATCH (n)
+      WHERE NOT (n)-[]-()
+      RETURN n
+    
+    find_duplicates: |
+      MATCH (n1), (n2)
+      WHERE n1.name = n2.name AND id(n1) < id(n2)
+      RETURN n1, n2
+    
+    analyze_patterns: |
+      MATCH (n)-[r]-(m)
+      RETURN type(r), count(*) as frequency
+      ORDER BY frequency DESC
+  
+  actions:
+    on_orphan_found: "review"
+    on_duplicate_found: "consolidate"
+    on_threshold_exceeded: "cleanup"
+
+# Estratégias do Agente
+strategies:
+  memory_threshold:
+    max_memories: 100
+    warning_at: 80
+    cleanup_at: 90
+  
+  cleanup_policy:
+    keep_essential: true
+    remove_test_data: true
+    consolidate_duplicates: true
+    archive_old: false
+  
+  insight_generation:
+    frequency: "hourly"
+    depth: 2
+    report_to: "hive-queen"
+
+# Comportamentos Autônomos
+behaviors:
+  - name: "auto_cleanup"
+    trigger: "memory_count > 90"
+    action: |
+      1. Identificar memórias candidatas
+      2. Solicitar aprovação da Hive Queen
+      3. Executar limpeza
+      4. Reportar resultados
+  
+  - name: "pattern_detection"
+    trigger: "on_new_memory"
+    action: |
+      1. Analisar padrões
+      2. Detectar anomalias
+      3. Gerar insights
+      4. Compartilhar com Hive-Mind
+  
+  - name: "relationship_builder"
+    trigger: "on_orphan_detected"
+    action: |
+      1. Buscar conexões possíveis
+      2. Sugerir relacionamentos
+      3. Criar links aprovados
+
+# Métricas e Monitoramento
+metrics:
+  track:
+    - total_memories
+    - cleanup_events
+    - insights_generated
+    - patterns_detected
+    - relationships_created
+  
+  report:
+    frequency: "daily"
+    format: "json"
+    destination: "neo4j"
+
+# Comandos do Agente
+commands:
+  analyze: |
+    npx claude-flow mcp__neo4j-memory__list_memory_labels
+  
+  cleanup: |
+    npx claude-flow mcp__neo4j-memory__search_memories '{"query": "test OR temp", "limit": 10}'
+  
+  report: |
+    npx claude-flow mcp__neo4j-memory__search_memories '{"depth": 2, "limit": 50}'
+
+# Mensagens do Agente
+messages:
+  startup: "🛡️ Memory Guardian activated - Protecting the Knowledge Graph"
+  cleanup_start: "🧹 Initiating memory cleanup sequence..."
+  cleanup_done: "✅ Cleanup complete: {deleted} memories removed"
+  insight_found: "💡 New insight discovered: {insight}"
+  pattern_detected: "🔍 Pattern detected: {pattern}"
+  error: "⚠️ Memory Guardian error: {error}"
+
+# Estado Persistente
+state:
+  storage: "neo4j"
+  namespace: "guardian_state"
+  persist:
+    - last_cleanup
+    - total_cleanups
+    - insights_count
+    - active_patterns

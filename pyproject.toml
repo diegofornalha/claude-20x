@@ -1,0 +1,13 @@
+[project]
+name = "dalat"
+version = "0.1.0"
+description = "Sistema de descoberta de serviços, logging central e estimativas de timeline - Claude-20x"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.12.15",
+    "fastapi>=0.116.1",
+    "psutil>=7.0.0",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.4",
+    "uvicorn>=0.35.0",
+]

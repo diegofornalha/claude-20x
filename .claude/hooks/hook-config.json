@@ -1,0 +1,66 @@
+{
+  "hooks": {
+    "pre-bash": {
+      "enabled": true,
+      "script": "neo4j-integrated-hook.sh",
+      "env": {
+        "HOOK_TYPE": "pre-bash",
+        "USE_NEO4J": "true"
+      }
+    },
+    "post-bash": {
+      "enabled": true,
+      "script": "neo4j-integrated-hook.sh",
+      "env": {
+        "HOOK_TYPE": "post-bash",
+        "USE_NEO4J": "true"
+      }
+    },
+    "pre-edit": {
+      "enabled": true,
+      "script": "neo4j-integrated-hook.sh",
+      "env": {
+        "HOOK_TYPE": "pre-edit",
+        "USE_NEO4J": "true"
+      }
+    },
+    "post-edit": {
+      "enabled": true,
+      "script": "neo4j-integrated-hook.sh",
+      "env": {
+        "HOOK_TYPE": "post-edit",
+        "USE_NEO4J": "true"
+      }
+    },
+    "pre-task": {
+      "enabled": true,
+      "script": "neo4j-integrated-hook.sh",
+      "env": {
+        "HOOK_TYPE": "pre-task",
+        "USE_NEO4J": "true"
+      }
+    },
+    "post-task": {
+      "enabled": true,
+      "script": "neo4j-integrated-hook.sh",
+      "env": {
+        "HOOK_TYPE": "post-task",
+        "USE_NEO4J": "true"
+      }
+    }
+  },
+  "storage": {
+    "type": "neo4j",
+    "sqlite": {
+      "enabled": false,
+      "path": null
+    },
+    "neo4j": {
+      "enabled": true,
+      "server": "mcp__neo4j-memory",
+      "auto_connect": true
+    }
+  },
+  "prevent_sqlite_creation": true,
+  "updated_at": "2025-08-14T06:45:00Z"
+}

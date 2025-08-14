@@ -1,17 +1,38 @@
 {
-  "version": "2.0.0",
-  "initialized": "2025-08-04T05:40:42.355Z",
+  "version": "3.0.0",
+  "initialized": "2025-08-14T06:42:40.331359Z",
+  "storage": {
+    "type": "neo4j",
+    "sqlite": {
+      "enabled": false,
+      "path": null,
+      "deprecated": true
+    },
+    "neo4j": {
+      "enabled": true,
+      "server": "mcp__neo4j-memory",
+      "database": "neo4j",
+      "labels": {
+        "swarm": "hivemind_swarm",
+        "agent": "hivemind_agent",
+        "message": "hivemind_message",
+        "capability": "capability"
+      }
+    }
+  },
   "defaults": {
     "queenType": "strategic",
     "maxWorkers": 8,
     "consensusAlgorithm": "majority",
     "memorySize": 100,
     "autoScale": true,
-    "encryption": false
+    "encryption": false,
+    "useGraphDB": true
   },
   "mcpTools": {
     "enabled": true,
     "parallel": true,
-    "timeout": 60000
+    "timeout": 60000,
+    "neo4j_integration": true
   }
 }
