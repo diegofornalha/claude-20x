@@ -1,0 +1,15 @@
+2025-08-14 02:25:04,101 - __main__ - INFO - __init__:387 - 🔍 Inicializando Service Discovery System...
+2025-08-14 02:25:04,101 - __main__ - INFO - __init__:408 - 📁 Project root: /Users/agents/Desktop/claude-20x/.conductor/dalat
+2025-08-14 02:25:04,101 - __main__ - INFO - __init__:409 - 🔍 Scan ranges: [('localhost', range(3000, 4001))]
+2025-08-14 02:25:04,101 - __main__ - INFO - __init__:410 - ⏱️ Scan interval: 30s
+2025-08-14 02:25:04,101 - __main__ - INFO - __init__:411 - 🤖 Known agents: ['helloworld', 'marvin', 'gemini', 'ui', 'analytics', 'a2a-inspector']
+2025-08-14 02:25:04,101 - __main__ - INFO - _discovery_worker:1405 - 🔄 Iniciando worker de descoberta contínua
+2025-08-14 02:25:04,101 - __main__ - INFO - __init__:415 - ✅ Service Discovery inicializado com sucesso
+2025-08-14 02:25:04,103 - __main__ - INFO - discover_agents:471 - 🔍 Iniciando descoberta de agentes...
+2025-08-14 02:25:04,116 - __main__ - INFO - stop:1489 - 🛑 Parando Service Discovery...
+2025-08-14 02:25:04,240 - __main__ - ERROR - _create_agent_from_card:1029 - Erro ao criar agente a partir do card: 'list' object has no attribute 'get'
+2025-08-14 02:25:04,303 - __main__ - INFO - discover_agents:486 - 🎯 Descobertos 3 agentes conhecidos
+2025-08-14 02:25:04,471 - __main__ - INFO - discover_agents:494 - 🔍 Descobertos 0 agentes por scan
+2025-08-14 02:25:04,471 - __main__ - INFO - discover_agents:502 - 📋 Descobertos 0 agentes por config
+2025-08-14 02:25:04,471 - __main__ - INFO - discover_agents:519 - ✅ Descoberta concluída: 3 agentes únicos em 0.37s
+2025-08-14 02:25:09,117 - __main__ - INFO - stop:1495 - ✅ Service Discovery parado com sucesso
